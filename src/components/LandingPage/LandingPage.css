@@ -1,0 +1,348 @@
+
+.block-1 {
+    display: flex;
+    flex-direction: column;
+    background-image: url('./kai-pilger.png');
+    background-repeat: no-repeat;
+}
+
+.block-1 .block-1-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.block-1 .block-1-top a img {
+    height: 58px;
+    width: 166px;
+    margin-top: 60px;
+}
+
+.block-1 .block-1-top button {
+    height: 40px;
+    width: 160px;
+    cursor: pointer;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #F71117;
+    color: #FFFFFF;
+    border: 3px solid #F71117;
+    letter-spacing: 0;
+    border-radius: 5px;
+    margin-top: 60px;
+}
+
+.block-1 .block-1-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+}
+
+.block-1 .block-1-middle img {
+    height: 146px;
+    width: 1014px;
+}
+
+.block-1 .block-1-bottom {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.block-1 .block-1-bottom .box {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-1 .block-1-bottom .box .box-top {
+    display: flex;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.block-1 .block-1-bottom .box .box-top img { 
+    height: 30px;
+    width: 30px;
+}
+
+.block-1 .block-1-bottom .box .box-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.block-1 .block-1-bottom .box .box-bottom p {
+    font-family: Helvetica;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+
+.block-1 .block-1-bottom .box .box-bottom a img {
+    height: 17px;
+    width: 17px;
+    margin-left: 100px;
+}
+
+#driver {
+    margin-left: 220px;
+}
+
+#customer {
+    margin-right: 220px;
+}
+
+.block-2 {
+    color: #000000;
+    font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-2 .block-2-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.block-2 .block-2-title h1 {
+    font-size: 34px;
+}
+
+.block-2 .block-2-top {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block-2 .block-2-top .box-presentation-top {
+    height: 226px;
+    width: 415px;
+}
+
+.block-2 .block-2-top .box-presentation-top h1 {
+    font-size: 32px;
+}
+
+.block-2 .block-2-top .box-presentation-top p {
+    font-size: 17px;
+    line-height: 29px;
+}
+
+.block-2 .block-2-top .box-images-top {
+
+}
+
+#image-driver {
+    height: 224px;
+    width: 131px;
+}
+
+#image-restaurant {
+    height: 211px;
+    width: 234px;
+    margin-left: 50px;
+}
+
+.block-2 .block-2-middle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    margin-top: 80px;
+}
+
+.block-2 .block-2-middle .box-presentation-middle {
+    height: 226px;
+    width: 415px;
+}
+
+.block-2 .block-2-middle .box-presentation-middle h1 {
+    font-size: 32px;
+}
+
+.block-2 .block-2-middle .box-presentation-middle p {
+    font-size: 17px;
+    line-height: 29px;
+}
+
+.block-2 .block-2-middle .box-images-middle {
+
+}
+
+.block-2 .block-2-middle .box-images-middle img {
+    height: 237px;
+    width: 225px;
+}
+
+.block-2 .block-2-bottom {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 140px;
+    margin-top: 80px;
+}
+
+.block-2 .block-2-bottom .box-presentation-bottom {
+    height: 226px;
+    width: 415px;
+}
+
+.block-2 .block-2-bottom .box-presentation-bottom h1 {
+    font-size: 32px;
+}
+
+.block-2 .block-2-bottom .box-presentation-bottom p {
+    font-size: 17px;
+    line-height: 29px;
+}
+
+.block-2 .block-2-bottom .box-images-bottom {
+
+}
+
+#image-driver-running {
+    height: 224px;
+    width: 400px;
+    margin-right: -180px;
+}
+
+#image-home {
+    height: 244px;
+    width: 204px;
+}
+
+.block-3 {
+    background-color: #F71117;
+    background-image: url('./smile-background.png');
+    background-repeat: no-repeat;
+    background-position: -20px -20px;
+    font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-3 .block-3-top {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;
+    margin-bottom: -30px;
+}
+
+.block-3 .block-3-top h1 {
+    font-size: 42px;
+    color: #FFFFFF;
+}
+
+.block-3 .block-3-middle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.block-3 .block-3-middle p {
+    text-align: center;
+    font-size: 27px;
+    color: #FFFFFF;
+    line-height: 39px;
+    font-weight: lighter;
+}
+
+.block-3 .block-3-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.block-3 .block-3-bottom input {
+    height: 55px;
+    width: 420px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 3px solid #FFFFFF;
+    font-weight: lighter;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+
+.block-3 .block-3-bottom button {
+    height: 63px;
+    width: 150px;
+    background-color: #1B1B1B;
+    color: #FFFFFF;
+    font-weight: lighter;
+    border-radius: 5px;
+    border: 3px solid #1B1B1B;
+    cursor: pointer;
+}
+
+.block-3 .block-3-bottom button img { 
+    height: 15px;
+    width: 15px;
+    margin-left: 10px;
+}
+
+.block-4 {
+    display: flex;  
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.block-4 .block-4-left {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: row;
+}
+
+.block-4 .block-4-left ul {
+    width: 80%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.block-4 .block-4-left ul li a {
+    text-decoration: none;
+    font-family: Helvetica;
+    color: #909090;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+
+.block-4 .block-4-right {
+    width: 50%;
+}
