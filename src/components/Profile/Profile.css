@@ -1,0 +1,144 @@
+.profile {
+    background:rgb(240, 240, 240);
+}
+
+.top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 16px;
+    background: #FFFFFF;
+}
+
+.top a img {
+    height: 58px;
+    width: 166px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top button {
+    height: 50px;
+    width: 255px;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top a {
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top a p {
+    height: 18px;
+    width: 104px;
+    color: #222A30;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main .main-left {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 4px;
+    height: 500px;
+    width: 300px;
+    min-width: 170px;
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: 10px;
+    margin-bottom: 120px;
+}
+
+.main .main-left .main-left-top {
+    border-bottom: 1px solid #DEDEDE;
+    height: 100px;
+}
+
+.main .main-left .main-left-top p {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222A30;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.main .main-left ul {
+    list-style-type: none;
+    margin-top: 40px;
+    margin-left: -40px;
+}
+
+.main .main-left ul a {
+    text-decoration: none;
+}
+
+.main .main-left ul a li {
+    border: 1px solid white;
+    background-color: white;
+    color: #222A30;
+}
+
+.main .main-left ul a li:hover {
+    border: 1px solid white;
+    background-color: #F71117;
+    color: white;
+}
+
+.main .main-left ul a li p {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 40px;
+}
+
+.main .main-right {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 4px;
+    height: 500px;
+    width: 700px;
+    min-width: 300px;
+    margin-top: 50px;
+    margin-right: 80px;
+    margin-left: 10px;
+    margin-bottom: 120px;
+}
+
+.main .main-right .main-right-top {
+    height: 100px;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.main .main-right .main-right-top h3 {
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #222A30;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
