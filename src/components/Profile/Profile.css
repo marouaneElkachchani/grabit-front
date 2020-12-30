@@ -59,18 +59,18 @@
     flex-direction: column;
     background: #FFFFFF;
     border-radius: 4px;
-    height: 500px;
-    width: 300px;
-    min-width: 170px;
+    width: 260px;
+    min-width: 150px;
     margin-top: 50px;
-    margin-left: 80px;
-    margin-right: 10px;
     margin-bottom: 120px;
+    margin-left: 80px;
+    margin-right: 20px;
 }
 
 .main .main-left .main-left-top {
     border-bottom: 1px solid #DEDEDE;
     height: 100px;
+    min-height: 100px;
 }
 
 .main .main-left .main-left-top p {
@@ -86,6 +86,7 @@
     list-style-type: none;
     margin-top: 40px;
     margin-left: -40px;
+    margin-bottom: 310px;
 }
 
 .main .main-left ul a {
@@ -96,21 +97,88 @@
     border: 1px solid white;
     background-color: white;
     color: #222A30;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .main .main-left ul a li:hover {
-    border: 1px solid white;
     background-color: #F71117;
     color: white;
+}
+
+.main .main-left ul a li #user-dark {
+    display: block;
+}
+.main .main-left ul a li:hover #user-dark {
+    display: none;
+}
+
+.main .main-left ul a li #user-white {
+    display: none;
+}
+
+.main .main-left ul a li:hover #user-white {
+    display: block;
+}
+
+.main .main-left ul a li #requests-dark {
+    display: block;
+}
+.main .main-left ul a li:hover #requests-dark {
+    display: none;
+}
+
+.main .main-left ul a li #requests-white {
+    display: none;
+}
+
+.main .main-left ul a li:hover #requests-white {
+    display: block;
+}
+
+.main .main-left ul a li #address-dark {
+    display: block;
+}
+.main .main-left ul a li:hover #address-dark {
+    display: none;
+}
+
+.main .main-left ul a li #address-white {
+    display: none;
+}
+
+.main .main-left ul a li:hover #address-white {
+    display: block;
+}
+
+#user-dark, #user-white {
+    height: 19px;
+    width: 18px;
+    margin-left: 20px;
+}
+
+#requests-dark, #requests-white {
+    height: 19px;
+    width: 17px;
+    margin-top: 1px;
+    margin-left: 20px;
+}
+
+#address-dark, #address-white {
+    height: 19px;
+    width: 21px;
+    margin-left: 17px;
 }
 
 .main .main-left ul a li p {
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 500;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 40px;
+    margin-left: 20px;
+    margin-top: 26px;
+    margin-bottom: 21px;
+    margin-right: 20px;
 }
 
 .main .main-right {
@@ -118,17 +186,17 @@
     flex-direction: column;
     background: #FFFFFF;
     border-radius: 4px;
-    height: 500px;
-    width: 700px;
+    width: 900px;
     min-width: 300px;
     margin-top: 50px;
-    margin-right: 80px;
-    margin-left: 10px;
     margin-bottom: 120px;
+    margin-right: 80px;
+    margin-left: 15px;
 }
 
 .main .main-right .main-right-top {
     height: 100px;
+    min-height: 100px;
     border-bottom: 1px solid #DEDEDE;
 }
 
@@ -142,3 +210,93 @@
     margin-top: 40px;
 }
 
+label {
+    height: 18px;
+    width: 125px;
+    color: #849FB1;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 18px;
+}
+
+input {
+    background: #FFFFFF;
+    border: 1px solid #DEDEDE;
+    border-radius: 2px;
+    width: 280px;
+    height: 35px;
+    margin-top: 15px;
+}
+
+.main .main-right .main-right-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    font-family: Helvetica;
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+.main .main-right .main-right-form .main-right-form-inputs { 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main .main-right .main-right-form .main-right-form-inputs section { 
+    margin-top: 20px;
+}
+
+.main .main-right .main-right-form .main-right-form-inputs button {
+    width: 289px;
+    height: 40px;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-top: 17px;
+}
+
+.main .main-right .main-right-form .main-right-form-image {
+    margin-bottom: 80px;
+}
+
+.main .main-right .main-right-form .main-right-form-image img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 40px;
+    margin-left: 50px;
+}
+
+#remove {
+    height: 28px;
+    width: 100px;
+    background: #849FB1;
+    border-radius: 2px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight:700;
+    border: 1px solid #849FB1;
+    margin-left: 10px;
+}
+
+#upload {
+    height: 28px;
+    width: 100px;
+    background: #333C45;
+    border-radius: 2px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight:700;
+    border: 1px solid #333C45;
+    margin-right: 10px;
+}
