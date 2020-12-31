@@ -275,7 +275,7 @@
     margin-bottom: 60px;
 }
 
-.block-3 .block-3-bottom input {
+#block-3-bottom-email-input {
     height: 55px;
     width: 420px;
     background-color: #FFFFFF;
@@ -285,6 +285,7 @@
     font-size: 14px;
     letter-spacing: 0;
     line-height: 18px;
+    margin-top: 0px;
 }
 
 .block-3 .block-3-bottom button {

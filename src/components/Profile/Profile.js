@@ -9,14 +9,19 @@ class Profile extends React.Component {
                         <a href="">
                             <img src="./assets/grabit-icon.png" alt="Grabit" />
                         </a>
-                        <button>Request an Order</button>
-                        <a href="">
+                        <button>
+                            <img src="./assets/request-order-icon.png" alt="Grabit" />
+                            Request an Order
+                        </button>
+                        <a id="user-name-image" href="">
                             <p>Patek Philippe</p>
+                            <img id="image-icon-top" src="./assets/oval.png" alt="Grabit" />
                         </a>
                     </div>
                     <div className="main">
                         <div className="main-left">
                                 <div className="main-left-top">
+                                    <img id="image-icon" src="./assets/oval.png" alt="Grabit" />
                                     <p>Patek Philippe</p>
                                 </div>
                                 <ul>
@@ -75,6 +80,19 @@ class Profile extends React.Component {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="bottom">
+                        <ul>
+                            <li>
+                                <a href="">2019 grabit</a>
+                            </li>
+                            <li>
+                                <a href="">Terms</a>
+                            </li>
+                            <li>
+                                <a href="">Privacy Policy</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 );

@@ -95,7 +95,7 @@ class LandingPage extends React.Component {
                 </p>
               </div>
               <div className="block-3-bottom">
-                <input type="email"></input>
+                <input id="block-3-bottom-email-input" type="email"></input>
                 <button>
                   Send
                   <img src="./assets/send-2.png" alt="Grabit" />

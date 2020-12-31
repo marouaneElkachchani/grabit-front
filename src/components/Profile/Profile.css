@@ -28,11 +28,17 @@
     letter-spacing: 0;
     cursor: pointer;
     font-weight: bold;
-    border: 3px solid #F71117;
+    border: none;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.top button img {
+    height: 13px;
+    width: 13px;
+    margin-right: 15px;
 }
 
 .top a {
@@ -48,6 +54,17 @@
     color: #222A30;
 }
 
+#user-name-image {
+    display: flex;
+}
+
+#image-icon-top {
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
 .main {
     display: flex;
     justify-content: space-around;
@@ -60,17 +77,24 @@
     background: #FFFFFF;
     border-radius: 4px;
     width: 260px;
-    min-width: 150px;
+    min-width: 155px;
     margin-top: 50px;
-    margin-bottom: 120px;
     margin-left: 80px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .main .main-left .main-left-top {
     border-bottom: 1px solid #DEDEDE;
     height: 100px;
     min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#image-icon {
+    height: 40px;
+    width: 40px;
+    margin: 20px;
 }
 
 .main .main-left .main-left-top p {
@@ -78,8 +102,7 @@
     font-size: 16px;
     font-weight: 500;
     color: #222A30;
-    text-align: center;
-    margin-top: 40px;
+    margin: 10px;
 }
 
 .main .main-left ul {
@@ -189,7 +212,6 @@
     width: 900px;
     min-width: 300px;
     margin-top: 50px;
-    margin-bottom: 120px;
     margin-right: 80px;
     margin-left: 15px;
 }
@@ -299,4 +321,33 @@ input {
     font-weight:700;
     border: 1px solid #333C45;
     margin-right: 10px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.bottom ul {
+    width: 50%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 120px;
+}
+
+.bottom ul li a {
+    text-decoration: none;
+    font-family: Helvetica;
+    color: #909090;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin: 60px;
 }
