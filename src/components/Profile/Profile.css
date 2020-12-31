@@ -2,7 +2,7 @@
     background:rgb(240, 240, 240);
 }
 
-.top {
+.profile-top {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -11,7 +11,7 @@
     background: #FFFFFF;
 }
 
-.top a img {
+.profile-top a img {
     height: 58px;
     width: 166px;
     margin-left: 10px;
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
 }
 
-.top button {
+.profile-top button {
     height: 50px;
     width: 255px;
     background: #F71117;
@@ -35,20 +35,20 @@
     margin-bottom: 10px;
 }
 
-.top button img {
+.profile-top button img {
     height: 13px;
     width: 13px;
     margin-right: 15px;
 }
 
-.top a {
+.profile-top a {
     text-decoration: none;
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.top a p {
+.profile-top a p {
     height: 18px;
     width: 104px;
     color: #222A30;
@@ -65,13 +65,13 @@
     margin-top: 4px;
 }
 
-.main {
+.profile-main {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.main .main-left {
+.profile-main .main-left {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
@@ -83,7 +83,7 @@
     margin-right: 10px;
 }
 
-.main .main-left .main-left-top {
+.profile-main .main-left .main-left-top {
     border-bottom: 1px solid #DEDEDE;
     height: 100px;
     min-height: 100px;
@@ -97,7 +97,7 @@
     margin: 20px;
 }
 
-.main .main-left .main-left-top p {
+.profile-main .main-left .main-left-top p {
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 500;
@@ -105,18 +105,18 @@
     margin: 10px;
 }
 
-.main .main-left ul {
+.profile-main .main-left ul {
     list-style-type: none;
     margin-top: 40px;
     margin-left: -40px;
     margin-bottom: 310px;
 }
 
-.main .main-left ul a {
+.profile-main .main-left ul a {
     text-decoration: none;
 }
 
-.main .main-left ul a li {
+.profile-main .main-left ul a li {
     border: 1px solid white;
     background-color: white;
     color: #222A30;
@@ -125,53 +125,53 @@
     align-items: center;
 }
 
-.main .main-left ul a li:hover {
+.profile-main .main-left ul a li:hover {
     background-color: #F71117;
     color: white;
 }
 
-.main .main-left ul a li #user-dark {
+.profile-main .main-left ul a li #user-dark {
     display: block;
 }
-.main .main-left ul a li:hover #user-dark {
+.profile-main .main-left ul a li:hover #user-dark {
     display: none;
 }
 
-.main .main-left ul a li #user-white {
+.profile-main .main-left ul a li #user-white {
     display: none;
 }
 
-.main .main-left ul a li:hover #user-white {
-    display: block;
-}
-
-.main .main-left ul a li #requests-dark {
-    display: block;
-}
-.main .main-left ul a li:hover #requests-dark {
-    display: none;
-}
-
-.main .main-left ul a li #requests-white {
-    display: none;
-}
-
-.main .main-left ul a li:hover #requests-white {
+.profile-main .main-left ul a li:hover #user-white {
     display: block;
 }
 
-.main .main-left ul a li #address-dark {
+.profile-main .main-left ul a li #requests-dark {
     display: block;
 }
-.main .main-left ul a li:hover #address-dark {
+.profile-main .main-left ul a li:hover #requests-dark {
     display: none;
 }
 
-.main .main-left ul a li #address-white {
+.profile-main .main-left ul a li #requests-white {
     display: none;
 }
 
-.main .main-left ul a li:hover #address-white {
+.profile-main .main-left ul a li:hover #requests-white {
+    display: block;
+}
+
+.profile-main .main-left ul a li #address-dark {
+    display: block;
+}
+.profile-main .main-left ul a li:hover #address-dark {
+    display: none;
+}
+
+.profile-main .main-left ul a li #address-white {
+    display: none;
+}
+
+.profile-main .main-left ul a li:hover #address-white {
     display: block;
 }
 
@@ -194,7 +194,7 @@
     margin-left: 17px;
 }
 
-.main .main-left ul a li p {
+.profile-main .main-left ul a li p {
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 500;
@@ -204,7 +204,7 @@
     margin-right: 20px;
 }
 
-.main .main-right {
+.profile-main .main-right {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
@@ -216,13 +216,13 @@
     margin-left: 15px;
 }
 
-.main .main-right .main-right-top {
+.profile-main .main-right .main-right-top {
     height: 100px;
     min-height: 100px;
     border-bottom: 1px solid #DEDEDE;
 }
 
-.main .main-right .main-right-top h3 {
+.profile-main .main-right .main-right-top h3 {
     font-family: Helvetica;
     font-size: 24px;
     font-weight: 500;
@@ -252,7 +252,7 @@ input {
     margin-top: 15px;
 }
 
-.main .main-right .main-right-form {
+.profile-main .main-right .main-right-form {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -262,18 +262,18 @@ input {
     margin-bottom: 150px;
 }
 
-.main .main-right .main-right-form .main-right-form-inputs { 
+.profile-main .main-right .main-right-form .main-right-form-inputs { 
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
 
-.main .main-right .main-right-form .main-right-form-inputs section { 
+.profile-main .main-right .main-right-form .main-right-form-inputs section { 
     margin-top: 20px;
 }
 
-.main .main-right .main-right-form .main-right-form-inputs button {
+.profile-main .main-right .main-right-form .main-right-form-inputs button {
     width: 289px;
     height: 40px;
     background: #F71117;
@@ -286,11 +286,11 @@ input {
     margin-top: 17px;
 }
 
-.main .main-right .main-right-form .main-right-form-image {
+.profile-main .main-right .main-right-form .main-right-form-image {
     margin-bottom: 80px;
 }
 
-.main .main-right .main-right-form .main-right-form-image img {
+.profile-main .main-right .main-right-form .main-right-form-image img {
     width: 120px;
     height: 120px;
     margin-bottom: 40px;
@@ -323,14 +323,14 @@ input {
     margin-right: 10px;
 }
 
-.bottom {
+.profile-bottom {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
 }
 
-.bottom ul {
+.profile-bottom ul {
     width: 50%;
     list-style-type: none;
     display: flex;
@@ -341,7 +341,7 @@ input {
     margin-bottom: 120px;
 }
 
-.bottom ul li a {
+.profile-bottom ul li a {
     text-decoration: none;
     font-family: Helvetica;
     color: #909090;

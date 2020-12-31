@@ -5,7 +5,7 @@ class Profile extends React.Component {
     render() {
             return (
                 <div className="profile">
-                    <div className="top">
+                    <div className="profile-top">
                         <a href="">
                             <img src="./assets/grabit-icon.png" alt="Grabit" />
                         </a>
@@ -18,7 +18,7 @@ class Profile extends React.Component {
                             <img id="image-icon-top" src="./assets/oval.png" alt="Grabit" />
                         </a>
                     </div>
-                    <div className="main">
+                    <div className="profile-main">
                         <div className="main-left">
                                 <div className="main-left-top">
                                     <img id="image-icon" src="./assets/oval.png" alt="Grabit" />
@@ -81,7 +81,7 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="bottom">
+                    <div className="profile-bottom">
                         <ul>
                             <li>
                                 <a href="">2019 grabit</a>
