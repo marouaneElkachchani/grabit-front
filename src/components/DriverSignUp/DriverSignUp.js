@@ -13,6 +13,10 @@ class DriverSignUp extends React.Component {
                     <div className="driverSignUp-main">
                         <div className="driverSignUp-main-box">
                             <h3>Sign up as Driver</h3>
+                            <button>
+                                <img src="./assets/facebook-logo.png" alt="Grabit" />
+                                Continue with Facebook
+                            </button>
                         </div>
                     </div>
                 </div>

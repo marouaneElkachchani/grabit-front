@@ -13,6 +13,10 @@ class CustomerSignUp extends React.Component {
                     <div className="customerSignUp-main">
                         <div className="customerSignUp-main-box">
                             <h3>Sign up as Customer</h3>
+                            <button>
+                                <img src="./assets/facebook-logo.png" alt="Grabit" />
+                                Continue with Facebook
+                            </button>
                         </div>
                     </div>
                 </div>
