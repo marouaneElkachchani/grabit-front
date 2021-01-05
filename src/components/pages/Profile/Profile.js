@@ -6,7 +6,7 @@ class Profile extends React.Component {
             return (
                 <div className="profile">
                     <div className="profile-top">
-                        <a href="">
+                        <a href="/">
                             <img src="./assets/grabit-icon.png" alt="Grabit" />
                         </a>
                         <button>

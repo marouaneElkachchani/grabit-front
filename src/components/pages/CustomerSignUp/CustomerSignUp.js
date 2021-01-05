@@ -1,18 +1,18 @@
 import React from 'react';
-import './DriverSignUp.css';
+import './CustomerSignUp.css';
 
-class DriverSignUp extends React.Component {
+class CustomerSignUp extends React.Component {
     render() {
             return (
-                <div className="driverSignUp">
-                    <div className="driverSignUp-top">
-                        <a href="">
+                <div className="customerSignUp">
+                    <div className="customerSignUp-top">
+                        <a href="/">
                             <img src="./assets/grabit-icon.png" alt="Grabit" />
                         </a>
                     </div>
-                    <div className="driverSignUp-main">
-                        <div className="driverSignUp-main-box">
-                            <h3>Sign up as Driver</h3>
+                    <div className="customerSignUp-main">
+                        <div className="customerSignUp-main-box">
+                            <h3>Sign up as Customer</h3>
                             <button>
                                 <img src="./assets/facebook-logo.png" alt="Grabit" />
                                 Continue with Facebook
@@ -24,4 +24,4 @@ class DriverSignUp extends React.Component {
     }
 }
 
-export default DriverSignUp;
+export default CustomerSignUp;

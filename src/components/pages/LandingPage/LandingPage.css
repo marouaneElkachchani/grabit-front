@@ -109,6 +109,7 @@
     font-family: Helvetica;
     display: flex;
     flex-direction: column;
+    background: #FFFFFF;
 }
 
 .block-2 .block-2-title {
@@ -311,8 +312,7 @@
     align-items: center;
     align-content: space-around;
     flex-direction: row;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    background-color: #FFFFFF;
 }
 
 .block-4 .block-4-left {

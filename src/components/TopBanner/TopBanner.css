@@ -1,0 +1,61 @@
+.TopBanner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 16px;
+    background: #FFFFFF;
+}
+
+.TopBanner a img {
+    height: 58px;
+    width: 166px;
+    margin-left: 10px;
+}
+
+#requestAnOrderButton {
+    height: 50px;
+    width: 255px;
+    display: none;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#requestAnOrderButton img {
+    height: 13px;
+    width: 13px;
+    margin-right: 15px;
+}
+
+.TopBanner a {
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.TopBanner a p {
+    height: 18px;
+    width: 104px;
+    color: #222A30;
+}
+
+#user-image {
+    display: flex;
+}
+
+#oval {
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    margin-top: 4px;
+}

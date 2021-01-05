@@ -7,10 +7,12 @@ class LandingPage extends React.Component {
           <div>
             <div className="block-1">
               <div className="block-1-top">
-                <a href="">
+                <a href="/">
                   <img src="./assets/grabit-icon-title.png" alt="Grabit" />
                 </a>
-                <button>Sign in</button>
+                <a href="/profile">
+                  <button>Sign in</button>
+                </a>
               </div>
               <div className="block-1-middle">
                 <img src="./assets/we-deliver-it.png" alt="Grabit" />
@@ -22,7 +24,7 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Driver</p>
-                    <a href="">
+                    <a href="/driverSignUp">
                       <img src="./assets/arrow.png" alt="Grabit" />
                     </a>
                   </div>
@@ -33,7 +35,7 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Customer</p>
-                    <a href="">
+                    <a href="/customerSignUp">
                       <img src="./assets/arrow.png" alt="Grabit" />
                     </a>
                   </div>
