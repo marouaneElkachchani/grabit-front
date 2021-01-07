@@ -1,4 +1,4 @@
-.TopBanner {
+.top-banner {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -7,7 +7,21 @@
     background: #FFFFFF;
 }
 
-.TopBanner a img {
+.top-banner-sign-up {
+    display: flex;
+    justify-content: flex-start;
+    background: #FFFFFF;
+}
+
+.top-banner-sign-up a img{
+    height: 58px;
+    width: 166px;
+    margin-left: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-banner a img {
     height: 58px;
     width: 166px;
     margin-left: 10px;
@@ -16,7 +30,7 @@
 #requestAnOrderButton {
     height: 50px;
     width: 255px;
-    display: none;
+    display: block;
     background: #F71117;
     border-radius: 4px;
     color: #FFFFFF;
@@ -36,14 +50,14 @@
     margin-right: 15px;
 }
 
-.TopBanner a {
+.top-banner a {
     text-decoration: none;
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.TopBanner a p {
+.top-banner a p {
     height: 18px;
     width: 104px;
     color: #222A30;

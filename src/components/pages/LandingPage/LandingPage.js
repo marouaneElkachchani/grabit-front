@@ -1,18 +1,27 @@
 import React from 'react';
 import './LandingPage.css';
+import { Link } from 'react-router-dom';
+import Footer from '../../Footer/Footer';
 
 class LandingPage extends React.Component {
+
+    constructor(props) {
+      
+      super(props);
+
+    }
+
     render() {
         return (
           <div>
             <div className="block-1">
               <div className="block-1-top">
-                <a href="/">
+                <Link to="/">
                   <img src="./assets/grabit-icon-title.png" alt="Grabit" />
-                </a>
-                <a href="/profile">
+                </Link>
+                <Link to="/profile">
                   <button>Sign in</button>
-                </a>
+                </Link>
               </div>
               <div className="block-1-middle">
                 <img src="./assets/we-deliver-it.png" alt="Grabit" />
@@ -24,9 +33,9 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Driver</p>
-                    <a href="/driverSignUp">
+                    <Link to="/driverSignUp">
                       <img src="./assets/arrow.png" alt="Grabit" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="box" id="customer">
@@ -35,9 +44,9 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Customer</p>
-                    <a href="/customerSignUp">
+                    <Link to="/customerSignUp">
                       <img src="./assets/arrow.png" alt="Grabit" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -104,22 +113,7 @@ class LandingPage extends React.Component {
                 </button>
               </div>
             </div>
-            <div className="block-4">
-              <div className="block-4-left">
-                <ul>
-                  <li>
-                    <a href="">2019 grabit</a>
-                  </li>
-                  <li>
-                    <a href="">Terms</a>
-                  </li>
-                  <li>
-                    <a href="">Privacy Policy</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="block-4-right"></div>
-            </div>
+            <Footer />
           </div>
         );
     }

@@ -300,50 +300,8 @@
     cursor: pointer;
 }
 
-.block-3 .block-3-bottom button img { 
+.block-3 .block-3-bottom button img {
     height: 15px;
     width: 15px;
     margin-left: 10px;
-}
-
-.block-4 {
-    display: flex;  
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
-    flex-direction: row;
-    background-color: #FFFFFF;
-}
-
-.block-4 .block-4-left {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
-    flex-direction: row;
-}
-
-.block-4 .block-4-left ul {
-    width: 80%;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.block-4 .block-4-left ul li a {
-    text-decoration: none;
-    font-family: Helvetica;
-    color: #909090;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 22px;
-}
-
-.block-4 .block-4-right {
-    width: 50%;
 }

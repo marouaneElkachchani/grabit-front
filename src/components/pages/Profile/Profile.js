@@ -1,99 +1,83 @@
 import React from 'react';
 import './Profile.css';
+import { Link } from 'react-router-dom';
+import TopBanner from '../../TopBanner/TopBanner';
+import SideBar from '../../SideBar/SideBar';
+import ProfileSettings from '../../ProfileSettings/ProfileSettings';
+import Footer from '../../Footer/Footer';
+
 
 class Profile extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userId: 329,
+            userName: "Mark Hamilton", 
+            userAddress: "352, New York City, NY", 
+            userEmail: "mark@hamilton.com",
+            userPhone: 26220033452,
+            userInfoId: 329,
+            userInfoName: "Mark Hamilton", 
+            userInfoAddress: "352, New York City, NY", 
+            userInfoEmail: "mark@hamilton.com",
+            userInfoPhone: 26220033452
+        };
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleNameChange(event) {
+        this.setState({
+            userInfoName: event.target.value
+        });
+    }
+
+    handleEmailChange(event) {
+        this.setState({
+            userInfoEmail: event.target.value
+        });
+    }
+
+    handlePhoneChange(event) {
+        this.setState({
+            userInfoPhone: event.target.value
+        });
+    }
+
+    handleSubmit() {
+        this.setState({
+           userName: this.state.userInfoName,
+           userEmail: this.state.userInfoEmail,
+           userPhone: this.state.userInfoPhone
+        });
+    }
+
     render() {
+            const isProfile = true;
+            const name = this.state.userName;
+            const userInfoName = this.state.userInfoName;
+            const userInfoEmail = this.state.userInfoEmail;
+            const userInfoPhone = this.state.userInfoPhone;
+            const handleNameChange = this.handleNameChange;
+            const handleEmailChange = this.handleEmailChange;
+            const handlePhoneChange = this.handlePhoneChange;
+            const handleSubmit = this.handleSubmit;
             return (
                 <div className="profile">
-                    <div className="profile-top">
-                        <a href="/">
-                            <img src="./assets/grabit-icon.png" alt="Grabit" />
-                        </a>
-                        <button>
-                            <img src="./assets/request-order-icon.png" alt="Grabit" />
-                            Request an Order
-                        </button>
-                        <a id="user-name-image" href="">
-                            <p>Patek Philippe</p>
-                            <img id="image-icon-top" src="./assets/oval.png" alt="Grabit" />
-                        </a>
-                    </div>
+                    <TopBanner isProfile={isProfile} name={name} />
                     <div className="profile-main">
-                        <div className="main-left">
-                                <div className="main-left-top">
-                                    <img id="image-icon" src="./assets/oval.png" alt="Grabit" />
-                                    <p>Patek Philippe</p>
-                                </div>
-                                <ul>
-                                    <a href="">        
-                                        <li>
-                                            <img id="user-dark" src="./assets/user-dark.png" alt="Grabit" />
-                                            <img id="user-white" src="./assets/user-white.png" alt="Grabit" />
-                                            <p>Profile Settings</p>
-                                        </li>
-                                    </a>    
-                                    <a href="">
-                                        <li>
-                                            <img id="requests-dark" src="./assets/requests-dark.png" alt="Grabit" />
-                                            <img id="requests-white" src="./assets/requests-white.png" alt="Grabit" />
-                                            <p>Requests</p>
-                                        </li>
-                                    </a>
-                                    <a href="">
-                                        <li>
-                                            <img id="address-dark" src="./assets/address-dark.png" alt="Grabit" />
-                                            <img id="address-white" src="./assets/address-white.png" alt="Grabit" />
-                                            <p>Address</p>
-                                        </li>
-                                    </a>
-                                </ul>
-                        </div>
-                        <div className="main-right" >
-                            <div className="main-right-top">
-                                <h3>Profile Settings</h3>
-                            </div>
-                            <div className="main-right-form">
-                                <div className="main-right-form-inputs">
-                                    <section class="input">
-                                        <label for="name">First & Last Name</label>
-                                        <br/>
-                                        <input type="text" name="name" id="name"/>
-                                    </section>
-                                    <section class="input">
-                                        <label for="email">Email</label>
-                                        <br/>
-                                        <input type="email" name="email" id="email"/>
-                                    </section>
-                                    <section class="input">
-                                        <label for="phone">Phone</label>
-                                        <br/>
-                                        <input type="text" name="phone" id="phone"/>
-                                    </section>
-                                    <br/>
-                                    <button>Update</button>
-                                </div>
-                                <div className="main-right-form-image">
-                                    <img src="./assets/oval.png" alt="Grabit" />
-                                    <br/>
-                                    <button id="upload" >Upload</button>
-                                    <button id="remove" >Remove</button>
-                                </div>
-                            </div>
-                        </div>
+                        <SideBar name={name} />
+                        <ProfileSettings userInfoName={userInfoName}
+                                         userInfoEmail={userInfoEmail}
+                                         userInfoPhone={userInfoPhone}
+                                         handleNameChange={handleNameChange}
+                                         handleEmailChange={handleEmailChange}
+                                         handlePhoneChange={handlePhoneChange}
+                                         handleSubmit={handleSubmit} />
                     </div>
-                    <div className="profile-bottom">
-                        <ul>
-                            <li>
-                                <a href="">2019 grabit</a>
-                            </li>
-                            <li>
-                                <a href="">Terms</a>
-                            </li>
-                            <li>
-                                <a href="">Privacy Policy</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <Footer />
                 </div>
                 );
     }

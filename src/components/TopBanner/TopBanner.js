@@ -1,5 +1,6 @@
 import React from 'react';
 import './TopBanner.css';
+import { Link } from 'react-router-dom';
 
 class TopBanner extends React.Component {
 
@@ -11,21 +12,40 @@ class TopBanner extends React.Component {
 
     render() {
 
-            return (
-                <div className="TopBanner">
-                        <a href="">
+            const name = this.props.name;
+            const isProfile = this.props.isProfile;
+
+            if(isProfile) {
+
+                return (
+                    <div className="top-banner">
+                        <Link to="/">
                             <img src="./assets/grabit-icon.png" alt="Grabit" />
-                        </a>
+                        </Link>
                         <button id="requestAnOrderButton">
                             <img src="./assets/request-order-icon.png" alt="Grabit" />
                             Request an Order
                         </button>
-                        <a id="user-image" href="">
-                            <p>Patek Philippe</p>
+                        <Link to="/profile" id="user-image">
+                            <p>{name}</p>
                             <img id="oval" src="./assets/oval.png" alt="Grabit" />
-                        </a>
+                        </Link>
+                    </div>
+                );
+
+            } else {
+                return (
+
+                <div className="top-banner-sign-up">
+                    <Link to="/">
+                        <img src="./assets/grabit-icon.png" alt="Grabit" />
+                    </Link>
                 </div>
-            );
+
+                );
+            }
+
+
     }
 }
         

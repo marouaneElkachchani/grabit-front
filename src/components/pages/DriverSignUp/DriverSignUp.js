@@ -1,15 +1,16 @@
 import React from 'react';
 import './DriverSignUp.css';
+import { Link } from 'react-router-dom';
+import TopBanner from '../../TopBanner/TopBanner';
+
 
 class DriverSignUp extends React.Component {
     render() {
             return (
                 <div className="driverSignUp">
-                    <div className="driverSignUp-top">
-                        <a href="/">
-                            <img src="./assets/grabit-icon.png" alt="Grabit" />
-                        </a>
-                    </div>
+
+                    <TopBanner />
+
                     <div className="driverSignUp-main">
                         <div className="driverSignUp-main-box">
                             <h3>Sign up as Driver</h3>

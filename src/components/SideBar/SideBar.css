@@ -1,0 +1,134 @@
+.profile-main .main-left {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 4px;
+    width: 260px;
+    min-width: 155px;
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: 10px;
+}
+
+.profile-main .main-left .main-left-top {
+    border-bottom: 1px solid #DEDEDE;
+    height: 100px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#image-icon {
+    height: 40px;
+    width: 40px;
+    margin: 20px;
+}
+
+.profile-main .main-left .main-left-top p {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    color: #222A30;
+    margin: 10px;
+}
+
+.profile-main .main-left ul {
+    list-style-type: none;
+    margin-top: 40px;
+    margin-left: -40px;
+    margin-bottom: 310px;
+}
+
+.profile-main .main-left ul a {
+    text-decoration: none;
+}
+
+.profile-main .main-left ul a li {
+    border: 1px solid white;
+    background-color: white;
+    color: #222A30;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-main .main-left ul a li:hover {
+    background-color: #F71117;
+    color: white;
+}
+
+.profile-main .main-left ul a li #user-dark {
+    display: block;
+}
+.profile-main .main-left ul a li:hover #user-dark {
+    display: none;
+}
+
+.profile-main .main-left ul a li #user-white {
+    display: none;
+}
+
+.profile-main .main-left ul a li:hover #user-white {
+    display: block;
+}
+
+.profile-main .main-left ul a li #requests-dark {
+    display: block;
+}
+.profile-main .main-left ul a li:hover #requests-dark {
+    display: none;
+}
+
+.profile-main .main-left ul a li #requests-white {
+    display: none;
+}
+
+.profile-main .main-left ul a li:hover #requests-white {
+    display: block;
+}
+
+.profile-main .main-left ul a li #address-dark {
+    display: block;
+}
+.profile-main .main-left ul a li:hover #address-dark {
+    display: none;
+}
+
+.profile-main .main-left ul a li #address-white {
+    display: none;
+}
+
+.profile-main .main-left ul a li:hover #address-white {
+    display: block;
+}
+
+#user-dark, #user-white {
+    height: 19px;
+    width: 18px;
+    margin-left: 20px;
+}
+
+#requests-dark, #requests-white {
+    height: 19px;
+    width: 17px;
+    margin-top: 1px;
+    margin-left: 20px;
+}
+
+#address-dark, #address-white {
+    height: 19px;
+    width: 21px;
+    margin-left: 17px;
+}
+
+.profile-main .main-left ul a li p {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-top: 26px;
+    margin-bottom: 21px;
+    margin-right: 20px;
+}
+
+
