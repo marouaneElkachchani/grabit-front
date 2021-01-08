@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProfileSettings.css';
 import { Link } from 'react-router-dom';
+import oval from './assets/oval.png';
 
 class ProfileSettings extends React.Component {
 
@@ -44,7 +45,7 @@ class ProfileSettings extends React.Component {
                         <button onClick={handleSubmit} >Update</button>
                     </div>
                     <div className="main-right-form-image">
-                        <img src="./assets/oval.png" alt="Grabit" />
+                        <img src={oval} alt="Grabit" />
                         <br/>
                         <button id="upload" >Upload</button>
                         <button id="remove" >Remove</button>

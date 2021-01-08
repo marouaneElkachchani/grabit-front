@@ -1,7 +1,18 @@
 import React from 'react';
-import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import './LandingPage.css';
 import Footer from '../../Footer/Footer';
+import grabitIconTitle from './assets/grabit-icon-title.png';
+import weDeliverIt from './assets/we-deliver-it.png';
+import helmet from './assets/helmet.png';
+import arrow from './assets/arrow.png';
+import manUser from './assets/man-user.png';
+import driver from './assets/driver.png';
+import restaurant from './assets/restaurant.png';
+import driverDelivering from './assets/driver-delivering.png';
+import driverRunning from './assets/driver-running.png';
+import home from './assets/home.png';
+import send2 from './assets/send-2.png';
 
 class LandingPage extends React.Component {
 
@@ -17,35 +28,35 @@ class LandingPage extends React.Component {
             <div className="block-1">
               <div className="block-1-top">
                 <Link to="/">
-                  <img src="./assets/grabit-icon-title.png" alt="Grabit" />
+                  <img src={grabitIconTitle} alt="Grabit" />
                 </Link>
                 <Link to="/profile">
                   <button>Sign in</button>
                 </Link>
               </div>
               <div className="block-1-middle">
-                <img src="./assets/we-deliver-it.png" alt="Grabit" />
+                <img src={weDeliverIt} alt="Grabit" />
               </div>
               <div className="block-1-bottom">
                 <div className="box" id="driver">
                   <div className="box-top">
-                    <img src="./assets/helmet.png" alt="Grabit" />
+                    <img src={helmet} alt="Grabit" />
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Driver</p>
                     <Link to="/driverSignUp">
-                      <img src="./assets/arrow.png" alt="Grabit" />
+                      <img src={arrow} alt="Grabit" />
                     </Link>
                   </div>
                 </div>
                 <div className="box" id="customer">
                   <div className="box-top">
-                    <img src="./assets/man-user.png" alt="Grabit" />
+                    <img src={manUser} alt="Grabit" />
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Customer</p>
                     <Link to="/customerSignUp">
-                      <img src="./assets/arrow.png" alt="Grabit" />
+                      <img src={arrow} alt="Grabit" />
                     </Link>
                   </div>
                 </div>
@@ -64,13 +75,13 @@ class LandingPage extends React.Component {
                   </p>
                 </div>
                 <div className="box-images-top">
-                  <img id="image-driver" src="./assets/driver.png" alt="Grabit" />
-                  <img id="image-restaurant" src="./assets/restaurant.png" alt="Grabit" />
+                  <img id="image-driver" src={driver} alt="Grabit" />
+                  <img id="image-restaurant" src={restaurant} alt="Grabit" />
                 </div>
               </div>
               <div className="block-2-middle">
                 <div className="box-images-middle">
-                  <img src="./assets/driver-delivering.png" alt="Grabit" />
+                  <img src={driverDelivering} alt="Grabit" />
                 </div>
                 <div className="box-presentation-middle">
                   <h1>Fast delivery with tracking.</h1>
@@ -90,8 +101,8 @@ class LandingPage extends React.Component {
                   </p>
                 </div>
                 <div className="box-images-bottom">
-                  <img id="image-driver-running" src="./assets/driver-running.png" alt="Grabit" />
-                  <img id="image-home" src="./assets/home.png" alt="Grabit" />
+                  <img id="image-driver-running" src={driverRunning} alt="Grabit" />
+                  <img id="image-home" src={home} alt="Grabit" />
                 </div>
               </div>
             </div>
@@ -109,7 +120,7 @@ class LandingPage extends React.Component {
                 <input id="block-3-bottom-email-input" type="email"></input>
                 <button>
                   Send
-                  <img src="./assets/send-2.png" alt="Grabit" />
+                  <img src={send2} alt="Grabit" />
                 </button>
               </div>
             </div>

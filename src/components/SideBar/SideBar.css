@@ -43,7 +43,24 @@
     text-decoration: none;
 }
 
-.profile-main .main-left ul a li {
+.profile-main .main-left ul a #settings {
+    border: 1px solid white;
+    background-color: #F71117;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-main .main-left ul a li #user-dark {
+    display: none;
+}
+
+.profile-main .main-left ul a li #user-white {
+    display: block;
+}
+
+.profile-main .main-left ul a #requests {
     border: 1px solid white;
     background-color: white;
     color: #222A30;
@@ -52,54 +69,28 @@
     align-items: center;
 }
 
-.profile-main .main-left ul a li:hover {
-    background-color: #F71117;
-    color: white;
-}
-
-.profile-main .main-left ul a li #user-dark {
-    display: block;
-}
-.profile-main .main-left ul a li:hover #user-dark {
-    display: none;
-}
-
-.profile-main .main-left ul a li #user-white {
-    display: none;
-}
-
-.profile-main .main-left ul a li:hover #user-white {
-    display: block;
-}
-
 .profile-main .main-left ul a li #requests-dark {
     display: block;
 }
-.profile-main .main-left ul a li:hover #requests-dark {
-    display: none;
-}
-
 .profile-main .main-left ul a li #requests-white {
     display: none;
 }
 
-.profile-main .main-left ul a li:hover #requests-white {
-    display: block;
+.profile-main .main-left ul a #address {
+    border: 1px solid white;
+    background-color: white;
+    color: #222A30;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .profile-main .main-left ul a li #address-dark {
     display: block;
 }
-.profile-main .main-left ul a li:hover #address-dark {
-    display: none;
-}
 
 .profile-main .main-left ul a li #address-white {
     display: none;
-}
-
-.profile-main .main-left ul a li:hover #address-white {
-    display: block;
 }
 
 #user-dark, #user-white {
@@ -130,5 +121,3 @@
     margin-bottom: 21px;
     margin-right: 20px;
 }
-
-

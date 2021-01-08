@@ -1,9 +1,12 @@
 import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import TopBanner from '../../TopBanner/TopBanner';
 import SideBar from '../../SideBar/SideBar';
 import ProfileSettings from '../../ProfileSettings/ProfileSettings';
+import Requests from '../../Requests/Requests';
+import Address from '../../Address/Address';
 import Footer from '../../Footer/Footer';
 
 
@@ -55,6 +58,7 @@ class Profile extends React.Component {
     }
 
     render() {
+
             const isProfile = true;
             const name = this.state.userName;
             const userInfoName = this.state.userInfoName;
@@ -64,18 +68,31 @@ class Profile extends React.Component {
             const handleEmailChange = this.handleEmailChange;
             const handlePhoneChange = this.handlePhoneChange;
             const handleSubmit = this.handleSubmit;
+
+
             return (
                 <div className="profile">
                     <TopBanner isProfile={isProfile} name={name} />
                     <div className="profile-main">
                         <SideBar name={name} />
-                        <ProfileSettings userInfoName={userInfoName}
+                        <Switch>
+                            <Route path="/profile/settings" exact>
+                                 <ProfileSettings userInfoName={userInfoName}
                                          userInfoEmail={userInfoEmail}
                                          userInfoPhone={userInfoPhone}
                                          handleNameChange={handleNameChange}
                                          handleEmailChange={handleEmailChange}
                                          handlePhoneChange={handlePhoneChange}
                                          handleSubmit={handleSubmit} />
+                            </Route>
+                            <Route path="/profile/requests" >
+                                <Requests />
+                            </Route>
+                            <Route path="/profile/address" >
+                                <Address />
+                            </Route>
+                            <Redirect to="/profile/settings"/>
+                        </Switch>
                     </div>
                     <Footer />
                 </div>
