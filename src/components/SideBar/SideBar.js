@@ -98,29 +98,30 @@ class SideBar extends React.Component {
     }
 
     render() {
-            const name = this.props.name;
+            const user = this.props.user;
+
             return (
             <div className="main-left">
                 <div className="main-left-top">
                     <img id="image-icon" src={oval} alt="Grabit" />
-                    <p>{name}</p>
+                    <p>{user.name}</p>
                 </div>
                 <ul>
-                    <Link to="/profile/settings" onClick={this.settingsClicked}>        
+                    <Link to={`/profile/${user.id}/settings`} onClick={this.settingsClicked}>        
                         <li id="settings">
                             <img id="user-dark" src={userDark} alt="Grabit" />
                             <img id="user-white" src={userWhite} alt="Grabit" />
                             <p>Profile Settings</p>
                         </li>
                     </Link>    
-                    <Link to="/profile/requests" onClick={this.requestsClicked} >
+                    <Link to={`/profile/${user.id}/requests`} onClick={this.requestsClicked} >
                         <li  id="requests">
                             <img id="requests-dark" src={requestsDark} alt="Grabit" />
                             <img id="requests-white" src={requestsWhite} alt="Grabit" />
                             <p>Requests</p>
                         </li>
                     </Link>
-                    <Link to="/profile/address" onClick={this.addressClicked} >
+                    <Link to={`/profile/${user.id}/address`} onClick={this.addressClicked} >
                         <li id="address">
                             <img id="address-dark" src={addressDark} alt="Grabit" />
                             <img id="address-white" src={addressWhite} alt="Grabit" />

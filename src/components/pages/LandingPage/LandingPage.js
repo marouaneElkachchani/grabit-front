@@ -17,12 +17,12 @@ import send2 from './assets/send-2.png';
 class LandingPage extends React.Component {
 
     constructor(props) {
-      
       super(props);
-
     }
 
     render() {
+        const user = this.props.user;
+
         return (
           <div>
             <div className="block-1">
@@ -30,7 +30,7 @@ class LandingPage extends React.Component {
                 <Link to="/">
                   <img src={grabitIconTitle} alt="Grabit" />
                 </Link>
-                <Link to="/profile">
+                <Link to={`/profile/${user.id}`}>
                   <button>Sign in</button>
                 </Link>
               </div>
