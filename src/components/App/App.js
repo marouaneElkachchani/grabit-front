@@ -4,12 +4,11 @@ import LandingPage from '../pages/LandingPage/LandingPage';
 import Profile from '../pages/Profile/Profile';
 import DriverSignUp from '../pages/DriverSignUp/DriverSignUp';
 import CustomerSignUp from '../pages/CustomerSignUp/CustomerSignUp';
-
-import './App.css';
 import OrderRequest from '../pages/OrderRequest/OrderRequest';
+import './App.css';
+
 
 class App extends React.Component {
-
   constructor(props) {
       super(props);
       this.state = {
@@ -19,6 +18,11 @@ class App extends React.Component {
           address: "352, New York City, NY", 
           email: "mark@hamilton.com",
           phone: 26220033452
+        },
+        orderRequest: {
+          description:"",
+          date:"",
+          orderCost:""
         }
     };
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -35,7 +39,8 @@ class App extends React.Component {
         address: prevState.user.address,
         email: prevState.user.email,
         phone: prevState.user.phone
-      }
+      },
+      orderRequest: prevState.orderRequest
     }));
   }
 
@@ -47,7 +52,8 @@ class App extends React.Component {
         address: prevState.user.address,
         email: email,
         phone: prevState.user.phone
-      }
+      },
+      orderRequest: prevState.orderRequest
     }));
   }
 
@@ -59,7 +65,8 @@ class App extends React.Component {
         address: prevState.user.address,
         email: prevState.user.email,
         phone: phone
-      }
+      },
+      orderRequest: prevState.orderRequest
     }));
   }
 
@@ -71,7 +78,8 @@ class App extends React.Component {
         address: address,
         email: prevState.user.email,
         phone: prevState.user.phone
-      }
+      },
+      orderRequest: prevState.orderRequest
     }));
   }
 
@@ -81,30 +89,24 @@ class App extends React.Component {
     const handleEmailChange = this.handleEmailChange;
     const handlePhoneChange = this.handlePhoneChange;
     const handleAddressChange = this.handleAddressChange;
-
     return (
       <BrowserRouter>
       <div>
           <Switch>
-
            <Route path="/" exact>
              <LandingPage user={user} />
            </Route>  
-
            <Route path="/profile/:userId" > 
              <Profile user={user} handleNameChange={handleNameChange}
                                   handleEmailChange={handleEmailChange}
                                   handlePhoneChange={handlePhoneChange}
                                   handleAddressChange={handleAddressChange}/>
            </Route>
-
-            <Route path="/order-request" > 
+            <Route path="/order-request" >
               <OrderRequest user={user} />
            </Route>    
-
            <Route path="/driver-sign-up" component={DriverSignUp}/>
            <Route path="/customer-sign-up" component={CustomerSignUp}/>
-
          </Switch>
       </div> 
     </BrowserRouter>

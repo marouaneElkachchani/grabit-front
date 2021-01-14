@@ -15,6 +15,7 @@ class TopBanner extends React.Component {
             const user = this.props.user;
             const isProfile = this.props.isProfile;
             const isOrderRequest = this.props.isOrderRequest;
+            
             if(isProfile) {
                 return (
                     <div className="top-banner-profile">

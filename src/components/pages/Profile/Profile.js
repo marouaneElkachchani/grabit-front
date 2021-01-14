@@ -41,8 +41,6 @@ class Profile extends React.Component {
             const handleEmailChange = this.handleEmailChange;
             const handlePhoneChange = this.handlePhoneChange;
             const handleAddressChange = this.handleAddressChange;
-            
-
             return (
                 <div className="profile">
                     <TopBanner isProfile={isProfile} user={user} />
