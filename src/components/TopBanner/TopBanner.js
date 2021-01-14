@@ -7,35 +7,48 @@ import oval from './assets/oval.png';
 
 
 class TopBanner extends React.Component {
-
     constructor(props) {
         super(props);
     }
 
     render() {
-            const name = this.props.name;
+            const user = this.props.user;
             const isProfile = this.props.isProfile;
-
+            const isOrderRequest = this.props.isOrderRequest;
             if(isProfile) {
                 return (
-                    <div className="top-banner">
-                        <Link to="/">
+                    <div className="top-banner-profile">
+                        <Link to="/" id="grabit-icon-box-profile">
                             <img src={grabitIcon} alt="Grabit" />
                         </Link>
-                        <button id="requestAnOrderButton">
-                            <img src={requestOrderIcon} alt="Grabit" />
-                            Request an Order
-                        </button>
-                        <Link to="/profile" id="user-image">
-                            <p>{name}</p>
-                            <img id="oval" src={oval} alt="Grabit" />
+                        <Link to="/order-request">
+                            <button id="request-an-order-button">
+                                    <img src={requestOrderIcon} alt="Grabit" />
+                                    Request an Order
+                            </button>
+                        </Link>
+                        <Link to={`/profile/${user.id}`} id="user-name-image-box-profile">
+                            <p>{user.name}</p>
+                            <img id="user-image-profile" src={oval} alt="Grabit" />
                         </Link>
                     </div>
                 );
-            } else {
+            } else if(isOrderRequest) {
+                return(
+                    <div className="top-banner-order-request">
+                        <Link to="/" id="grabit-icon-box-order-request">
+                            <img src={grabitIcon} alt="Grabit" />
+                        </Link>
+                        <Link to={`/profile/${user.id}`} id="user-name-image-box-order-request" >
+                            <p>{user.name}</p>
+                            <img id="user-image-order-request" src={oval} alt="Grabit" />
+                        </Link>
+                    </div>
+                );
+            }else {
                 return (
                 <div className="top-banner-sign-up">
-                    <Link to="/">
+                    <Link to="/" id="grabit-icon-box-sign-up">
                         <img src={grabitIcon} alt="Grabit" />
                     </Link>
                 </div>

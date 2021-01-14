@@ -6,6 +6,7 @@ import DriverSignUp from '../pages/DriverSignUp/DriverSignUp';
 import CustomerSignUp from '../pages/CustomerSignUp/CustomerSignUp';
 
 import './App.css';
+import OrderRequest from '../pages/OrderRequest/OrderRequest';
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePhoneChange = this.handlePhoneChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
   }
 
   handleNameChange(name) {
@@ -61,11 +63,24 @@ class App extends React.Component {
     }));
   }
 
+  handleAddressChange(address) {
+    this.setState(prevState => ({
+      user: {
+        id: prevState.user.id,
+        name: prevState.user.name,
+        address: address,
+        email: prevState.user.email,
+        phone: prevState.user.phone
+      }
+    }));
+  }
+
   render() {
     const user = this.state.user;
     const handleNameChange = this.handleNameChange;
     const handleEmailChange = this.handleEmailChange;
     const handlePhoneChange = this.handlePhoneChange;
+    const handleAddressChange = this.handleAddressChange;
 
     return (
       <BrowserRouter>
@@ -79,11 +94,16 @@ class App extends React.Component {
            <Route path="/profile/:userId" > 
              <Profile user={user} handleNameChange={handleNameChange}
                                   handleEmailChange={handleEmailChange}
-                                  handlePhoneChange={handlePhoneChange}/>
-           </Route>  
+                                  handlePhoneChange={handlePhoneChange}
+                                  handleAddressChange={handleAddressChange}/>
+           </Route>
 
-           <Route path="/driverSignUp" component={DriverSignUp}/>
-           <Route path="/customerSignUp" component={CustomerSignUp}/>
+            <Route path="/order-request" > 
+              <OrderRequest user={user} />
+           </Route>    
+
+           <Route path="/driver-sign-up" component={DriverSignUp}/>
+           <Route path="/customer-sign-up" component={CustomerSignUp}/>
 
          </Switch>
       </div> 

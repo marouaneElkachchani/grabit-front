@@ -4,7 +4,7 @@
     background: #FFFFFF;
     border-radius: 4px;
     width: 260px;
-    min-width: 155px;
+    min-width: 160px;
     margin-top: 50px;
     margin-left: 80px;
     margin-right: 10px;
@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-#image-icon {
+#user-image-min {
     height: 40px;
     width: 40px;
     margin: 20px;
@@ -43,7 +43,7 @@
     text-decoration: none;
 }
 
-.profile-main .main-left ul a #settings {
+.profile-main .main-left ul a .menu-option-clicked {
     border: 1px solid white;
     background-color: #F71117;
     color: white;
@@ -52,45 +52,13 @@
     align-items: center;
 }
 
-.profile-main .main-left ul a li #user-dark {
-    display: none;
-}
-
-.profile-main .main-left ul a li #user-white {
-    display: block;
-}
-
-.profile-main .main-left ul a #requests {
+.profile-main .main-left ul a .menu-option {
     border: 1px solid white;
     background-color: white;
     color: #222A30;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
-
-.profile-main .main-left ul a li #requests-dark {
-    display: block;
-}
-.profile-main .main-left ul a li #requests-white {
-    display: none;
-}
-
-.profile-main .main-left ul a #address {
-    border: 1px solid white;
-    background-color: white;
-    color: #222A30;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.profile-main .main-left ul a li #address-dark {
-    display: block;
-}
-
-.profile-main .main-left ul a li #address-white {
-    display: none;
 }
 
 #user-dark, #user-white {

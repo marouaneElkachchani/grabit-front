@@ -44,7 +44,7 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Driver</p>
-                    <Link to="/driverSignUp">
+                    <Link to="/driver-sign-up">
                       <img src={arrow} alt="Grabit" />
                     </Link>
                   </div>
@@ -55,7 +55,7 @@ class LandingPage extends React.Component {
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Customer</p>
-                    <Link to="/customerSignUp">
+                    <Link to="/customer-sign-up">
                       <img src={arrow} alt="Grabit" />
                     </Link>
                   </div>

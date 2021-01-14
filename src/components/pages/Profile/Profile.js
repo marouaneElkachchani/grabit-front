@@ -15,6 +15,7 @@ class Profile extends React.Component {
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
+        this.handleAddressChange = this.handleAddressChange.bind(this);
     }
 
     handleNameChange(name) {
@@ -29,31 +30,39 @@ class Profile extends React.Component {
         this.props.handlePhoneChange(phone);
     }
 
+    handleAddressChange(address) {
+        this.props.handleAddressChange(address);
+    }
+
     render() {
             const isProfile = true;
             const user = this.props.user;
             const handleNameChange = this.handleNameChange;
             const handleEmailChange = this.handleEmailChange;
             const handlePhoneChange = this.handlePhoneChange;
+            const handleAddressChange = this.handleAddressChange;
+            
 
             return (
                 <div className="profile">
-                    <TopBanner isProfile={isProfile} name={user.name} />
+                    <TopBanner isProfile={isProfile} user={user} />
                     <div className="profile-main">
-                        <SideBar user={user} />
                         <Switch>
                             <Route path="/profile/:userId/settings" exact>
+                                 <SideBar user={user} isSettings={true} />
                                  <ProfileSettings user={user} handleNameChange={handleNameChange}
                                                               handleEmailChange={handleEmailChange}
                                                               handlePhoneChange={handlePhoneChange} />
                             </Route>
                             <Route path="/profile/:userId/requests" >
+                                <SideBar user={user} isRequests={true} />
                                 <Requests />
                             </Route>
                             <Route path="/profile/:userId/address" >
-                                <Address />
+                                <SideBar user={user} isAddress={true} />
+                                <Address user={user} handleAddressChange={handleAddressChange} />
                             </Route>
-                            <Redirect to="/profile/:userId/settings"/>
+                            <Redirect to="/profile/:userId/settings" />
                         </Switch>
                     </div>
                     <Footer />
