@@ -37,17 +37,17 @@ class ProfileSettings extends React.Component {
                         <section className="input">
                             <label>First & Last Name</label>
                             <br/>
-                            <input type="text" name="name" id="name" defaultValue={user.name} onChange={this.handleNameChange} />
+                            <input type="text" name="name" id="name" value={user.name} onChange={this.handleNameChange} />
                         </section>
                         <section className="input">
                             <label>Email</label>
                             <br/>
-                            <input type="email" name="email" id="email" defaultValue={user.email} onChange={this.handleEmailChange} />
+                            <input type="email" name="email" id="email" value={user.email} onChange={this.handleEmailChange} />
                         </section>
                         <section className="input">
                             <label>Phone</label>
                             <br/>
-                            <input type="text" name="phone" id="phone" defaultValue={user.phone} onChange={this.handlePhoneChange} />
+                            <input type="text" name="phone" id="phone" value={user.phone} onChange={this.handlePhoneChange} />
                         </section>
                         <br/>
                         <button >Update</button>

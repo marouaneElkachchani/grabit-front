@@ -1,6 +1,5 @@
 import React from 'react';
 import './Address.css';
-import { Link } from 'react-router-dom';
 
 class Address extends React.Component {
 
@@ -25,7 +24,7 @@ class Address extends React.Component {
                         <section className="input">
                             <label>Address</label>
                             <br/>
-                            <input type="text" name="address" id="address" defaultValue={user.address} onChange={this.handleAddressChange} />
+                            <input type="text" name="address" id="address" value={user.address} onChange={this.handleAddressChange} />
                         </section>
                         <br/>
                         <button id="address-button">Update</button>

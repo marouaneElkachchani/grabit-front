@@ -43,7 +43,13 @@
     text-decoration: none;
 }
 
-.profile-main .main-left ul a .menu-option-clicked {
+.profile-main .main-left ul a li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-main .main-left ul .menu-option-clicked {
     border: 1px solid white;
     background-color: #F71117;
     color: white;
@@ -52,7 +58,7 @@
     align-items: center;
 }
 
-.profile-main .main-left ul a .menu-option {
+.profile-main .main-left ul a {
     border: 1px solid white;
     background-color: white;
     color: #222A30;

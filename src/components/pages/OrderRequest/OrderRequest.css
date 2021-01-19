@@ -49,45 +49,10 @@
     border-bottom-right-radius: 4px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .order .order-request-m .order-request-main .order-request-main-left {
     margin: 20px;
     margin-top: 50px;
     width: 350px;
-    height: 800px;
-
 }
 
 textarea {
@@ -115,27 +80,40 @@ textarea {
     width: 150px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .order .order-request-m .order-request-main .order-request-main-right {
     margin: 20px;
     margin-top: 50px;
     width: 350px;
-    height: 800px;
+}
 
+#order-address-departure {
+    width: 320px;
+    margin-left: 10px;
+}
+
+#oval-dsa {
+    width: 14px;
+    height: 14px;
+}
+
+.oval-address {
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+}
+
+#order-address-arrival {
+    width: 320px;
+    margin-left: 10px;
+}
+
+#oval-asd {
+    width: 14px;
+    height: 17px;
+}
+
+#map {
+    margin-top: 30px;
+    height: 470px;
+    width: 350px;
 }
