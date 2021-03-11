@@ -1,29 +1,43 @@
-import React from 'react';
+import React from 'react'
 import './Root.css'
-import { InMemoryCache, ApolloClient } from '@apollo/client'
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
+import { InMemoryCache, ApolloClient, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import { ApolloProvider } from 'react-apollo'
 
 import ProfileV1 from '../pages-v1/Profile-v1/Profile-v1'
+import OrderRequest from '../pages/OrderRequest/OrderRequest'
+
+const httpLink = createHttpLink({
+    uri: "http://localhost:4000",
+})
+
+const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    // const token = localStorage.getItem('token');
+    // return the headers to the context so httpLink can read them
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJja20waW55Z20wMXU4MDkzNWF3eXRoMXAyIiwiaWF0IjoxNjE1NDU0NzE0LCJleHAiOjE2MTYwNTk1MTR9.lHXJ3O5a-wdaMdIdABstw4w818brO_XtAuDB7bYPaN8"
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      }
+    }
+})
 
 const cache = new InMemoryCache({})
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
-  cache
+    link: authLink.concat(httpLink),
+    cache
 })
 
 class Root extends React.Component {
 
     constructor(props) {
-        super(props)
-        this.state = {
-          user: {
-            id: 3293455,
-            name: "Mark Hamilton", 
-            address: "352, New York City, NY", 
-            email: "mark@hamilton.com",
-            phone: 26220033452
-          }
-      }
+      super(props)
+      this.state = {}
       this.handleNameChange = this.handleNameChange.bind(this)
       this.handleEmailChange = this.handleEmailChange.bind(this)
       this.handlePhoneChange = this.handlePhoneChange.bind(this)
@@ -79,7 +93,6 @@ class Root extends React.Component {
     }
 
     render() {
-        const user = this.state.user
         const handleNameChange = this.handleNameChange
         const handleEmailChange = this.handleEmailChange
         const handlePhoneChange = this.handlePhoneChange
@@ -87,15 +100,23 @@ class Root extends React.Component {
 
         return (
             <ApolloProvider client={client}>
-                <ProfileV1 user={user}
-                           handleNameChange={handleNameChange}
-                           handleEmailChange={handleEmailChange}
-                           handlePhoneChange={handlePhoneChange}
-                           handleAddressChange={handleAddressChange}/>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/profile/:userId" render={props => {
+                            return <ProfileV1 {...props}
+                                              handleNameChange={handleNameChange}
+                                              handleEmailChange={handleEmailChange}
+                                              handlePhoneChange={handlePhoneChange}
+                                              handleAddressChange={handleAddressChange}/>
+                        }}/>
+                        <Route path="/order-request" render={props => {
+                            return <OrderRequest {...props}/>
+                        }}/>
+                    </Switch>
+                </BrowserRouter>
             </ApolloProvider>
         )
     }
-
 }
 
 export default Root

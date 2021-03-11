@@ -1,21 +1,21 @@
-import React from 'react';
-import './Address.css';
+import React from 'react'
+import './Address.css'
 
 class Address extends React.Component {
 
     constructor(props) {
-        super(props);
-        this.handleAddressChange = this.handleAddressChange.bind(this);
+        super(props)
+        this.handleAddressChange = this.handleAddressChange.bind(this)
     }
 
     handleAddressChange(event) {
-        this.props.handleAddressChange(event.target.value);
+        this.props.handleAddressChange(event.target.value)
     }
 
-    render() { 
-        const user = this.props.user;
+    render() {
+        const address = this.props.address
         return (
-            <div className="main-right" >
+            <div className="main-right">
                 <div className="main-right-top">
                     <h3>Address</h3>
                 </div>
@@ -24,7 +24,7 @@ class Address extends React.Component {
                         <section className="input">
                             <label>Address</label>
                             <br/>
-                            <input type="text" name="address" id="address" value={user.address} onChange={this.handleAddressChange} />
+                            <input type="text" name="address" id="address" value={address} onChange={this.handleAddressChange}/>
                         </section>
                         <br/>
                         <button id="address-button">Update</button>
@@ -35,4 +35,4 @@ class Address extends React.Component {
     }
 
 }
-export default Address;
+export default Address

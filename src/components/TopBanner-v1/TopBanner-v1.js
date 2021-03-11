@@ -1,37 +1,49 @@
 import React from 'react'
 import './TopBanner-v1.css'
+import { Link } from 'react-router-dom'
 import grabitIcon from './assets/grabit-icon.png'
 import requestOrderIcon from './assets/request-order-icon.png'
 import oval from './assets/oval.png'
+
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
 class TopBannerV1 extends React.Component {
+    
     constructor(props) {
         super(props)
     }
 
     render() {
-            const user = this.props.user
+
+            let id = ""
+            let name = ""
+            
+            if(this.props.data.loading) {
+                    id = ""
+                    name = "Loading..."
+            }else {
+                id = this.props.data.me.id
+                name = this.props.data.me.name
+            }
+
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
 
-            console.log(this.props)
-            
             if(isProfile) {
                 return (
                     <div className="top-banner-profile">
                         <a id="grabit-icon-box-profile">
                             <img src={grabitIcon} alt="Grabit"/>
                         </a>
-                        <a>
+                        <Link to="/order-request">
                             <button id="request-an-order-button">
                                     <img src={requestOrderIcon} alt="Grabit"/>
                                     Request an Order
                             </button>
-                        </a>
+                        </Link>
                         <a id="user-name-image-box-profile">
-                            <p>{user.name}</p>
+                            <p>{name}</p>
                             <img id="user-image-profile" src={oval} alt="Grabit"/>
                         </a>
                     </div>
@@ -42,17 +54,17 @@ class TopBannerV1 extends React.Component {
                         <a id="grabit-icon-box-order-request">
                             <img src={grabitIcon} alt="Grabit"/>
                         </a>
-                        <a id="user-name-image-box-order-request">
-                            <p>{user.name}</p>
+                        <Link to={`/profile/${id}`} id="user-name-image-box-order-request">
+                            <p>{name}</p>
                             <img id="user-image-order-request" src={oval} alt="Grabit"/>
-                        </a>
+                        </Link>
                     </div>
                 )
             }else {
                 return (
                 <div className="top-banner-sign-up">
                     <a id="grabit-icon-box-sign-up">
-                        <img src={grabitIcon} alt="Grabit" />
+                        <img src={grabitIcon} alt="Grabit"/>
                     </a>
                 </div>
                 )
@@ -62,7 +74,8 @@ class TopBannerV1 extends React.Component {
 
 const query = gql`
     query{
-        users{
+        me{
+            id
             name
         }
     }
