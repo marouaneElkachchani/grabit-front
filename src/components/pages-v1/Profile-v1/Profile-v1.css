@@ -1,0 +1,9 @@
+.profile {
+    background:rgb(240, 240, 240);
+}
+
+.profile-main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

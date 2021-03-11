@@ -39,7 +39,7 @@ const Profile  = props => {
                 } } />
                 <Route path={`${path}/address`} render={ props => {
                     return <Address {...props} 
-                                     user={user} 
+                                     user={user}
                                      handleAddressChange={handleAddressChange} />
                 }} />
                 <Redirect to={`${path}/settings`} />

@@ -1,0 +1,114 @@
+.top-banner-profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 16px;
+    background: #FFFFFF;
+}
+
+.top-banner-profile #grabit-icon-box-profile img {
+    height: 58px;
+    width: 166px;
+    margin-left: 10px;
+}
+
+.top-banner-profile a {
+    text-decoration: none;
+    display: flex;
+}
+
+.top-banner-profile a #request-an-order-button {
+    height: 50px;
+    display: block;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-banner-profile a #request-an-order-button img {
+    height: 13px;
+    width: 13px;
+    margin-right: 15px;
+}
+
+.top-banner-profile #user-name-image-box-profile {
+    text-decoration: none;
+    display: flex;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-banner-profile #user-name-image-box-profile p {
+    height: 18px;
+    width: 104px;
+    color: #222A30;
+}
+
+.top-banner-profile #user-name-image-box-profile #user-image-profile {
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.top-banner-order-request {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 16px;
+    background: #FFFFFF;
+    margin-top: 5px;
+}
+
+.top-banner-order-request #grabit-icon-box-order-request img {
+    height: 58px;
+    width: 166px;
+    margin-left: 10px;
+}
+
+.top-banner-order-request #user-name-image-box-order-request {
+    text-decoration: none;
+    display: flex;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-banner-order-request #user-name-image-box-order-request p {
+    height: 18px;
+    width: 104px;
+    color: #222A30;
+}
+
+.top-banner-order-request #user-name-image-box-order-request #user-image-order-request {
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.top-banner-sign-up {
+    display: flex;
+    justify-content: flex-start;
+    background: #FFFFFF;
+}
+
+.top-banner-sign-up #grabit-icon-box-sign-up img {
+    height: 58px;
+    width: 166px;
+    margin-left: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
