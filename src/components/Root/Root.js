@@ -18,7 +18,7 @@ const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
     // const token = localStorage.getItem('token');
     // return the headers to the context so httpLink can read them
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJja20waW55Z20wMXU4MDkzNWF3eXRoMXAyIiwiaWF0IjoxNjE1NDU0NzE0LCJleHAiOjE2MTYwNTk1MTR9.lHXJ3O5a-wdaMdIdABstw4w818brO_XtAuDB7bYPaN8"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJja21hZGF3djMwMzhjMDkzNTdyeHAyeW16IiwiaWF0IjoxNjE1ODAxODAzLCJleHAiOjE2MTY0MDY2MDN9.-gbwIGF5kGZbmS_hBE8GZM9Z5Lagmh2aFcI1Mjazoj0"
     return {
       headers: {
         ...headers,
@@ -109,7 +109,7 @@ class Root extends React.Component {
                                               handlePhoneChange={handlePhoneChange}
                                               handleAddressChange={handleAddressChange}/>
                         }}/>
-                        <Route path="/order-request" render={props => {
+                        <Route path="/order-request/new" render={props => {
                             return <OrderRequest {...props}/>
                         }}/>
                     </Switch>

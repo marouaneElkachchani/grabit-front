@@ -26,7 +26,6 @@ class TopBannerV1 extends React.Component {
                 id = this.props.data.me.id
                 name = this.props.data.me.name
             }
-
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
 
@@ -36,7 +35,7 @@ class TopBannerV1 extends React.Component {
                         <a id="grabit-icon-box-profile">
                             <img src={grabitIcon} alt="Grabit"/>
                         </a>
-                        <Link to="/order-request">
+                        <Link to="/order-request/new">
                             <button id="request-an-order-button">
                                     <img src={requestOrderIcon} alt="Grabit"/>
                                     Request an Order

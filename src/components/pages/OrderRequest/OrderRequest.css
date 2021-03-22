@@ -68,16 +68,71 @@ textarea {
     margin-top: 20px;
 }
 
-#order-cost {
-    width: 320px;
+#cost-range-from {
+    width: 130px;
+    margin-right: 10px;
 }
 
-#order-date {
-    width: 150px;
+#cost-range-to {
+    width: 130px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-#order-schedule {
-    width: 150px;
+#items {
+    width: 295px;
+    background-image: url(./assets/add-request-circle.png);
+    background-repeat: no-repeat;
+    padding-left:30px;
+    background-size: 15px 15px;
+    background-position: 10px;
+}
+
+#add {
+    width: 30px;
+    height: 15px;
+    margin-left: 299px;
+    margin-top: 8px;
+}
+
+#add-item-link {
+    cursor: pointer;
+}
+
+#delete-item-link {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#delete-item-block {
+    display: flex;
+    align-items: center;
+    margin-top: -22px;
+}
+
+#delete-item-block p {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: Helvetica;
+    font-size: 15px;
+    line-height: 29px;
+}
+
+#delete-item {
+    width: 12px;
+    height: 12px;
+}
+
+#date {
+    width: 130px;
+}
+
+#schedule {
+    width: 135px;
+    height: 34px;
+    margin-top: 12px;
+    border: 1px solid #DEDEDE;
+    border-radius: 2px;
 }
 
 .order .order-request-m .order-request-main .order-request-main-right {
@@ -86,7 +141,7 @@ textarea {
     width: 350px;
 }
 
-#order-address-departure {
+#address-departure {
     width: 320px;
     margin-left: 10px;
 }
@@ -102,7 +157,7 @@ textarea {
     margin-left: 4px;
 }
 
-#order-address-arrival {
+#delivery-address {
     width: 320px;
     margin-left: 10px;
 }
@@ -116,4 +171,17 @@ textarea {
     margin-top: 30px;
     height: 470px;
     width: 350px;
+}
+
+#order-request-submit-button {
+    width: 350px;
+    height: 40px;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-bottom: 30px;
 }
