@@ -5,11 +5,6 @@ class Address extends React.Component {
 
     constructor(props) {
         super(props)
-        this.handleAddressChange = this.handleAddressChange.bind(this)
-    }
-
-    handleAddressChange(event) {
-        this.props.handleAddressChange(event.target.value)
     }
 
     render() {
@@ -24,7 +19,7 @@ class Address extends React.Component {
                         <section className="input">
                             <label>Address</label>
                             <br/>
-                            <input type="text" name="address" id="address" value={address} onChange={this.handleAddressChange}/>
+                            <input type="text" name="address" id="address" defaultValue=""/>
                         </section>
                         <br/>
                         <button id="address-button">Update</button>
@@ -33,6 +28,6 @@ class Address extends React.Component {
             </div>
         );
     }
-
 }
+
 export default Address

@@ -21,10 +21,10 @@ class OrderRequest extends React.Component {
             item: "",
             items: [],
             date: "",
-            schedule: "",
-            orderCost: {from: "", to: ""},
-            deliveryAddress: "",
-            addressDeparture: ""
+            schedule: "ASAP",
+            costRange: {from: 0, to: 0},
+            addressDeparture: "",
+            deliveryAddress: ""
         }
 
         this.addItem = this.addItem.bind(this)
@@ -61,28 +61,47 @@ class OrderRequest extends React.Component {
     }
 
     onSubmit(event) {
+
         event.preventDefault()
-    //     this.props.mutate({
-    //         variables: {
-    //             description: this.state.description,
-    //             items: [],
-    //             date: this.state.date,
-    //             schedule: this.state.schedule,
-    //             orderCost: {},
-    //             deliveryAddress: this.state.deliveryAddress,
-    //             addressDeparture: this.state.addressDeparture
-    //         }
-    //     })
-        console.log(this.state)
+
+        this.props.mutate({
+             variables: {
+                 description: this.state.description,
+                 items: this.state.items,
+                 date: this.state.date,
+                 schedule: this.state.schedule,
+                 costRange: this.state.costRange,
+                 addressDeparture: this.state.addressDeparture,
+                 deliveryAddress: this.state.deliveryAddress
+             }
+        }).then( () => {
+            this.setState({
+                description: "",
+                item: "",
+                items: [],
+                date: "",
+                schedule: "ASAP",
+                costRange: {from: 0, to: 0},
+                addressDeparture: "",
+                deliveryAddress: ""
+            })
+        }).then( () => {
+           const id = this.props.user.id 
+           this.props.history.push(`/profile/${id}`)
+        }).catch( (error) => {
+            console.log(error)
+        })
+
     }
 
     render() {
 
             const isOrderRequest = true
+            const user = this.props.user
 
             return (
                 <div>
-                    <TopBannerV1 isOrderRequest={isOrderRequest}/>
+                    <TopBannerV1 isOrderRequest={isOrderRequest} user={user}/>
                     <div className="order">
                         <div className="order-request-t">
                             <div className="order-request-top">
@@ -134,12 +153,12 @@ class OrderRequest extends React.Component {
                                         <label>Cost Range</label>
                                         <br/>
                                         <input id="cost-range-from" type="number" name="cost-range" 
-                                               value={this.state.orderCost.from}
-                                               onChange={event => this.setState(prevState => ({ orderCost:{from: event.target.value, to: prevState.orderCost.to} }) )}/>
+                                               value={this.state.costRange.from}
+                                               onChange={event => this.setState(prevState => ({ costRange:{from: event.target.value, to: prevState.costRange.to} }) )}/>
                                         <label>To</label>
                                         <input id="cost-range-to" type="number" name="cost-range" 
-                                               value={this.state.orderCost.to}
-                                               onChange={event => this.setState(prevState => ({ orderCost:{from: prevState.orderCost.from, to: event.target.value} }) )}/>
+                                               value={this.state.costRange.to}
+                                               onChange={event => this.setState(prevState => ({ costRange:{from: prevState.costRange.from, to: event.target.value} }) )}/>
                                         <label>Dhs</label>
                                     </section>
                                 </div>
@@ -181,35 +200,38 @@ class OrderRequest extends React.Component {
     }
 }
 
-// const mutation = gql`
-//     mutation CreateRequest($description: String,
-//                            $items: 
-//                            $date: String,
-//                            $schedule: String,
-//                            $orderCost: 
-//                            $deliveryAddress: String,
-//                            $addressDeparture: String) {
-//         createRequest(description: $description,
-//                       items: $items,
-//                       date: $date,
-//                       schedule: $schedule,
-//                       orderCost: $orderCost,
-//                       deliveryAddress: $deliveryAddress,
-//                       addressDeparture: $addressDeparture) {
-//                       description
-//                       items {
-//                           name
-//                       }
-//                       date
-//                       schedule
-//                       orderCost{
-//                           from
-//                           to
-//                       }
-//                       deliveryAddress
-//                       addressDeparture
-//         }
-//     }
-// `
+const mutation = gql`
+    mutation
+        CreateRequest(  $description: String!,
+                        $items: [CreateItemInput!]!,
+                        $date: String!,
+                        $schedule: String!,
+                        $costRange: CreateCostRangeInput!,
+                        $addressDeparture: String!,
+                        $deliveryAddress: String!
+                            ) {
+            createRequest(data: {   description: $description,
+                                    items: $items,
+                                    date: $date,
+                                    schedule: $schedule,
+                                    costRange: $costRange,
+                                    addressDeparture: $addressDeparture,
+                                    deliveryAddress: $deliveryAddress }
+                       ) {
+                            description
+                            items {
+                                    name
+                            }
+                            date
+                            schedule
+                            costRange {
+                                      from
+                                      to
+                            }
+                            addressDeparture
+                            deliveryAddress
+            }
+        }
+`
 
-export default OrderRequest
+export default graphql(mutation)(OrderRequest)

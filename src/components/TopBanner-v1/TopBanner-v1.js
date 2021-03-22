@@ -5,9 +5,6 @@ import grabitIcon from './assets/grabit-icon.png'
 import requestOrderIcon from './assets/request-order-icon.png'
 import oval from './assets/oval.png'
 
-import gql from 'graphql-tag'
-import { graphql } from 'react-apollo'
-
 class TopBannerV1 extends React.Component {
     
     constructor(props) {
@@ -16,18 +13,9 @@ class TopBannerV1 extends React.Component {
 
     render() {
 
-            let id = ""
-            let name = ""
-            
-            if(this.props.data.loading) {
-                    id = ""
-                    name = "Loading..."
-            }else {
-                id = this.props.data.me.id
-                name = this.props.data.me.name
-            }
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
+            const user = this.props.user
 
             if(isProfile) {
                 return (
@@ -42,7 +30,7 @@ class TopBannerV1 extends React.Component {
                             </button>
                         </Link>
                         <a id="user-name-image-box-profile">
-                            <p>{name}</p>
+                            <p>{user.name}</p>
                             <img id="user-image-profile" src={oval} alt="Grabit"/>
                         </a>
                     </div>
@@ -53,8 +41,8 @@ class TopBannerV1 extends React.Component {
                         <a id="grabit-icon-box-order-request">
                             <img src={grabitIcon} alt="Grabit"/>
                         </a>
-                        <Link to={`/profile/${id}`} id="user-name-image-box-order-request">
-                            <p>{name}</p>
+                        <Link to={`/profile/${user.id}`} id="user-name-image-box-order-request">
+                            <p>{user.name}</p>
                             <img id="user-image-order-request" src={oval} alt="Grabit"/>
                         </Link>
                     </div>
@@ -71,13 +59,4 @@ class TopBannerV1 extends React.Component {
     }
 }
 
-const query = gql`
-    query{
-        me{
-            id
-            name
-        }
-    }
-`
-
-export default graphql(query)(TopBannerV1)
+export default TopBannerV1
