@@ -5,9 +5,8 @@ import './App.css'
 import ProfileV1 from '../pages-v1/Profile-v1/Profile-v1'
 import OrderRequest from '../pages/OrderRequest/OrderRequest'
 
-import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-
+import query from '../../queries/fetchUserInfo'
 
 class App extends React.Component {
 
@@ -15,11 +14,8 @@ class App extends React.Component {
     super(props)
   }
 
-
-
   render() {
-
-    if(this.props.data.loading) {
+    if (this.props.data.loading) {
       return (
               <p>Loading...</p>
             )
@@ -36,21 +32,8 @@ class App extends React.Component {
         </Switch>
       )
     }
-
   }
 
 }
-
-const query = gql`
-    query{
-        me{
-            id
-            name
-            email
-            phone
-            address
-        }
-    }
-`
 
 export default graphql(query)(App)

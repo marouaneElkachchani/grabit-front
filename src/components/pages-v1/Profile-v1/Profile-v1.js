@@ -10,35 +10,44 @@ import Footer from '../../Footer/Footer'
 
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-const ProfileV1 = props => {
-    
-    const isProfile = true
-    const url = props.match.url
-    const user = props.user
+class ProfileV1 extends React.Component {
 
-    return (
-        <div className="profile">
-            <TopBannerV1 isProfile={isProfile} user={user}/>
-            <div className="profile-main">
-                <SideBar {...props} user={user}/>
-                <Switch>
-                    <Route exact path={`${url}/settings`} render={ props => {
-                        return <ProfileSettings {...props}
-                                            user={user}/>              
-                    }}/>
-                    <Route path={`${url}/requests`} render={ props => {
-                        return <Requests {...props} />
-                    }}/>
-                    <Route path={`${url}/address`} render={ props => {
-                        return <Address {...props} 
-                                     address={user.address}/>
-                    }}/>
-                    <Redirect to={`${url}/settings`}/>
-                </Switch>
+    constructor(props) {
+        super(props)
+
+    }
+
+    render() {
+
+        const isProfile = true
+        const url = this.props.match.url
+        const user = this.props.user
+
+        return (
+            <div className="profile">
+                <TopBannerV1 isProfile={isProfile} user={user}/>
+                <div className="profile-main">
+                    <SideBar url={url} user={user}/>
+                    <Switch>
+                        <Route exact path={`${url}/settings`} render={ props => {
+                            return <ProfileSettings {...props}
+                                                user={user}/>              
+                        }}/>
+                        <Route path={`${url}/requests`} render={ props => {
+                            return <Requests {...props} />
+                        }}/>
+                        <Route path={`${url}/address`} render={ props => {
+                            return <Address {...props} 
+                                         address={user.address}/>
+                        }}/>
+                        <Redirect to={`${url}/settings`}/>
+                    </Switch>
+                </div>
+                <Footer/>
             </div>
-            <Footer/>
-        </div>
-    )
+        )
+    }
+
 }
 
 export default ProfileV1

@@ -12,7 +12,7 @@ import addressWhite from './assets/address-white.png'
 const SideBar = props => {
 
     const user = props.user
-    const url = props.match.url
+    const url = props.url
     const topMenu = (
         <div className="main-left-top">
             <img id="user-image-min" src={oval} alt="Grabit"/>

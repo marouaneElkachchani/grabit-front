@@ -11,6 +11,7 @@ import deleteItem from './assets/remove-item.png'
 
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import query from '../../../queries/fetchRequests'
 
 class OrderRequest extends React.Component {
 
@@ -56,16 +57,21 @@ class OrderRequest extends React.Component {
                     </a>
                     <p>{name}</p>
                 </div>
-                );
-        });
+                )
+        })
     }
 
     onSubmit(event) {
 
         event.preventDefault()
 
+
+
+
+        
+
         this.props.mutate({
-             variables: {
+            variables: {
                  description: this.state.description,
                  items: this.state.items,
                  date: this.state.date,
@@ -73,7 +79,8 @@ class OrderRequest extends React.Component {
                  costRange: this.state.costRange,
                  addressDeparture: this.state.addressDeparture,
                  deliveryAddress: this.state.deliveryAddress
-             }
+            },
+            refetchQueries: [{ query }]
         }).then( () => {
             this.setState({
                 description: "",
@@ -87,7 +94,7 @@ class OrderRequest extends React.Component {
             })
         }).then( () => {
            const id = this.props.user.id 
-           this.props.history.push(`/profile/${id}`)
+           this.props.history.push(`/profile/${id}/requests`)
         }).catch( (error) => {
             console.log(error)
         })

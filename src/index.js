@@ -1,15 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-// import App from '../src/components/App/App'
 import Root from '../src/components/Root/Root'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <Root />
-  </React.StrictMode>,
+    <Root />,
   document.getElementById('root')
 )
 

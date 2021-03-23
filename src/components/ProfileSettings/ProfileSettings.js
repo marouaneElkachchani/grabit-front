@@ -3,14 +3,41 @@ import './ProfileSettings.css'
 import { Link } from 'react-router-dom'
 import oval from './assets/oval.png'
 
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+import query from '../../queries/fetchUserInfo'
+
 class ProfileSettings extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            name: this.props.user.name,
+            email: this.props.user.email,
+            phone: this.props.user.phone
+        }
+
+    }
+
+    onSubmit(event) {
+        event.preventDefault()
+
+        this.props.mutate({
+            variables: {
+                name: this.state.name,
+                email: this.state.email,
+                phone: this.state.phone
+            },
+            refetchQueries: [{ query }]
+        }).catch( (error) => {
+            console.log(error)
+        })
+
     }
 
     render() {
-        const user = this.props.user;
+        const user = this.props.user
 
         return (
             <div className="main-right" >
@@ -19,23 +46,31 @@ class ProfileSettings extends React.Component {
                 </div>
                 <div className="main-right-form">
                     <div className="main-right-form-inputs">
-                        <section className="input">
-                            <label>First & Last Name</label>
+                         <form onSubmit={this.onSubmit.bind(this)}>
+                            <section className="input">
+                                <label>First & Last Name</label>
+                                <br/>
+                                <input type="text" name="name" id="name" 
+                                        value={this.state.name}
+                                        onChange={event => this.setState({ name: event.target.value })}/>
+                            </section>
+                            <section className="input">
+                                <label>Email</label>
+                                <br/>
+                                <input type="email" name="email" id="email" 
+                                        value={this.state.email}
+                                        onChange={event => this.setState({ email: event.target.value })}/>
+                            </section>
+                            <section className="input">
+                                <label>Phone</label>
+                                <br/>
+                                <input type="text" name="phone" id="phone" 
+                                        value={this.state.phone}
+                                        onChange={event => this.setState({ phone: event.target.value })}/>
+                            </section>
                             <br/>
-                            <input type="text" name="name" id="name" defaultValue=""/>
-                        </section>
-                        <section className="input">
-                            <label>Email</label>
-                            <br/>
-                            <input type="email" name="email" id="email" defaultValue=""/>
-                        </section>
-                        <section className="input">
-                            <label>Phone</label>
-                            <br/>
-                            <input type="text" name="phone" id="phone" defaultValue=""/>
-                        </section>
-                        <br/>
-                        <button >Update</button>
+                            <button type="submit">Update</button>
+                        </form>    
                     </div>
                     <div className="main-right-form-image">
                         <img src={oval} alt="Grabit" />
@@ -45,9 +80,25 @@ class ProfileSettings extends React.Component {
                     </div>
                 </div>
         </div>
-        );
+        )
     }
-
 }
-        
-export default ProfileSettings;
+
+const mutation = gql`
+    mutation
+        UpdateUser( $name: String,
+                    $email: String,
+                    $phone: String
+                            ) {
+            updateUser(data: {  name: $name,
+                                email: $email,
+                                phone: $phone }
+                       ) {
+                            name
+                            email
+                            phone
+            }
+        }
+`
+
+export default graphql(mutation)(ProfileSettings)
