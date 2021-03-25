@@ -8,6 +8,9 @@ import { setContext } from '@apollo/client/link/context'
 import { ApolloProvider } from 'react-apollo'
 
 import App from '../App/App'
+import LandingPage from '../pages/LandingPage/LandingPage'
+import SignUp from '../pages/SignUp/SignUp'
+import SignIn from '../pages/SignIn/SignIn'
 
 const httpLink = createHttpLink({
     uri: "http://localhost:4000",
@@ -29,21 +32,35 @@ const authLink = setContext((_, { headers }) => {
 const cache = new InMemoryCache({})
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
-    cache
+    cache,
+    dataIdFromObject: o => o.id
 })
 
 class Root extends React.Component {
 
     constructor(props) {
       super(props)
-      this.state = {}
     }
 
     render() {
         return (
             <ApolloProvider client={client}>
                 <BrowserRouter>
-                    <App/>
+                    <Switch>
+                        <Route exact path="/" render={props => {
+                            return <LandingPage {...props}/>
+                        }}/>
+                        <Route path="/sign-up/:role" render={props => {
+                            return <SignUp {...props}/>
+                        }}/>
+                        <Route path="/sign-in" render={props => {
+                            return <SignIn {...props}/>
+                        }}/>
+                        <Route path="/app" render={props => {
+                            return <App {...props}/>
+                        }}/>
+                        <Redirect to="/"/>
+                    </Switch>
                 </BrowserRouter>
             </ApolloProvider>
         )

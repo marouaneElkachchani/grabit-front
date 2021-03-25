@@ -1,10 +1,10 @@
-.driverSignUp {
+.sign-in {
     background:rgb(240, 240, 240);
     width: 100%;
     height: 900px;
 }
 
-.driverSignUp .driverSignUp-top {
+.sign-in .sign-in-top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -13,7 +13,7 @@
     background: #FFFFFF;
 }
 
-.driverSignUp .driverSignUp-top a img {
+.sign-in .sign-in-top a img {
     height: 58px;
     width: 166px;
     margin-left: 60px;
@@ -21,34 +21,34 @@
     margin-bottom: 10px;
 }
 
-.driverSignUp .driverSignUp-main {
+.sign-in .sign-in-main {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.driverSignUp .driverSignUp-main .driverSignUp-main-box {
+.sign-in .sign-in-main .sign-in-main-box {
     background: #FFFFFF;
     border-radius: 4px;
     width: 450px;
     min-width: 450px;
-    height: 219px;
+    height: 550px;
     margin:50px;
     display: flex;
     flex-direction: column;
 }
 
-.driverSignUp .driverSignUp-main .driverSignUp-main-box h3{
+.sign-in .sign-in-main .sign-in-main-box h3{
     font-family: Helvetica;
-    font-size: 18px;
+    font-size: 14px;
     color: #222A30;
     letter-spacing: 0;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 50px;
 }
 
-.driverSignUp .driverSignUp-main .driverSignUp-main-box button{
+.sign-in .sign-in-main .sign-in-main-box button{
     display: flex;
     align-items: center;
     background: #1976F3;
@@ -66,8 +66,22 @@
     margin-left: 50px;
 }
 
-.driverSignUp .driverSignUp-main .driverSignUp-main-box button img{
+.sign-in .sign-in-main .sign-in-main-box button img{
     width: 38px;
     height: 38px;
     margin: 20px;
+}
+
+#sign-in-title {
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #222A30;
+    letter-spacing: 0;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+#sign-in-with-facebook {
+    text-decoration: none;
 }

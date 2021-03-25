@@ -1,14 +1,40 @@
 import React from 'react'
 import './Address.css'
 
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+
 class Address extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            address: this.props.address
+        }
+    }
+
+    onSubmit(event) {
+        event.preventDefault()
+
+
+
+        
+
+
+        this.props.mutate({
+            variables: {
+                address: this.state.address
+            }
+        }).catch( (error) => {
+            console.log(error)
+        })
+
     }
 
     render() {
+
         const address = this.props.address
+
         return (
             <div className="main-right">
                 <div className="main-right-top">
@@ -16,13 +42,17 @@ class Address extends React.Component {
                 </div>
                 <div id="address-form" className="main-right-form">
                     <div className="main-right-form-inputs">
-                        <section className="input">
-                            <label>Address</label>
+                        <form onSubmit={this.onSubmit.bind(this)}>
+                            <section className="input">
+                                <label>Address</label>
+                                <br/>
+                                <input type="text" name="address" id="address" 
+                                       value={this.state.address}
+                                       onChange={event => this.setState({ address: event.target.value })}/>
+                            </section>
                             <br/>
-                            <input type="text" name="address" id="address" defaultValue=""/>
-                        </section>
-                        <br/>
-                        <button id="address-button">Update</button>
+                            <button id="address-button" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -30,4 +60,19 @@ class Address extends React.Component {
     }
 }
 
-export default Address
+const mutation = gql`
+    mutation
+        UpdateUser( $address: String
+                            ) {
+            updateUser(data: {address: $address}
+                       ) {
+                            id
+                            name
+                            email
+                            phone
+                            address
+            }
+        }
+`
+
+export default graphql(mutation)(Address)

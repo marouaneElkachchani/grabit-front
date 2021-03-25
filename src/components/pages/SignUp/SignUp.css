@@ -1,10 +1,10 @@
-.customerSignUp {
+.sign-up {
     background:rgb(240, 240, 240);
     width: 100%;
     height: 900px;
 }
 
-.customerSignUp .customerSignUp-top {
+.sign-up .sign-up-top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -13,7 +13,7 @@
     background: #FFFFFF;
 }
 
-.customerSignUp .customerSignUp-top a img {
+.sign-up .sign-up-top a img {
     height: 58px;
     width: 166px;
     margin-left: 60px;
@@ -21,34 +21,34 @@
     margin-bottom: 10px;
 }
 
-.customerSignUp .customerSignUp-main {
+.sign-up .sign-up-main {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.customerSignUp .customerSignUp-main .customerSignUp-main-box {
+.sign-up .sign-up-main .sign-up-main-box {
     background: #FFFFFF;
     border-radius: 4px;
     width: 450px;
     min-width: 450px;
-    height: 219px;
+    height: 550px;
     margin:50px;
     display: flex;
     flex-direction: column;
 }
 
-.customerSignUp .customerSignUp-main .customerSignUp-main-box h3{
+.sign-up .sign-up-main .sign-up-main-box h3 {
     font-family: Helvetica;
-    font-size: 18px;
+    font-size: 14px;
     color: #222A30;
     letter-spacing: 0;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 50px;
 }
 
-.customerSignUp .customerSignUp-main .customerSignUp-main-box button{
+.sign-up .sign-up-main .sign-up-main-box button {
     display: flex;
     align-items: center;
     background: #1976F3;
@@ -66,8 +66,18 @@
     margin-left: 50px;
 }
 
-.customerSignUp .customerSignUp-main .customerSignUp-main-box button img{
+.sign-up .sign-up-main .sign-up-main-box button img {
     width: 38px;
     height: 38px;
     margin: 20px;
+}
+
+#sign-up-title {
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #222A30;
+    letter-spacing: 0;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    margin-left: 50px;
 }

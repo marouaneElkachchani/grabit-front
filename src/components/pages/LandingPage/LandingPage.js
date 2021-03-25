@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './LandingPage.css';
-import Footer from '../../Footer/Footer';
-import grabitIconTitle from './assets/grabit-icon-title.png';
-import weDeliverIt from './assets/we-deliver-it.png';
-import helmet from './assets/helmet.png';
-import arrow from './assets/arrow.png';
-import manUser from './assets/man-user.png';
-import driver from './assets/driver.png';
-import restaurant from './assets/restaurant.png';
-import driverDelivering from './assets/driver-delivering.png';
-import driverRunning from './assets/driver-running.png';
-import home from './assets/home.png';
-import send2 from './assets/send-2.png';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './LandingPage.css'
+import Footer from '../../Footer/Footer'
+import grabitIconTitle from './assets/grabit-icon-title.png'
+import weDeliverIt from './assets/we-deliver-it.png'
+import helmet from './assets/helmet.png'
+import arrow from './assets/arrow.png'
+import manUser from './assets/man-user.png'
+import driver from './assets/driver.png'
+import restaurant from './assets/restaurant.png'
+import driverDelivering from './assets/driver-delivering.png'
+import driverRunning from './assets/driver-running.png'
+import home from './assets/home.png'
+import send2 from './assets/send-2.png'
 
 class LandingPage extends React.Component {
 
@@ -21,7 +21,6 @@ class LandingPage extends React.Component {
     }
 
     render() {
-        const user = this.props.user;
 
         return (
           <div>
@@ -30,33 +29,33 @@ class LandingPage extends React.Component {
                 <Link to="/">
                   <img src={grabitIconTitle} alt="Grabit" />
                 </Link>
-                <Link to={`/profile/${user.id}`}>
+                <Link to="/sign-in">
                   <button>Sign in</button>
                 </Link>
               </div>
               <div className="block-1-middle">
-                <img src={weDeliverIt} alt="Grabit" />
+                <img src={weDeliverIt} alt="Grabit"/>
               </div>
               <div className="block-1-bottom">
                 <div className="box" id="driver">
                   <div className="box-top">
-                    <img src={helmet} alt="Grabit" />
+                    <img src={helmet} alt="Grabit"/>
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Driver</p>
-                    <Link to="/driver-sign-up">
-                      <img src={arrow} alt="Grabit" />
+                    <Link to="/sign-up/driver">
+                      <img src={arrow} alt="Grabit"/>
                     </Link>
                   </div>
                 </div>
                 <div className="box" id="customer">
                   <div className="box-top">
-                    <img src={manUser} alt="Grabit" />
+                    <img src={manUser} alt="Grabit"/>
                   </div>
                   <div className="box-bottom">
                     <p>Sign up as Customer</p>
-                    <Link to="/customer-sign-up">
-                      <img src={arrow} alt="Grabit" />
+                    <Link to="/sign-up/customer">
+                      <img src={arrow} alt="Grabit"/>
                     </Link>
                   </div>
                 </div>
@@ -118,16 +117,18 @@ class LandingPage extends React.Component {
               </div>
               <div className="block-3-bottom">
                 <input id="block-3-bottom-email-input" type="email"></input>
-                <button>
-                  Send
-                  <img src={send2} alt="Grabit" />
-                </button>
+                <Link to="/sign-up/customer">
+                  <button>
+                    Send
+                    <img src={send2} alt="Grabit"/>
+                  </button>
+                </Link>
               </div>
             </div>
-            <Footer />
+            <Footer/>
           </div>
-        );
+        )
     }
 }
 
-export default LandingPage;
+export default LandingPage

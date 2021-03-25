@@ -80,7 +80,7 @@ class OrderRequest extends React.Component {
                  addressDeparture: this.state.addressDeparture,
                  deliveryAddress: this.state.deliveryAddress
             },
-            refetchQueries: [{ query }]
+            refetchQueries:[{query}]
         }).then( () => {
             this.setState({
                 description: "",
@@ -94,9 +94,17 @@ class OrderRequest extends React.Component {
             })
         }).then( () => {
            const id = this.props.user.id 
-           this.props.history.push(`/profile/${id}/requests`)
+           this.props.history.push(`/app/profile/${id}/requests`)
         }).catch( (error) => {
+
+
+
+
             console.log(error)
+
+
+
+
         })
 
     }
@@ -225,18 +233,22 @@ const mutation = gql`
                                     addressDeparture: $addressDeparture,
                                     deliveryAddress: $deliveryAddress }
                        ) {
-                            description
-                            items {
-                                    name
-                            }
-                            date
-                            schedule
-                            costRange {
-                                      from
-                                      to
-                            }
-                            addressDeparture
-                            deliveryAddress
+                                id
+                                description
+                                items {
+                                        id
+                                        name
+                                }
+                                status
+                                date
+                                schedule
+                                costRange {
+                                            id
+                                            from
+                                            to
+                                }
+                                addressDeparture
+                                deliveryAddress
             }
         }
 `

@@ -6,12 +6,14 @@ export default gql`
                     id
                     description
                     items {
+                            id
                             name
                     }
                     status
                     date
                     schedule
                     costRange {
+                                id
                                 from
                                 to
                     }

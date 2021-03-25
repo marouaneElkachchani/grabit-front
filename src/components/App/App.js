@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
 import ProfileV1 from '../pages-v1/Profile-v1/Profile-v1'
@@ -23,12 +23,13 @@ class App extends React.Component {
       const user = this.props.data.me
       return (
         <Switch>
-            <Route path="/profile/:userId" render={props => {
+            <Route path="/app/profile/:userId" render={props => {
                 return <ProfileV1 {...props} user={user}/>
             }}/>
-            <Route path="/order-request/new" render={props => {
+            <Route path="/app/order-request/new" render={props => {
                 return <OrderRequest {...props} user={user}/>
             }}/>
+            <Redirect to={`/app/profile/${user.id}`}/>
         </Switch>
       )
     }

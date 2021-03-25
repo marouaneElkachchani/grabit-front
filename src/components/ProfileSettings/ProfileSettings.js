@@ -5,13 +5,11 @@ import oval from './assets/oval.png'
 
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import query from '../../queries/fetchUserInfo'
 
 class ProfileSettings extends React.Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             name: this.props.user.name,
             email: this.props.user.email,
@@ -23,13 +21,14 @@ class ProfileSettings extends React.Component {
     onSubmit(event) {
         event.preventDefault()
 
+
+
         this.props.mutate({
             variables: {
                 name: this.state.name,
                 email: this.state.email,
                 phone: this.state.phone
-            },
-            refetchQueries: [{ query }]
+            }
         }).catch( (error) => {
             console.log(error)
         })
@@ -94,9 +93,11 @@ const mutation = gql`
                                 email: $email,
                                 phone: $phone }
                        ) {
+                            id
                             name
                             email
                             phone
+                            address
             }
         }
 `
