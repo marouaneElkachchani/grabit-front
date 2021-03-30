@@ -1,7 +1,7 @@
 .sign-up {
     background:rgb(240, 240, 240);
     width: 100%;
-    height: 900px;
+    height: 1200px;
 }
 
 .sign-up .sign-up-top {
@@ -30,9 +30,9 @@
 .sign-up .sign-up-main .sign-up-main-box {
     background: #FFFFFF;
     border-radius: 4px;
-    width: 450px;
-    min-width: 450px;
-    height: 550px;
+    width: 390px;
+    min-width: 390px;
+    height: 800px;
     margin:50px;
     display: flex;
     flex-direction: column;
@@ -56,19 +56,19 @@
     border: none;
     cursor: pointer;
     font-family: Helvetica;
-    font-size: 16px;
+    font-size: 15px;
     font-weight:600;
     color: #FFFFFF;
     letter-spacing: 0;
     line-height: 19px;
-    width: 350px;
-    height: 60px;
+    width: 287px;
+    height: 40px;
     margin-left: 50px;
 }
 
 .sign-up .sign-up-main .sign-up-main-box button img {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     margin: 20px;
 }
 
@@ -80,4 +80,36 @@
     margin-top: 70px;
     margin-bottom: 30px;
     margin-left: 50px;
+}
+
+#sign-up-with-facebook {
+    text-decoration: none;
+}
+
+.sign-up .sign-up-main .sign-up-main-box .sign-up-form .input .sign-up-label {
+    color: #222A30;
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sign-up .sign-up-main .sign-up-main-box .sign-up-form .input .sign-up-input {
+    margin-left: 50px;
+}
+
+.sign-up .sign-up-main .sign-up-main-box .sign-up-form .sign-up-submit-button {
+    width: 287px;
+    height: 40px;
+    background: #F71117;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 15px;
+    font-weight:600;
+    letter-spacing: 0;
+    line-height: 19px;
+    cursor: pointer;
+    border: 3px solid #F71117;
+    border-radius: 4px;
+    margin-left: 50px;
+    margin-top: 50px;
 }

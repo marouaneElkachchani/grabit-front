@@ -30,15 +30,15 @@
 .sign-in .sign-in-main .sign-in-main-box {
     background: #FFFFFF;
     border-radius: 4px;
-    width: 450px;
-    min-width: 450px;
-    height: 550px;
+    width: 390px;
+    min-width: 390px;
+    height: 700px;
     margin:50px;
     display: flex;
     flex-direction: column;
 }
 
-.sign-in .sign-in-main .sign-in-main-box h3{
+.sign-in .sign-in-main .sign-in-main-box h3 {
     font-family: Helvetica;
     font-size: 14px;
     color: #222A30;
@@ -48,7 +48,7 @@
     margin-left: 50px;
 }
 
-.sign-in .sign-in-main .sign-in-main-box button{
+.sign-in .sign-in-main .sign-in-main-box button {
     display: flex;
     align-items: center;
     background: #1976F3;
@@ -56,19 +56,19 @@
     border: none;
     cursor: pointer;
     font-family: Helvetica;
-    font-size: 16px;
+    font-size: 15px;
     font-weight:600;
     color: #FFFFFF;
     letter-spacing: 0;
     line-height: 19px;
-    width: 350px;
-    height: 60px;
+    width: 287px;
+    height: 40px;
     margin-left: 50px;
 }
 
-.sign-in .sign-in-main .sign-in-main-box button img{
-    width: 38px;
-    height: 38px;
+.sign-in .sign-in-main .sign-in-main-box button img {
+    width: 30px;
+    height: 30px;
     margin: 20px;
 }
 
@@ -84,4 +84,32 @@
 
 #sign-in-with-facebook {
     text-decoration: none;
+}
+
+.sign-in .sign-in-main .sign-in-main-box .sign-in-form .input .sign-in-label {
+    color: #222A30;
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sign-in .sign-in-main .sign-in-main-box .sign-in-form .input .sign-in-input {
+    margin-left: 50px;
+}
+
+.sign-in .sign-in-main .sign-in-main-box .sign-in-form .sign-in-submit-button {
+    width: 287px;
+    height: 40px;
+    background: #F71117;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 15px;
+    font-weight:600;
+    letter-spacing: 0;
+    line-height: 19px;
+    cursor: pointer;
+    border: 3px solid #F71117;
+    border-radius: 4px;
+    margin-left: 50px;
+    margin-top: 50px;
 }

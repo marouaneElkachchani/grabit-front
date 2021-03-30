@@ -17,7 +17,7 @@ import send2 from './assets/send-2.png'
 class LandingPage extends React.Component {
 
     constructor(props) {
-      super(props);
+      super(props)
     }
 
     render() {

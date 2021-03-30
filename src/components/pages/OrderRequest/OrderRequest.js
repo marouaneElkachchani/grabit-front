@@ -27,7 +27,6 @@ class OrderRequest extends React.Component {
             addressDeparture: "",
             deliveryAddress: ""
         }
-
         this.addItem = this.addItem.bind(this)
         this.deleteItem = this.deleteItem.bind(this)
         this.renderItems = this.renderItems.bind(this)
@@ -62,14 +61,7 @@ class OrderRequest extends React.Component {
     }
 
     onSubmit(event) {
-
         event.preventDefault()
-
-
-
-
-        
-
         this.props.mutate({
             variables: {
                  description: this.state.description,
@@ -94,26 +86,15 @@ class OrderRequest extends React.Component {
             })
         }).then( () => {
            const id = this.props.user.id 
-           this.props.history.push(`/app/profile/${id}/requests`)
+           this.props.history.push(`/profile/${id}/requests`)
         }).catch( (error) => {
-
-
-
-
             console.log(error)
-
-
-
-
         })
-
     }
 
     render() {
-
             const isOrderRequest = true
             const user = this.props.user
-
             return (
                 <div>
                     <TopBannerV1 isOrderRequest={isOrderRequest} user={user}/>
@@ -208,10 +189,10 @@ class OrderRequest extends React.Component {
                                 <input id="order-request-submit-button" type="submit" value="Request"/>
                             </form>
                         </div>
-                        <Footer />
+                        <Footer/>
                     </div>
                 </div>
-            );
+            )
     }
 }
 

@@ -4,7 +4,47 @@ import { Link } from 'react-router-dom'
 import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import facebookLogo from './assets/facebook-logo.png'
 
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+
 class SignUp extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: "",
+            email: "",
+            password: "",
+            phone: ""
+        }
+    }
+
+    onSubmit(event) {
+        const role = this.props.match.params.role
+        event.preventDefault()
+        this.props.mutate({
+            variables: {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                role,
+                phone: this.state.phone
+            }
+        }).then( result => {
+            localStorage.setItem('token', result.data.login.token)
+            this.setState({
+                name: "",
+                email: "",
+                password: "",
+                phone: ""
+            })
+        }).then( () => {
+            document.location.reload()
+        }).catch( (error) => {
+            console.log(error)
+        })
+    }
+
     render() {
             const role = this.props.match.params.role
             if(role === 'customer' || role === 'driver') {
@@ -15,11 +55,48 @@ class SignUp extends React.Component {
                             <div className="sign-up-main-box">
                                 <h3 id="sign-up-title">Sign up as {role} :</h3>
                                 <h3>Continue with Facebook :</h3>
-                                <button>
-                                    <img src={facebookLogo} alt="Grabit"/>
-                                    Sign up with Facebook
-                                </button>
+                                <Link id="sign-up-with-facebook" to={`/sign-up/${role}`}>
+                                    <button>
+                                        <img src={facebookLogo} alt="Grabit"/>
+                                        Sign up with Facebook
+                                    </button>
+                                </Link>
                                 <h3>Or Continue with Email :</h3>
+                                <br/>
+                                <form className="sign-up-form" onSubmit={this.onSubmit.bind(this)}>
+                                    <section className="input">
+                                        <label className="sign-up-label">Name :</label>
+                                        <br/>
+                                        <input className="sign-up-input" type="text" name="name" 
+                                                    value={this.state.name}
+                                                    onChange={event => this.setState({ name: event.target.value })}/>
+                                    </section>
+                                    <br/>
+                                    <section className="input">
+                                        <label className="sign-up-label">Email :</label>
+                                        <br/>
+                                        <input className="sign-up-input" type="email" name="email" 
+                                                    value={this.state.email}
+                                                    onChange={event => this.setState({ email: event.target.value })}/>
+                                    </section>
+                                    <br/>
+                                    <section className="input">
+                                        <label className="sign-up-label">Password :</label>
+                                        <br/>
+                                        <input className="sign-up-input" type="password" name="password" 
+                                                    value={this.state.password}
+                                                    onChange={event => this.setState({ password: event.target.value })}/>
+                                    </section>
+                                    <br/>
+                                    <section className="input">
+                                        <label className="sign-up-label">Phone :</label>
+                                        <br/>
+                                        <input className="sign-up-input" type="text" name="phone" 
+                                                    value={this.state.phone}
+                                                    onChange={event => this.setState({ phone: event.target.value })}/>
+                                    </section>
+                                    <input className="sign-up-submit-button" type="submit" value="Sign up"/>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -31,4 +108,29 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp
+const mutation = gql`
+    mutation
+        CreateUser( $name: String!,
+                    $email: String!, 
+                    $password: String!,
+                    $role: String!,
+                    $phone: String! ) {
+            createUser( data: { email: $email,
+                                password: $password,
+                                role: $role,
+                                name: $name,
+                                phone: $phone } )
+            {
+                token
+                user {
+                      id
+                      name
+                      email
+                      phone
+                      address
+                }
+            }
+        }
+`
+
+export default graphql(mutation)(SignUp)

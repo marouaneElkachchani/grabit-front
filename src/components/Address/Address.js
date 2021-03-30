@@ -8,25 +8,31 @@ class Address extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            address: this.props.address
+        if(this.props.address) {
+            this.state = {
+                address: this.props.address
+            }
+        }else {
+            this.state = {
+                address: ""
+            }
         }
+
     }
 
     onSubmit(event) {
+
         event.preventDefault()
-
-
-
-        
-
 
         this.props.mutate({
             variables: {
                 address: this.state.address
             }
+
         }).catch( (error) => {
+
             console.log(error)
+            
         })
 
     }
