@@ -18,19 +18,34 @@ class LandingPage extends React.Component {
 
     constructor(props) {
       super(props)
+      this.userIsSignedIn = this.userIsSignedIn.bind(this)
     }
 
+    userIsSignedIn() {
+      if(this.props.user) {
+        return true
+      }else {
+        return false
+      }
+    }
+    
     render() {
-
+        let logout = null
+        if(this.props.logout) {
+          logout = this.props.logout
+        }
         return (
           <div>
             <div className="block-1">
               <div className="block-1-top">
                 <Link to="/">
-                  <img src={grabitIconTitle} alt="Grabit" />
+                  <img src={grabitIconTitle} alt="Grabit"/>
                 </Link>
-                <Link to="/sign-in">
+                <Link to="/sign-in" hidden={this.userIsSignedIn()}>
                   <button>Sign in</button>
+                </Link>
+                <Link to="" onClick={logout} hidden={!this.userIsSignedIn()}>
+                  <button>Logout</button>
                 </Link>
               </div>
               <div className="block-1-middle">

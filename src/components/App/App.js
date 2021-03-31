@@ -15,6 +15,12 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    document.location.reload()
   }
 
   render() {
@@ -24,13 +30,17 @@ class App extends React.Component {
       )
     } else if(this.props.data.me) {
       const user = this.props.data.me
+      const logout = this.logout
       return (
         <Switch>
+            <Route exact path="/" render={props => {
+                return <LandingPage {...props} user={user} logout={logout}/>
+            }}/>
             <Route path="/profile/:userId" render={props => {
-                return <ProfileV1 {...props} user={user}/>
+                return <ProfileV1 {...props} user={user} logout={logout}/>
             }}/>
             <Route path="/order-request/new" render={props => {
-                return <OrderRequest {...props} user={user}/>
+                return <OrderRequest {...props} user={user} logout={logout}/>
             }}/>
             <Redirect to={`/profile/${user.id}`}/>
         </Switch>
