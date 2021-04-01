@@ -22,7 +22,7 @@ class LandingPage extends React.Component {
     }
 
     userIsSignedIn() {
-      if(this.props.user) {
+      if(this.props.logout) {
         return true
       }else {
         return false
@@ -31,7 +31,7 @@ class LandingPage extends React.Component {
     
     render() {
         let logout = null
-        if(this.props.logout) {
+        if( this.userIsSignedIn() ) {
           logout = this.props.logout
         }
         return (

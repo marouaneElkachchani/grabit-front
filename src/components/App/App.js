@@ -34,13 +34,13 @@ class App extends React.Component {
       return (
         <Switch>
             <Route exact path="/" render={props => {
-                return <LandingPage {...props} user={user} logout={logout}/>
+                return <LandingPage {...props} logout={logout}/>
             }}/>
             <Route path="/profile/:userId" render={props => {
                 return <ProfileV1 {...props} user={user} logout={logout}/>
             }}/>
             <Route path="/order-request/new" render={props => {
-                return <OrderRequest {...props} user={user} logout={logout}/>
+                return <OrderRequest {...props} user={user}/>
             }}/>
             <Redirect to={`/profile/${user.id}`}/>
         </Switch>

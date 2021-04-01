@@ -20,7 +20,7 @@ class SignUp extends React.Component {
     }
 
     onSubmit(event) {
-        const role = this.props.match.params.role
+        const role = this.props.match.params.role.toUpperCase()
         event.preventDefault()
         this.props.mutate({
             variables: {
@@ -31,7 +31,7 @@ class SignUp extends React.Component {
                 phone: this.state.phone
             }
         }).then( result => {
-            localStorage.setItem('token', result.data.login.token)
+            localStorage.setItem('token', result.data.createUser.token)
             this.setState({
                 name: "",
                 email: "",

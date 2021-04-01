@@ -37,11 +37,13 @@ class ProfileSettings extends React.Component {
 
     render() {
         const user = this.props.user
+        const logout = this.props.logout
 
         return (
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Profile Settings</h3>
+                    <button id="logout" onClick={logout}>Logout</button>
                 </div>
                 <div className="main-right-form">
                     <div className="main-right-form-inputs">

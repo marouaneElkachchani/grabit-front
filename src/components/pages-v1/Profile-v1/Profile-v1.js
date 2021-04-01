@@ -22,6 +22,7 @@ class ProfileV1 extends React.Component {
         const isProfile = true
         const url = this.props.match.url
         const user = this.props.user
+        const logout = this.props.logout
 
         return (
             <div className="profile">
@@ -31,14 +32,14 @@ class ProfileV1 extends React.Component {
                     <Switch>
                         <Route exact path={`${url}/settings`} render={ props => {
                             return <ProfileSettings {...props}
-                                                user={user}/>              
+                                                user={user} logout={logout}/>           
                         }}/>
                         <Route path={`${url}/requests`} render={ props => {
-                            return <Requests {...props} />
+                            return <Requests {...props} logout={logout}/>
                         }}/>
                         <Route path={`${url}/address`} render={ props => {
                             return <Address {...props} 
-                                         address={user.address}/>
+                                         address={user.address} logout={logout}/>
                         }}/>
                         <Redirect to={`${url}/settings`}/>
                     </Switch>

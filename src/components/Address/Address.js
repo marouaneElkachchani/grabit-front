@@ -38,13 +38,14 @@ class Address extends React.Component {
     }
 
     render() {
-
         const address = this.props.address
+        const logout = this.props.logout
 
         return (
             <div className="main-right">
                 <div className="main-right-top">
                     <h3>Address</h3>
+                    <button id="logout" onClick={logout}>Logout</button>
                 </div>
                 <div id="address-form" className="main-right-form">
                     <div className="main-right-form-inputs">

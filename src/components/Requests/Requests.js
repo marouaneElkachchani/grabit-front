@@ -25,8 +25,9 @@ class Requests extends React.Component {
     }
 
     render() {
+        const logout = this.props.logout
         if( this.props.data.loading )
-            { 
+            {
                 return <div>Loading.....</div>
             }
 
@@ -34,6 +35,7 @@ class Requests extends React.Component {
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Requests</h3>
+                    <button id="logout" onClick={logout}>Logout</button>
                 </div>
                 <div className="main-right-form">
                     <ul>
