@@ -113,3 +113,12 @@
     margin-left: 50px;
     margin-top: 50px;
 }
+
+#errors {
+    color: #F71117;
+    font-family: Helvetica;
+    margin-top: 5px;
+    margin-left: 50px;
+    font-size: 12px;
+    font-weight: 500;
+}

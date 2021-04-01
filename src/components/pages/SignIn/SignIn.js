@@ -13,12 +13,23 @@ class SignIn extends React.Component {
         super(props)
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: []
         }
     }
 
     onSubmit(event) {
         event.preventDefault()
+        if(this.state.email === "") {
+            const errors = ["Enter email"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.password === "") {
+            const errors = ["Enter password"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
                 email: this.state.email,
@@ -32,8 +43,9 @@ class SignIn extends React.Component {
             })
         }).then( () => {
             document.location.reload()
-        }).catch( error => {
-            console.log(error)
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
         })
     }
 
@@ -69,6 +81,9 @@ class SignIn extends React.Component {
                                                 value={this.state.password}
                                                 onChange={event => this.setState({ password: event.target.value })}/>
                                 </section>
+                                <div id="errors">
+                                    {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                                </div>
                                 <input className="sign-in-submit-button" type="submit" value="Sign in"/>
                             </form>
                         </div>

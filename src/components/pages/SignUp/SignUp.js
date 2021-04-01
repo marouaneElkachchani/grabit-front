@@ -15,13 +15,34 @@ class SignUp extends React.Component {
             name: "",
             email: "",
             password: "",
-            phone: ""
+            phone: "",
+            errors: []
         }
     }
 
     onSubmit(event) {
         const role = this.props.match.params.role.toUpperCase()
         event.preventDefault()
+        if(this.state.name === "") {
+            const errors = ["Enter name"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.email === "") {
+            const errors = ["Enter email"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.password === "") {
+            const errors = ["Enter password"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.phone === "") {
+            const errors = ["Enter phone"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
                 name: this.state.name,
@@ -40,8 +61,9 @@ class SignUp extends React.Component {
             })
         }).then( () => {
             document.location.reload()
-        }).catch( (error) => {
-            console.log(error)
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
         })
     }
 
@@ -95,6 +117,9 @@ class SignUp extends React.Component {
                                                     value={this.state.phone}
                                                     onChange={event => this.setState({ phone: event.target.value })}/>
                                     </section>
+                                    <div id="errors">
+                                        {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                                    </div>
                                     <input className="sign-up-submit-button" type="submit" value="Sign up"/>
                                 </form>
                             </div>
