@@ -15,12 +15,10 @@ class ProfileSettings extends React.Component {
             email: this.props.user.email,
             phone: this.props.user.phone
         }
-
     }
 
     onSubmit(event) {
         event.preventDefault()
-
 
 
         this.props.mutate({
@@ -38,7 +36,6 @@ class ProfileSettings extends React.Component {
     render() {
         const user = this.props.user
         const logout = this.props.logout
-
         return (
             <div className="main-right" >
                 <div className="main-right-top">

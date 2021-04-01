@@ -30,7 +30,6 @@ class Requests extends React.Component {
             {
                 return <div>Loading.....</div>
             }
-
         return (
             <div className="main-right" >
                 <div className="main-right-top">

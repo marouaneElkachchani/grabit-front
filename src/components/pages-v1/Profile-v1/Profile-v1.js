@@ -14,7 +14,6 @@ class ProfileV1 extends React.Component {
 
     constructor(props) {
         super(props)
-
     }
 
     render() {

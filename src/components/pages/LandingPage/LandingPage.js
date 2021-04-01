@@ -30,9 +30,54 @@ class LandingPage extends React.Component {
     }
     
     render() {
+        const signUp = (
+          <div className="block-1-bottom">
+            <div className="box" id="driver">
+              <div className="box-top">
+                <img src={helmet} alt="Grabit"/>
+              </div>
+              <div className="box-bottom">
+                <p>Sign up as Driver</p>
+                <Link to="/sign-up/driver">
+                  <img src={arrow} alt="Grabit"/>
+                </Link>
+              </div>
+            </div>
+            <div className="box" id="customer">
+              <div className="box-top">
+                <img src={manUser} alt="Grabit"/>
+              </div>
+              <div className="box-bottom">
+                <p>Sign up as Customer</p>
+                <Link to="/sign-up/customer">
+                  <img src={arrow} alt="Grabit"/>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )
+        const profile = (
+          <div className="block-1-bottom">
+            <div className="box">
+              <div className="box-top">
+                <img src={manUser} alt="Grabit"/>
+              </div>
+              <div className="box-bottom">
+                <p>Profile</p>
+                <Link to="/profile">
+                  <img src={arrow} alt="Grabit"/>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )
         let logout = null
-        if( this.userIsSignedIn() ) {
+        let id = null
+        let block1Bottom = signUp
+        if(this.userIsSignedIn()) {
           logout = this.props.logout
+          id = this.props.id
+          block1Bottom = profile
         }
         return (
           <div>
@@ -51,30 +96,7 @@ class LandingPage extends React.Component {
               <div className="block-1-middle">
                 <img src={weDeliverIt} alt="Grabit"/>
               </div>
-              <div className="block-1-bottom">
-                <div className="box" id="driver">
-                  <div className="box-top">
-                    <img src={helmet} alt="Grabit"/>
-                  </div>
-                  <div className="box-bottom">
-                    <p>Sign up as Driver</p>
-                    <Link to="/sign-up/driver">
-                      <img src={arrow} alt="Grabit"/>
-                    </Link>
-                  </div>
-                </div>
-                <div className="box" id="customer">
-                  <div className="box-top">
-                    <img src={manUser} alt="Grabit"/>
-                  </div>
-                  <div className="box-bottom">
-                    <p>Sign up as Customer</p>
-                    <Link to="/sign-up/customer">
-                      <img src={arrow} alt="Grabit"/>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              {block1Bottom}
             </div>
             <div className="block-2">
               <div className="block-2-title">

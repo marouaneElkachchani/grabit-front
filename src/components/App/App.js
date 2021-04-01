@@ -28,13 +28,13 @@ class App extends React.Component {
       return (
               <p>Loading...</p>
       )
-    } else if(this.props.data.me) {
+    } else if (this.props.data.me) {
       const user = this.props.data.me
       const logout = this.logout
       return (
         <Switch>
             <Route exact path="/" render={props => {
-                return <LandingPage {...props} logout={logout}/>
+                return <LandingPage {...props} id={user.id} logout={logout}/>
             }}/>
             <Route path="/profile/:userId" render={props => {
                 return <ProfileV1 {...props} user={user} logout={logout}/>
