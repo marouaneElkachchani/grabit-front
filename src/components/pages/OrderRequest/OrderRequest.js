@@ -25,7 +25,8 @@ class OrderRequest extends React.Component {
             schedule: "ASAP",
             costRange: {from: 0, to: 0},
             addressDeparture: "",
-            deliveryAddress: ""
+            deliveryAddress: "",
+            errors: []
         }
         this.addItem = this.addItem.bind(this)
         this.deleteItem = this.deleteItem.bind(this)
@@ -62,15 +63,50 @@ class OrderRequest extends React.Component {
 
     onSubmit(event) {
         event.preventDefault()
+        if(this.state.description === "") {
+            const errors = ["Enter Description"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.items.length === 0) {
+            const errors = ["Enter Items"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.date === '') {
+            const errors = ["Enter Date"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.schedule === '') {
+            const errors = ["Enter Schedule"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.costRange.from === 0 || this.state.costRange.to === 0) {
+            const errors = ["Enter Cost Range"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.addressDeparture === '') {
+            const errors = ["Enter Address Departure"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.deliveryAddress === '') {
+            const errors = ["Enter Delivery Address"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
-                 description: this.state.description,
-                 items: this.state.items,
-                 date: this.state.date,
-                 schedule: this.state.schedule,
-                 costRange: this.state.costRange,
-                 addressDeparture: this.state.addressDeparture,
-                 deliveryAddress: this.state.deliveryAddress
+                description: this.state.description,
+                items: this.state.items,
+                date: this.state.date,
+                schedule: this.state.schedule,
+                costRange: this.state.costRange,
+                addressDeparture: this.state.addressDeparture,
+                deliveryAddress: this.state.deliveryAddress
             },
             refetchQueries:[{query}]
         }).then( () => {
@@ -82,13 +118,15 @@ class OrderRequest extends React.Component {
                 schedule: "ASAP",
                 costRange: {from: 0, to: 0},
                 addressDeparture: "",
-                deliveryAddress: ""
+                deliveryAddress: "",
+                errors: []
             })
         }).then( () => {
            const id = this.props.user.id 
            this.props.history.push(`/profile/${id}/requests`)
-        }).catch( (error) => {
-            console.log(error)
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
         })
     }
 
@@ -185,6 +223,9 @@ class OrderRequest extends React.Component {
                                     <section className="input">
                                         <div id="map"></div>
                                     </section>
+                                    <div id="order-request-errors">
+                                        {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                                    </div>
                                 </div>
                                 <input id="order-request-submit-button" type="submit" value="Request"/>
                             </form>

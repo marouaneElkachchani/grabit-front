@@ -185,3 +185,12 @@ textarea {
     border: 3px solid #F71117;
     margin-bottom: 30px;
 }
+
+#order-request-errors {
+    color: #F71117;
+    font-family: Helvetica;
+    margin-top: 5px;
+    margin-left: 27px;
+    font-size: 12px;
+    font-weight: 500;
+}
