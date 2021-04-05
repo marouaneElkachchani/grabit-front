@@ -17,12 +17,10 @@ class ProfileV1 extends React.Component {
     }
 
     render() {
-
         const isProfile = true
         const url = this.props.match.url
         const user = this.props.user
         const logout = this.props.logout
-
         return (
             <div className="profile">
                 <TopBannerV1 isProfile={isProfile} user={user}/>

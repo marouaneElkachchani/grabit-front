@@ -10,31 +10,34 @@ class Address extends React.Component {
         super(props)
         if(this.props.address) {
             this.state = {
-                address: this.props.address
+                address: this.props.address,
+                errors: []
             }
         }else {
             this.state = {
-                address: ""
+                address: "",
+                errors: []
             }
         }
-
     }
 
     onSubmit(event) {
-
         event.preventDefault()
-
+        if(this.state.address === "") {
+            const errors = ["Enter address"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
                 address: this.state.address
             }
-
-        }).catch( (error) => {
-
-            console.log(error)
-            
+        }).then( () => {
+            this.setState({ errors: [] })
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
         })
-
     }
 
     render() {
@@ -57,6 +60,9 @@ class Address extends React.Component {
                                        value={this.state.address}
                                        onChange={event => this.setState({ address: event.target.value })}/>
                             </section>
+                            <div id="address-errors">
+                                        {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                            </div>
                             <br/>
                             <button id="address-button" type="submit">Update</button>
                         </form>
@@ -69,8 +75,7 @@ class Address extends React.Component {
 
 const mutation = gql`
     mutation
-        UpdateUser( $address: String
-                            ) {
+        UpdateUser($address: String) {
             updateUser(data: {address: $address}
                        ) {
                             id

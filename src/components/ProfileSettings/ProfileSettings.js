@@ -13,24 +13,45 @@ class ProfileSettings extends React.Component {
         this.state = {
             name: this.props.user.name,
             email: this.props.user.email,
-            phone: this.props.user.phone
+            phone: this.props.user.phone,
+            errors: []
         }
     }
 
     onSubmit(event) {
         event.preventDefault()
-
-
+        if(this.state.name === "") {
+            const errors = ["Enter name"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.email === "") {
+            const errors = ["Enter email"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.phone === "") {
+            const errors = ["Enter phone"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
                 name: this.state.name,
                 email: this.state.email,
                 phone: this.state.phone
             }
-        }).catch( (error) => {
-            console.log(error)
+        }).then( () => {
+            this.setState({ errors: [] })
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => {
+                if(err.code === 3010){
+                    return 'Email already taken'
+                }
+                return err.message
+            })
+            this.setState({ errors })
         })
-
     }
 
     render() {
@@ -66,6 +87,9 @@ class ProfileSettings extends React.Component {
                                         value={this.state.phone}
                                         onChange={event => this.setState({ phone: event.target.value })}/>
                             </section>
+                            <div id="setting-errors">
+                                        {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                            </div>
                             <br/>
                             <button type="submit">Update</button>
                         </form>    

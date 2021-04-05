@@ -62,7 +62,12 @@ class SignUp extends React.Component {
         }).then( () => {
             document.location.reload()
         }).catch( res => {
-            const errors = res.graphQLErrors.map( err => err.message )
+            const errors = res.graphQLErrors.map( err => {
+                if(err.code === 3010){
+                    return 'Email already taken'
+                }
+                return err.message
+            })
             this.setState({ errors })
         })
     }
