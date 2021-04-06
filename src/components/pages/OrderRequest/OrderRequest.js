@@ -34,11 +34,15 @@ class OrderRequest extends React.Component {
     }
 
     addItem() {
-        if(this.state.item) {
+        if(this.state.item.length > 3 && this.state.item.length < 20) {
             this.setState(prevState => ({
                 items: [{name: this.state.item}, ...prevState.items],
-                item: ""
+                item: "",
+                errors: []
               }))
+        }else {
+            const errors = ["Item name must be 3 to 20 characters"]
+            this.setState({ errors })
         }
     }
 
@@ -148,14 +152,18 @@ class OrderRequest extends React.Component {
                                     <section className="input">
                                         <label>Describe your order</label>
                                         <br/>
-                                        <textarea id="description" type="text" name="description" 
+                                        <textarea id="description" type="text" name="description"
                                                   value={this.state.description}
                                                   onChange={event => this.setState({ description: event.target.value })}/>
                                     </section>
                                     <section>
                                         <label>Items</label>
                                         <br/>
-                                        <input id="items" type="text" name="items" 
+                                        <input id="items" type="text" name="items"
+                                               pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$"
+                                               title="Item must be A-Z, a-z and single space characters"
+                                               minLength="3"
+                                               maxLength="20"
                                                value={this.state.item}
                                                onChange={event => this.setState({ item: event.target.value })}/>
                                         <a id="add-item-link" onClick={this.addItem}>
@@ -202,6 +210,8 @@ class OrderRequest extends React.Component {
                                         <br />
                                         <img id="oval-dsa" src={ovalDsa} alt="Grabit" />
                                         <input id="address-departure" type="text" name="address-departure"
+                                               minLength="10"
+                                               maxLength="50"
                                                value={this.state.addressDeparture}
                                                onChange={event => this.setState({ addressDeparture: event.target.value })}/>
                                         <br />
@@ -216,7 +226,9 @@ class OrderRequest extends React.Component {
                                         <img className="oval-address" src={ovalAddress} alt="Grabit"/> 
                                         <br />
                                         <img id="oval-asd" src={ovalAsd} alt="Grabit" />
-                                        <input id="delivery-address" type="text" name="delivery-address" 
+                                        <input id="delivery-address" type="text" name="delivery-address"
+                                               minLength="10"
+                                               maxLength="50"
                                                value={this.state.deliveryAddress}
                                                onChange={event => this.setState({ deliveryAddress: event.target.value })}/>
                                     </section>

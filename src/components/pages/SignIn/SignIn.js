@@ -69,17 +69,21 @@ class SignIn extends React.Component {
                                 <section className="input">
                                     <label className="sign-in-label">Email :</label>
                                     <br/>
-                                    <input className="sign-in-input" type="email" name="email" 
-                                                value={this.state.email}
-                                                onChange={event => this.setState({ email: event.target.value })}/>
+                                    <input  className="sign-in-input" type="email" name="email"
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                            title="Must be a valid email"
+                                            value={this.state.email}
+                                            onChange={event => this.setState({ email: event.target.value })}/>
                                 </section>
                                 <br/>
                                 <section className="input">
                                     <label className="sign-in-label">Password :</label>
                                     <br/>
-                                    <input className="sign-in-input" type="password" name="password" 
-                                                value={this.state.password}
-                                                onChange={event => this.setState({ password: event.target.value })}/>
+                                    <input  className="sign-in-input" type="password" name="password"
+                                            pattern=".{8,}" 
+                                            title="Password must be eight or more characters"
+                                            value={this.state.password}
+                                            onChange={event => this.setState({ password: event.target.value })}/>
                                 </section>
                                 <div id="errors">
                                     {this.state.errors.map( error => <div key={ error }>{ error }</div > )}

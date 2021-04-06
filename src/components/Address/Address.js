@@ -56,7 +56,9 @@ class Address extends React.Component {
                             <section className="input">
                                 <label>Address</label>
                                 <br/>
-                                <input type="text" name="address" id="address" 
+                                <input type="text" name="address" id="address"
+                                       minLength="10"
+                                       maxLength="50"
                                        value={this.state.address}
                                        onChange={event => this.setState({ address: event.target.value })}/>
                             </section>

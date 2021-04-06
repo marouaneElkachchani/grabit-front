@@ -69,26 +69,36 @@ class ProfileSettings extends React.Component {
                             <section className="input">
                                 <label>First & Last Name</label>
                                 <br/>
-                                <input type="text" name="name" id="name" 
+                                <input  type="text" name="name" id="name"
+                                        pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$"
+                                        title="Name must be A-Z, a-z and single space characters"
+                                        minLength="3"
+                                        maxLength="25"
                                         value={this.state.name}
                                         onChange={event => this.setState({ name: event.target.value })}/>
                             </section>
                             <section className="input">
                                 <label>Email</label>
                                 <br/>
-                                <input type="email" name="email" id="email" 
+                                <input  type="email" name="email" id="email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        title="Must be a valid email"
                                         value={this.state.email}
                                         onChange={event => this.setState({ email: event.target.value })}/>
                             </section>
                             <section className="input">
                                 <label>Phone</label>
                                 <br/>
-                                <input type="text" name="phone" id="phone" 
+                                <input  type="text" name="phone" id="phone"
+                                        pattern="^\d{10}$"
+                                        minLength="10"
+                                        maxLength="10"
+                                        title="Phone must be ten numbers"
                                         value={this.state.phone}
                                         onChange={event => this.setState({ phone: event.target.value })}/>
                             </section>
                             <div id="setting-errors">
-                                        {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
+                                    {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                             </div>
                             <br/>
                             <button type="submit">Update</button>

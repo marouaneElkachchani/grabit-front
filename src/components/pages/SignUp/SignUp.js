@@ -94,33 +94,45 @@ class SignUp extends React.Component {
                                     <section className="input">
                                         <label className="sign-up-label">Name :</label>
                                         <br/>
-                                        <input className="sign-up-input" type="text" name="name" 
-                                                    value={this.state.name}
-                                                    onChange={event => this.setState({ name: event.target.value })}/>
+                                        <input  className="sign-up-input" type="text" name="name"
+                                                pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$"
+                                                title="Name must be A-Z, a-z and single space characters"
+                                                minLength="3"
+                                                maxLength="25"
+                                                value={this.state.name}
+                                                onChange={event => this.setState({ name: event.target.value })}/>
                                     </section>
                                     <br/>
                                     <section className="input">
                                         <label className="sign-up-label">Email :</label>
                                         <br/>
-                                        <input className="sign-up-input" type="email" name="email" 
-                                                    value={this.state.email}
-                                                    onChange={event => this.setState({ email: event.target.value })}/>
+                                        <input  className="sign-up-input" type="email" name="email"
+                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                                title="Must be a valid email"
+                                                value={this.state.email}
+                                                onChange={event => this.setState({ email: event.target.value })}/>
                                     </section>
                                     <br/>
                                     <section className="input">
                                         <label className="sign-up-label">Password :</label>
                                         <br/>
-                                        <input className="sign-up-input" type="password" name="password" 
-                                                    value={this.state.password}
-                                                    onChange={event => this.setState({ password: event.target.value })}/>
+                                        <input  className="sign-up-input" type="password" name="password"
+                                                pattern=".{8,}" 
+                                                title="Password must be eight or more characters"
+                                                value={this.state.password}
+                                                onChange={event => this.setState({ password: event.target.value })}/>
                                     </section>
                                     <br/>
                                     <section className="input">
                                         <label className="sign-up-label">Phone :</label>
                                         <br/>
-                                        <input className="sign-up-input" type="text" name="phone" 
-                                                    value={this.state.phone}
-                                                    onChange={event => this.setState({ phone: event.target.value })}/>
+                                        <input  className="sign-up-input" type="text" name="phone"
+                                                pattern="^\d{10}$"
+                                                minLength="10"
+                                                maxLength="10"
+                                                title="Phone must be ten numbers"
+                                                value={this.state.phone}
+                                                onChange={event => this.setState({ phone: event.target.value })}/>
                                     </section>
                                     <div id="errors">
                                         {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
