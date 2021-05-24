@@ -1,12 +1,9 @@
 import React from 'react'
 import './Root.css'
-
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-
 import { InMemoryCache, ApolloClient, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { ApolloProvider } from 'react-apollo'
-
 import App from '../App/App'
 
 const httpLink = createHttpLink({

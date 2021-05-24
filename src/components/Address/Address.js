@@ -52,7 +52,7 @@ class Address extends React.Component {
                 </div>
                 <div id="address-form" className="main-right-form">
                     <div className="main-right-form-inputs">
-                        <form onSubmit={this.onSubmit.bind(this)}>
+                        <form onSubmit={this.onSubmit.bind(this)} >
                             <section className="input">
                                 <label>Address</label>
                                 <br/>
