@@ -19,7 +19,6 @@ const style = {
 }
 
 class OrderRequest extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
