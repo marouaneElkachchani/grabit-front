@@ -28,7 +28,7 @@ class Requests extends React.Component {
         const logout = this.props.logout
         if( this.props.data.loading )
             {
-                return <div>Loading.....</div>
+                return <div>Loading...</div>
             }
         return (
             <div className="main-right" >

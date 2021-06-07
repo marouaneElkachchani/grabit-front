@@ -2,7 +2,6 @@ import React from 'react'
 import './ProfileSettings.css'
 import { Link } from 'react-router-dom'
 import oval from './assets/oval.png'
-
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
@@ -14,8 +13,55 @@ class ProfileSettings extends React.Component {
             name: this.props.user.name,
             email: this.props.user.email,
             phone: this.props.user.phone,
+            picture: false,
+            pictureUrl: this.setProfilePicture(),
             errors: []
         }
+        this.setProfilePicture = this.setProfilePicture.bind(this)
+    }
+
+    setProfilePicture() {
+        if(this.props.user.pictureUrl) {
+            return this.props.user.pictureUrl
+        } else {
+            return false
+        }
+    }
+
+    handlePictureSelected(event) {
+        var picture = event.target.files[0]
+        var pictureUrl = URL.createObjectURL(picture)
+        this.setState({
+          picture: picture,
+          pictureUrl: pictureUrl
+        })
+    }
+
+    renderProfilePicture() {
+        if(this.state.pictureUrl) {
+          return (
+            <img src={this.state.pictureUrl}/>
+          )
+        } else {
+          return (
+            <img src={oval} alt="Grabit"/>
+          )
+        }
+    }
+
+    uploadImage() {
+        this.props.mutate({
+            variables: {
+                picture: this.state.picture
+            }
+        }).then( (result) => {
+            this.setState({ picture: false,
+                            pictureUrl: result.data.updateUser.pictureUrl,
+                            errors: [] })       
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
+        })
     }
 
     onSubmit(event) {
@@ -105,10 +151,11 @@ class ProfileSettings extends React.Component {
                         </form>    
                     </div>
                     <div className="main-right-form-image">
-                        <img src={oval} alt="Grabit" />
+                        {this.renderProfilePicture()}
+                        <input type="file" onChange={this.handlePictureSelected.bind(this)}/>
                         <br/>
-                        <button id="upload" >Upload</button>
-                        <button id="remove" >Remove</button>
+                        <button id="upload"  onClick={this.uploadImage.bind(this)}>Upload</button>
+                        <button id="remove">Remove</button>
                     </div>
                 </div>
         </div>
@@ -120,15 +167,18 @@ const mutation = gql`
     mutation
         UpdateUser( $name: String,
                     $email: String,
-                    $phone: String
+                    $phone: String,
+                    $picture: Upload
                             ) {
             updateUser(data: {  name: $name,
                                 email: $email,
-                                phone: $phone }
+                                phone: $phone,
+                                picture: $picture}
                        ) {
                             id
                             name
                             email
+                            pictureUrl
                             phone
                             address
             }

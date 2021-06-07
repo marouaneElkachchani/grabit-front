@@ -21,7 +21,11 @@
 #user-image-min {
     height: 40px;
     width: 40px;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    margin-left: 20px;
+    border-radius:100%;
 }
 
 .profile-main .main-left .main-left-top p {

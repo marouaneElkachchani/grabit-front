@@ -11,6 +11,18 @@ class TopBannerV1 extends React.Component {
         super(props)
     }
 
+    renderProfilePicture() {
+        if(this.props.user.pictureUrl) {
+          return (
+            <img id="user-image-profile" src={this.props.user.pictureUrl} alt="Grabit"/>
+          )
+        } else {
+          return (
+            <img id="user-image-profile" src={oval} alt="Grabit"/>
+          )
+        }
+    }
+
     render() {
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
@@ -30,7 +42,7 @@ class TopBannerV1 extends React.Component {
                         </Link>
                         <a id="user-name-image-box-profile">
                             <p>{user.name}</p>
-                            <img id="user-image-profile" src={oval} alt="Grabit"/>
+                            {this.renderProfilePicture()}
                         </a>
                     </div>
                 )

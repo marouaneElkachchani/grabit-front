@@ -10,16 +10,25 @@ import addressDark from './assets/address-dark.png'
 import addressWhite from './assets/address-white.png'
 
 const SideBar = props => {
-
     const user = props.user
     const url = props.url
+    const renderProfilePicture = () => {
+        if(props.user.pictureUrl) {
+          return (
+            <img id="user-image-min" src={props.user.pictureUrl} alt="Grabit"/>
+          )
+        } else {
+          return (
+            <img id="user-image-min" src={oval} alt="Grabit"/> 
+          )
+        }
+    }
     const topMenu = (
         <div className="main-left-top">
-            <img id="user-image-min" src={oval} alt="Grabit"/>
+            {renderProfilePicture()}
             <p>{user.name}</p>
         </div>
     )
-
     return (
         <div className="main-left">
             {topMenu}

@@ -92,6 +92,7 @@ input {
     height: 120px;
     margin-bottom: 40px;
     margin-left: 50px;
+    border-radius:100%;
 }
 
 #remove {

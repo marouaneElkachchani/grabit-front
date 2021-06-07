@@ -58,8 +58,9 @@
 .top-banner-profile #user-name-image-box-profile #user-image-profile {
     height: 40px;
     width: 40px;
-    margin-left: 20px;
+
     margin-top: 4px;
+    border-radius:100%;
 }
 
 .top-banner-order-request {
