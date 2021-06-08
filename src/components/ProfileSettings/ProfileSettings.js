@@ -64,6 +64,21 @@ class ProfileSettings extends React.Component {
         })
     }
 
+    removeImage() {
+        this.props.mutate({
+            variables: {
+                picture: ''
+            }
+        }).then( (result) => {
+            this.setState({ picture: false,
+                            pictureUrl: false,
+                            errors: [] })       
+        }).catch( res => {
+            const errors = res.graphQLErrors.map( err => err.message )
+            this.setState({ errors })
+        })
+    }
+
     onSubmit(event) {
         event.preventDefault()
         if(this.state.name === "") {
@@ -152,10 +167,11 @@ class ProfileSettings extends React.Component {
                     </div>
                     <div className="main-right-form-image">
                         {this.renderProfilePicture()}
-                        <input type="file" onChange={this.handlePictureSelected.bind(this)}/>
+                        <label htmlFor="file" className="label-file">Choose file</label>
+                        <input id="file" className="input-file" type="file" onChange={this.handlePictureSelected.bind(this)}></input>
                         <br/>
-                        <button id="upload"  onClick={this.uploadImage.bind(this)}>Upload</button>
-                        <button id="remove">Remove</button>
+                        <button id="upload" onClick={this.uploadImage.bind(this)}>Upload</button>
+                        <button id="remove" onClick={this.removeImage.bind(this)}>Remove</button>
                     </div>
                 </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './OrderRequest.css'
 import { Link } from 'react-router-dom'
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react'
+import { GoogleApiWrapper } from 'google-maps-react'
 import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import Footer from '../../Footer/Footer'
 import ovalDsa from './assets/oval-dsa.png'
@@ -44,7 +44,7 @@ class OrderRequest extends React.Component {
         //Init Google Map
         const map = new this.props.google.maps.Map(document.getElementById("map"), {
             mapTypeControl: false,
-            center: { lat: -33.8688, lng: 151.2195 },
+            center: { lat: 33.9646, lng: -6.8479 },
             zoom: 13,
             style
         })
