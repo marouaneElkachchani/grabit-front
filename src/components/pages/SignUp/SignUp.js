@@ -16,6 +16,7 @@ class SignUp extends React.Component {
             email: "",
             password: "",
             phone: "",
+            pictureUrl: "",
             errors: []
         }
     }
@@ -49,7 +50,8 @@ class SignUp extends React.Component {
                 email: this.state.email,
                 password: this.state.password,
                 role,
-                phone: this.state.phone
+                phone: this.state.phone,
+                pictureUrl: this.state.pictureUrl
             }
         }).then( result => {
             localStorage.setItem('token', result.data.createUser.token)
@@ -57,7 +59,8 @@ class SignUp extends React.Component {
                 name: "",
                 email: "",
                 password: "",
-                phone: ""
+                phone: "",
+                pictureUrl: ""
             })
         }).then( () => {
             document.location.reload()
@@ -156,12 +159,14 @@ const mutation = gql`
                     $email: String!, 
                     $password: String!,
                     $role: String!,
-                    $phone: String! ) {
+                    $phone: String!,
+                    $pictureUrl: String ) {
             createUser( data: { email: $email,
                                 password: $password,
                                 role: $role,
                                 name: $name,
-                                phone: $phone } )
+                                phone: $phone,
+                                pictureUrl: $pictureUrl } )
             {
                 token
                 user {

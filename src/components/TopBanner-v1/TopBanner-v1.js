@@ -1,6 +1,6 @@
 import React from 'react'
 import './TopBanner-v1.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import grabitIcon from './assets/grabit-icon.png'
 import requestOrderIcon from './assets/request-order-icon.png'
 import oval from './assets/oval.png'
@@ -12,7 +12,7 @@ class TopBannerV1 extends React.Component {
     }
 
     renderProfilePicture() {
-        if(this.props.user.pictureUrl) {
+        if(this.props.user.pictureUrl && this.props.user.pictureUrl !== '') {
           return (
             <img id="user-image-profile" src={this.props.user.pictureUrl} alt="Grabit"/>
           )
@@ -27,7 +27,6 @@ class TopBannerV1 extends React.Component {
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
             const user = this.props.user
-
             if(isProfile) {
                 return (
                     <div className="top-banner-profile">
@@ -41,7 +40,7 @@ class TopBannerV1 extends React.Component {
                             </button>
                         </Link>
                         <a id="user-name-image-box-profile">
-                            <p>{user.name}</p>
+                            <span id="user-name-span">{user.name}</span>
                             {this.renderProfilePicture()}
                         </a>
                     </div>
@@ -53,8 +52,8 @@ class TopBannerV1 extends React.Component {
                             <img src={grabitIcon} alt="Grabit"/>
                         </Link>
                         <Link to={`/profile/${user.id}`} id="user-name-image-box-order-request">
-                            <p>{user.name}</p>
-                            <img id="user-image-order-request" src={oval} alt="Grabit"/>
+                            <span id="user-name">{user.name}</span>
+                            {this.renderProfilePicture()}
                         </Link>
                     </div>
                 )

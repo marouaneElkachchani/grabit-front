@@ -14,18 +14,11 @@ class ProfileSettings extends React.Component {
             email: this.props.user.email,
             phone: this.props.user.phone,
             picture: false,
-            pictureUrl: this.setProfilePicture(),
+            pictureUrl: this.props.user.pictureUrl,
             errors: []
         }
-        this.setProfilePicture = this.setProfilePicture.bind(this)
-    }
-
-    setProfilePicture() {
-        if(this.props.user.pictureUrl) {
-            return this.props.user.pictureUrl
-        } else {
-            return false
-        }
+        this.uploadImage = this.uploadImage.bind(this)
+        this.removeImage = this.removeImage.bind(this)
     }
 
     handlePictureSelected(event) {
@@ -38,7 +31,7 @@ class ProfileSettings extends React.Component {
     }
 
     renderProfilePicture() {
-        if(this.state.pictureUrl) {
+        if(this.state.pictureUrl && this.state.pictureUrl !== '') {
           return (
             <img src={this.state.pictureUrl}/>
           )
@@ -71,7 +64,7 @@ class ProfileSettings extends React.Component {
             }
         }).then( (result) => {
             this.setState({ picture: false,
-                            pictureUrl: false,
+                            pictureUrl: '',
                             errors: [] })       
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
@@ -100,7 +93,8 @@ class ProfileSettings extends React.Component {
             variables: {
                 name: this.state.name,
                 email: this.state.email,
-                phone: this.state.phone
+                phone: this.state.phone,
+                pictureUrl: this.state.pictureUrl,
             }
         }).then( () => {
             this.setState({ errors: [] })
@@ -170,8 +164,8 @@ class ProfileSettings extends React.Component {
                         <label htmlFor="file" className="label-file">Choose file</label>
                         <input id="file" className="input-file" type="file" onChange={this.handlePictureSelected.bind(this)}></input>
                         <br/>
-                        <button id="upload" onClick={this.uploadImage.bind(this)}>Upload</button>
-                        <button id="remove" onClick={this.removeImage.bind(this)}>Remove</button>
+                        <button id="upload" onClick={this.uploadImage}>Upload</button>
+                        <button id="remove" onClick={this.removeImage}>Remove</button>
                     </div>
                 </div>
         </div>
@@ -184,12 +178,14 @@ const mutation = gql`
         UpdateUser( $name: String,
                     $email: String,
                     $phone: String,
-                    $picture: Upload
+                    $picture: Upload,
+                    $pictureUrl: String
                             ) {
             updateUser(data: {  name: $name,
                                 email: $email,
                                 phone: $phone,
-                                picture: $picture}
+                                picture: $picture,
+                                pictureUrl: $pictureUrl}
                        ) {
                             id
                             name
