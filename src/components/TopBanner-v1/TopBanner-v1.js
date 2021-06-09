@@ -3,6 +3,7 @@ import './TopBanner-v1.css'
 import { Link, NavLink } from 'react-router-dom'
 import grabitIcon from './assets/grabit-icon.png'
 import requestOrderIcon from './assets/request-order-icon.png'
+import requestsWhite from './assets/requests-white.png'
 import oval from './assets/oval.png'
 
 class TopBannerV1 extends React.Component {
@@ -23,9 +24,32 @@ class TopBannerV1 extends React.Component {
         }
     }
 
+    renderOrderRequestButtonOrOnHoldRequests() {
+        if(this.props.user.role === 'CUSTOMER') {
+            return (
+                <Link to="/order-request/new">
+                    <button id="request-an-order-button">
+                        <img src={requestOrderIcon} alt="Grabit"/>
+                        Request an Order
+                    </button>
+                </Link>
+            )
+        } else {
+            return (
+                <Link to="/on-hold-requests/accept">
+                    <button id="request-an-order-button">
+                        <img src={requestsWhite} alt="Grabit"/>
+                        Incomming Requests
+                    </button>
+                </Link>
+            )
+        }
+    }
+
     render() {
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
+            const isOnHoldRequests = this.props.isOnHoldRequests
             const user = this.props.user
             if(isProfile) {
                 return (
@@ -33,19 +57,14 @@ class TopBannerV1 extends React.Component {
                         <Link to="/" id="grabit-icon-box-profile">
                             <img src={grabitIcon} alt="Grabit"/>
                         </Link>
-                        <Link to="/order-request/new">
-                            <button id="request-an-order-button">
-                                    <img src={requestOrderIcon} alt="Grabit"/>
-                                    Request an Order
-                            </button>
-                        </Link>
+                        {this.renderOrderRequestButtonOrOnHoldRequests()}
                         <a id="user-name-image-box-profile">
                             <span id="user-name-span">{user.name}</span>
                             {this.renderProfilePicture()}
                         </a>
                     </div>
                 )
-            } else if(isOrderRequest) {
+            } else if(isOrderRequest || isOnHoldRequests) {
                 return(
                     <div className="top-banner-order-request">
                         <Link to="/" id="grabit-icon-box-order-request">
@@ -57,7 +76,7 @@ class TopBannerV1 extends React.Component {
                         </Link>
                     </div>
                 )
-            }else {
+            } else {
                 return (
                 <div className="top-banner-sign-up">
                     <Link to="/" id="grabit-icon-box-sign-up">

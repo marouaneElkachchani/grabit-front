@@ -1,13 +1,11 @@
 import React from 'react'
 import './Profile-v1.css'
-
 import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import SideBar from '../../SideBar/SideBar'
 import ProfileSettings from '../../ProfileSettings/ProfileSettings'
 import Requests from '../../Requests/Requests'
 import Address from '../../Address/Address'
 import Footer from '../../Footer/Footer'
-
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 class ProfileV1 extends React.Component {
