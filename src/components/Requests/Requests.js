@@ -1,7 +1,6 @@
 import React from 'react'
 import './Requests.css'
 import { Link } from 'react-router-dom'
-
 import { graphql } from 'react-apollo'
 import query from '../../queries/fetchRequests'
 
@@ -24,6 +23,18 @@ class Requests extends React.Component {
         })
     }
 
+    renderRequestsOrDeliveredRequestsTitle() {
+        if(this.props.user.role === 'CUSTOMER') {
+            return (
+                <h3>Requests</h3>
+            )
+        } else {
+            return (
+                <h3>Delivered Requests</h3>
+            )
+        }
+    }
+
     render() {
         const logout = this.props.logout
         if( this.props.data.loading )
@@ -33,7 +44,7 @@ class Requests extends React.Component {
         return (
             <div className="main-right" >
                 <div className="main-right-top">
-                    <h3>Requests</h3>
+                    { this.renderRequestsOrDeliveredRequestsTitle() }
                     <button id="logout" onClick={logout}>Logout</button>
                 </div>
                 <div className="main-right-form">

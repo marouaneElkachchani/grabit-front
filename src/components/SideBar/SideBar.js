@@ -23,6 +23,17 @@ const SideBar = props => {
           )
         }
     }
+    const renderRequestsOrDeliveredRequestsTitle = () => {
+        if(props.user.role === 'CUSTOMER') {
+            return (
+                <p>Requests</p>
+            )
+        } else {
+            return (
+                <p>Delivered Requests</p>
+            )
+        }
+    }
     const topMenu = (
         <div className="main-left-top">
             {renderProfilePicture()}
@@ -42,7 +53,7 @@ const SideBar = props => {
                 <NavLink to={`${url}/requests`} activeClassName="menu-option-clicked">
                     <li>
                         <img id="requests-dark" src={requestsDark} alt="Grabit"/>
-                        <p>Requests</p>
+                        {renderRequestsOrDeliveredRequestsTitle()}
                     </li>
                 </NavLink>
                 <NavLink to={`${url}/address`} activeClassName="menu-option-clicked">

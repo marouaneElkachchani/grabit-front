@@ -28,15 +28,13 @@ class ProfileV1 extends React.Component {
                     <SideBar url={url} user={user}/>
                     <Switch>
                         <Route exact path={`${url}/settings`} render={ props => {
-                            return <ProfileSettings {...props}
-                                                user={user} logout={logout}/>           
+                            return <ProfileSettings {...props} user={user} logout={logout}/>        
                         }}/>
                         <Route path={`${url}/requests`} render={ props => {
-                            return <Requests {...props} logout={logout}/>
+                            return <Requests {...props} user={user} logout={logout}/>
                         }}/>
                         <Route path={`${url}/address`} render={ props => {
-                            return <Address {...props} 
-                                         address={user.address} logout={logout}/>
+                            return <Address {...props} address={user.address} logout={logout}/>
                         }}/>
                         <Redirect to={`${url}/settings`}/>
                     </Switch>

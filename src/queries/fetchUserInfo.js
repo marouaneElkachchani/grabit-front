@@ -9,6 +9,7 @@ export default gql`
             pictureUrl
             phone
             address
+            role
         }
     }
 `
