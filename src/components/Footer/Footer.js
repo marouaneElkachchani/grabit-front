@@ -8,7 +8,7 @@ class Footer extends React.Component {
     }
     render() {
         return (
-            <div className="profile-bottom">
+            <div className="footer">
                 <ul>
                     <li>
                         <a href="">2019 grabit</a>

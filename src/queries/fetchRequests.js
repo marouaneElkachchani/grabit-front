@@ -19,6 +19,12 @@ export default gql`
                     }
                     addressDeparture
                     deliveryAddress
+                    owner {
+                        name
+                    }
+                    driver {
+                        name
+                    }
         }
     }
 `

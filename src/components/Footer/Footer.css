@@ -1,11 +1,11 @@
-.profile-bottom {
+.footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
 }
 
-.profile-bottom ul {
+.footer ul {
     width: 50%;
     list-style-type: none;
     display: flex;
@@ -16,7 +16,7 @@
     margin-bottom: 120px;
 }
 
-.profile-bottom ul li a {
+.footer ul li a {
     text-decoration: none;
     font-family: Helvetica;
     color: #909090;

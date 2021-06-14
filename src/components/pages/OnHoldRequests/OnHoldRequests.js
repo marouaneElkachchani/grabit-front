@@ -2,6 +2,9 @@ import React from 'react'
 import './OnHoldRequests.css'
 import { Link } from 'react-router-dom'
 import { GoogleApiWrapper } from 'google-maps-react'
+
+import { Modal } from 'react-st-modal'
+
 import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import Footer from '../../Footer/Footer'
 import ovalDsa from './assets/oval-dsa.png'
@@ -20,11 +23,38 @@ class OnHoldRequests extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            show: true,
             errors: [],
             originPlaceId: "",
             destinationPlaceId: "",
             travelMode: this.props.google.maps.TravelMode.DRIVING
         }
+    }
+
+    renderOnHoldRequests() {
+        return this.props.data.onHoldRequests.map( ({ id, description, status }) => {
+            return (    
+                        <div key={ id }>
+                            <li>
+                                { description } ----------- { status }
+                                <button id="on-hold-requests-submit-button">
+                                    Details
+                                </button>
+                            </li>
+                            <br/>
+                        </div>
+            )
+        })
+    }
+
+    setShow(bool) {
+
+      //document.getElementsByClassName("modal").setAttribute.isOpen = true
+
+        this.setState({
+            show: bool
+        })
+
     }
 
     componentDidMount() {
@@ -115,6 +145,11 @@ class OnHoldRequests extends React.Component {
     render() {
             const isOnHoldRequests = true
             const user = this.props.user
+            if(this.props.data.loading)
+            {
+                return <div>Loading...</div>
+            }
+            const onHoldRequests = this.props.data.onHoldRequests
             return (
                 <div>
                     <TopBannerV1 isOnHoldRequests={isOnHoldRequests} user={user}/>
@@ -125,15 +160,24 @@ class OnHoldRequests extends React.Component {
                             </div>
                         </div>
                         <div className="on-hold-requests-m">
-                            <form className="on-hold-requests-main" onSubmit={this.onSubmit.bind(this)}>
-                                <div className="on-hold-requests-main-left">
+                            <div className="on-hold-requests-main">
 
-                                </div>
-                                <div className="on-hold-requests-main-right">
+                                <ul className="render-on-hold-requests">
+                                    {this.renderOnHoldRequests()}
+                                </ul>
+                                
 
-                                </div>
-                                <input id="on-hold-requests-submit-button" type="submit" value="Go!"/>
-                            </form>
+                                {/* 
+
+                                    <Modal isOpen={this.state.show}
+                                           className="modal"
+                                           onAttemptClose={() => this.setShow(false)}>
+                                        <button onClick={() => this.setShow(false)}>Close</button>       
+                                        Some text
+                                    </Modal> */}
+
+
+                            </div>
                         </div>
                         <Footer/>
                     </div>
@@ -166,10 +210,13 @@ const mutation = gql`
         }
 `
 
-export default 
+export default
+
+graphql(query) (
     graphql(mutation)(
-        GoogleApiWrapper({
-            apiKey: process.env.REACT_APP_GOOGLE_SECRET_KEY
-        })(OnHoldRequests)
-    )
+                        GoogleApiWrapper({
+                            apiKey: process.env.REACT_APP_GOOGLE_SECRET_KEY
+                        })(OnHoldRequests)
+                    )
+)
 
