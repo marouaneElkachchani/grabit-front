@@ -7,6 +7,7 @@ import SignIn from '../pages/SignIn/SignIn'
 import ProfileV1 from '../pages-v1/Profile-v1/Profile-v1'
 import OrderRequest from '../pages/OrderRequest/OrderRequest'
 import OnHoldRequests from '../pages/OnHoldRequests/OnHoldRequests'
+import Request from '../pages/Request/Request'
 import { graphql } from 'react-apollo'
 import query from '../../queries/fetchUserInfo'
 
@@ -41,8 +42,11 @@ class App extends React.Component {
             <Route path="/order-request/new" render={props => {
                 return <OrderRequest {...props} user={user}/>
             }}/>
-            <Route path="/on-hold-requests/accept" render={props => {
+            <Route exact path="/on-hold-requests" render={props => {
                 return <OnHoldRequests {...props} user={user}/>
+            }}/>
+            <Route path="/on-hold-requests/:requestId" render={props => {
+                return <Request {...props} user={user} />
             }}/>
             <Redirect to={`/profile/${user.id}`}/>
         </Switch>

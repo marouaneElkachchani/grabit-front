@@ -1,5 +1,6 @@
 .on-hold {
     background:rgb(240, 240, 240);
+    min-height: 580px;
 }
 
 .on-hold .on-hold-requests-t {
@@ -43,7 +44,6 @@
     flex-wrap: wrap;
     margin: 50px;
     margin-top: 0px;
-    margin-bottom: 140px;
     width: 920px;
     background: #FFFFFF;
     border-bottom-left-radius: 4px;
@@ -61,6 +61,10 @@
 .on-hold .on-hold-requests-m .on-hold-requests-main .render-on-hold-requests {
     font-family: Helvetica;
     margin-top: 40px;
+}
+
+.on-hold .footer{
+    margin-top: 0px;
 }
 
 textarea {

@@ -36,7 +36,7 @@ class TopBannerV1 extends React.Component {
             )
         } else {
             return (
-                <Link to="/on-hold-requests/accept">
+                <Link to="/on-hold-requests">
                     <button id="request-an-order-button">
                         <img src={requestsWhite} alt="Grabit"/>
                         Incomming Requests
@@ -50,6 +50,7 @@ class TopBannerV1 extends React.Component {
             const isProfile = this.props.isProfile
             const isOrderRequest = this.props.isOrderRequest
             const isOnHoldRequests = this.props.isOnHoldRequests
+            const isRequest = this.props.isRequest
             const user = this.props.user
             if(isProfile) {
                 return (
@@ -64,7 +65,7 @@ class TopBannerV1 extends React.Component {
                         </a>
                     </div>
                 )
-            } else if(isOrderRequest || isOnHoldRequests) {
+            } else if(isOrderRequest || isOnHoldRequests || isRequest) {
                 return(
                     <div className="top-banner-order-request">
                         <Link to="/" id="grabit-icon-box-order-request">
