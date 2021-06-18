@@ -30,7 +30,7 @@ class Requests extends React.Component {
             )
         } else {
             return (
-                <h3>Delivered Requests</h3>
+                <h3>Assigned Requests</h3>
             )
         }
     }

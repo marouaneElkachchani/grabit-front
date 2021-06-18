@@ -172,6 +172,16 @@ class OrderRequest extends React.Component {
             this.setState({ errors })
             return null
         }
+        if(this.state.originPlaceId === '') {
+            const errors = ["Origin place doesn't show on map"]
+            this.setState({ errors })
+            return null
+        }
+        if(this.state.destinationPlaceId === '') {
+            const errors = ["Destination place doesn't show on map"]
+            this.setState({ errors })
+            return null
+        }
         this.props.mutate({
             variables: {
                 description: this.state.description,
@@ -180,7 +190,9 @@ class OrderRequest extends React.Component {
                 schedule: this.state.schedule,
                 costRange: this.state.costRange,
                 addressDeparture: this.state.addressDeparture,
-                deliveryAddress: this.state.deliveryAddress
+                deliveryAddress: this.state.deliveryAddress,
+                originPlaceId: this.state.originPlaceId,
+                destinationPlaceId: this.state.destinationPlaceId
             },
             refetchQueries:[{query}]
         }).then( () => {
@@ -193,6 +205,8 @@ class OrderRequest extends React.Component {
                 costRange: {from: 0, to: 0},
                 addressDeparture: "",
                 deliveryAddress: "",
+                originPlaceId: "",
+                destinationPlaceId: "",
                 errors: []
             })
         }).then( () => {
@@ -327,7 +341,9 @@ const mutation = gql`
                         $schedule: String!,
                         $costRange: CreateCostRangeInput!,
                         $addressDeparture: String!,
-                        $deliveryAddress: String!
+                        $deliveryAddress: String!,
+                        $originPlaceId: String!,
+                        $destinationPlaceId: String!
                             ) {
             createRequest(data: {   description: $description,
                                     items: $items,
@@ -335,7 +351,9 @@ const mutation = gql`
                                     schedule: $schedule,
                                     costRange: $costRange,
                                     addressDeparture: $addressDeparture,
-                                    deliveryAddress: $deliveryAddress }
+                                    deliveryAddress: $deliveryAddress,
+                                    originPlaceId: $originPlaceId,
+                                    destinationPlaceId: $destinationPlaceId}
                        ) {
                                 id
                                 description
@@ -353,6 +371,8 @@ const mutation = gql`
                                 }
                                 addressDeparture
                                 deliveryAddress
+                                originPlaceId
+                                destinationPlaceId
             }
         }
 `

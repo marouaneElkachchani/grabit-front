@@ -20,10 +20,10 @@ class OnHoldRequests extends React.Component {
         return this.props.data.onHoldRequests.map( (request) => {
             return (    
                         <div key={ request.id }>
-                            <li>
+                            <li className="on-hold-requests-info-and-button-block">
                                 { request.description } ----------- { request.status }
                                 <Link to={`/on-hold-requests/${request.id}`}>
-                                    <button id="on-hold-requests-submit-button">
+                                    <button id="on-hold-requests-details-button">
                                         Details
                                     </button>
                                 </Link>

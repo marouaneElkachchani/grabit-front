@@ -50,50 +50,22 @@
     border-bottom-right-radius: 4px;
 }
 
-.on-hold .on-hold-requests-m .on-hold-requests-main .modal {
-    color: #F71117;
-}
-
-.on-hold .on-hold-requests-m .on-hold-requests-main section {
-    margin-top: 20px;
-}
-
 .on-hold .on-hold-requests-m .on-hold-requests-main .render-on-hold-requests {
     font-family: Helvetica;
     margin-top: 40px;
+}
+
+.on-hold .on-hold-requests-m .on-hold-requests-main .render-on-hold-requests .on-hold-requests-info-and-button-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .on-hold .footer{
     margin-top: 0px;
 }
 
-textarea {
-    background: #FFFFFF;
-    border: 1px solid #DEDEDE;
-    border-radius: 2px;
-    width: 320px;
-    height: 120px;
-    margin-top: 15px;
-}
-
-#map {
-    margin-top: 30px;
-    height: 470px;
-    width: 350px;
-}
-
-.controls {
-    margin-top: 10px;
-    border: 1px solid transparent;
-    border-radius: 2px 0 0 2px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 32px;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-#on-hold-requests-submit-button {
+#on-hold-requests-details-button {
     width: 110px;
     height: 30px;
     background: #F71117;
@@ -103,7 +75,7 @@ textarea {
     cursor: pointer;
     font-weight: bold;
     border: 3px solid #F71117;
-    margin-left: 30px;
+    margin-left: 130px;
 }
 
 #on-hold-requests-errors {

@@ -25,6 +25,8 @@ export default gql`
                     driver {
                         name
                     }
+                    originPlaceId
+                    destinationPlaceId
         }
     }
 `
