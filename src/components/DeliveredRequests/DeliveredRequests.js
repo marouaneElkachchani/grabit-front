@@ -1,25 +1,29 @@
 import React from 'react'
-import './Requests.css'
+import './DeliveredRequests.css'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
 import query from '../../queries/fetchRequests'
 
-class Requests extends React.Component {
+class DeliveredRequests extends React.Component {
 
     constructor(props) {
         super(props)
     }
 
-    renderRequests() {
+    renderDeliveredRequests() {
         return this.props.data.myRequests.map( ({ id, description, status }) => {
-            return (    
-                        <div key={ id }>
-                            <li>
-                                { description } ----------- { status }
-                            </li>
-                            <br/>
-                        </div>
-            )
+            if( status === 'DELIVERED') {
+                return (
+                    <div key={ id }>
+                        <li>
+                            { description } ----------- { status }
+                        </li>
+                        <br/>
+                    </div>
+                )
+            } else {
+                return
+            }
         })
     }
 
@@ -32,12 +36,12 @@ class Requests extends React.Component {
         return (
             <div className="main-right" >
                 <div className="main-right-top">
-                    <h3>Requests</h3>
+                    <h3>Delivered Requests</h3>
                     <button id="logout" onClick={logout}>Logout</button>
                 </div>
                 <div className="main-right-form">
                     <ul>
-                        { this.renderRequests() }
+                        { this.renderDeliveredRequests() }
                     </ul>
                 </div>
             </div>
@@ -45,4 +49,4 @@ class Requests extends React.Component {
     }
 }
 
-export default graphql(query)(Requests)
+export default graphql(query)(DeliveredRequests)

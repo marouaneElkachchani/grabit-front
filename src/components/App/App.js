@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   logout() {
-    localStorage.removeItem('token')
+    window.localStorage.removeItem('token')
     document.location.reload()
   }
 

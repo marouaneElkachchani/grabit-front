@@ -12,8 +12,8 @@ const httpLink = createUploadLink({
     credentials: "same-origin"
 })
 let token = ""
-if(localStorage.getItem('token')) {
-    token = localStorage.getItem('token')
+if(window.localStorage.getItem('token')) {
+    token = window.localStorage.getItem('token')
 }
 const authLink = setContext((_, { headers }) => {
     return {

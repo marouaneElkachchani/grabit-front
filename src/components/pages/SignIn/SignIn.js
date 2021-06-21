@@ -20,6 +20,7 @@ class SignIn extends React.Component {
 
     onSubmit(event) {
         event.preventDefault()
+        window.localStorage.removeItem('token')
         if(this.state.email === "") {
             const errors = ["Enter email"]
             this.setState({ errors })
@@ -36,7 +37,7 @@ class SignIn extends React.Component {
                 password: this.state.password
             }
         }).then( result => {
-            localStorage.setItem('token', result.data.login.token)
+            window.localStorage.setItem('token', result.data.login.token)
             this.setState({
                 email: "",
                 password: ""

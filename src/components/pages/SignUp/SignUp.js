@@ -24,6 +24,7 @@ class SignUp extends React.Component {
     onSubmit(event) {
         const role = this.props.match.params.role.toUpperCase()
         event.preventDefault()
+        window.localStorage.removeItem('token')
         if(this.state.name === "") {
             const errors = ["Enter name"]
             this.setState({ errors })
@@ -54,7 +55,7 @@ class SignUp extends React.Component {
                 pictureUrl: this.state.pictureUrl
             }
         }).then( result => {
-            localStorage.setItem('token', result.data.createUser.token)
+            window.localStorage.setItem('token', result.data.createUser.token)
             this.setState({
                 name: "",
                 email: "",

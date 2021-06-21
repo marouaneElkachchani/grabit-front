@@ -4,6 +4,8 @@ import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import SideBar from '../../SideBar/SideBar'
 import ProfileSettings from '../../ProfileSettings/ProfileSettings'
 import Requests from '../../Requests/Requests'
+import AssignedRequests from '../../AssignedRequests/AssignedRequests'
+import DeliveredRequests from '../../DeliveredRequests/DeliveredRequests'
 import Address from '../../Address/Address'
 import Footer from '../../Footer/Footer'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -30,6 +32,12 @@ class ProfileV1 extends React.Component {
                         }}/>
                         <Route path={`${url}/requests`} render={ props => {
                             return <Requests {...props} user={user} logout={logout}/>
+                        }}/>
+                        <Route path={`${url}/assigned-requests`} render={ props => {
+                            return <AssignedRequests {...props} user={user} logout={logout}/>
+                        }}/>
+                        <Route path={`${url}/delivered-requests`} render={ props => {
+                            return <DeliveredRequests {...props} user={user} logout={logout}/>
                         }}/>
                         <Route path={`${url}/address`} render={ props => {
                             return <Address {...props} address={user.address} logout={logout}/>

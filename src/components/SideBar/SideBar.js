@@ -8,6 +8,7 @@ import requestsDark from './assets/requests-dark.png'
 import requestsWhite from './assets/requests-white.png'
 import addressDark from './assets/address-dark.png'
 import addressWhite from './assets/address-white.png'
+import ovalAsd from './assets/oval-asd.png'
 
 const SideBar = props => {
     const user = props.user
@@ -23,16 +24,34 @@ const SideBar = props => {
           )
         }
     }
-    const renderRequestsOrAssignedRequestsTitle = () => {
-        if(props.user.role === 'CUSTOMER') {
+    const renderCustomersOrDriversRequests = () => {
+        if(user.role === 'CUSTOMER') {
             return (
-                <p>Requests</p>
+                <NavLink to={`${url}/requests`} activeClassName="menu-option-clicked">
+                    <li>
+                        <img id="requests-dark" src={requestsDark} alt="Grabit"/>
+                        <p>Requests</p>
+                    </li>
+                </NavLink>
             )
         } else {
             return (
-                <p>Assigned Requests</p>
+                <div>
+                    <NavLink to={`${url}/assigned-requests`} activeClassName="menu-option-clicked">
+                        <li>
+                            <img id="requests-dark" src={requestsDark} alt="Grabit"/>
+                            <p>Assigned Requests</p>
+                        </li>
+                    </NavLink>
+                    <NavLink to={`${url}/delivered-requests`} activeClassName="menu-option-clicked">
+                        <li>
+                            <img id="requests-dark" src={ovalAsd} alt="Grabit"/>
+                            <p>Delivered Requests</p>
+                        </li>
+                    </NavLink>
+                </div>
             )
-        }
+        } 
     }
     const topMenu = (
         <div className="main-left-top">
@@ -49,13 +68,8 @@ const SideBar = props => {
                         <img id="user-dark" src={userDark} alt="Grabit"/>
                         <p>Profile Settings</p>
                     </li>
-                </NavLink>    
-                <NavLink to={`${url}/requests`} activeClassName="menu-option-clicked">
-                    <li>
-                        <img id="requests-dark" src={requestsDark} alt="Grabit"/>
-                        {renderRequestsOrAssignedRequestsTitle()}
-                    </li>
                 </NavLink>
+                { renderCustomersOrDriversRequests() }
                 <NavLink to={`${url}/address`} activeClassName="menu-option-clicked">
                     <li>
                         <img id="address-dark" src={addressDark} alt="Grabit"/>

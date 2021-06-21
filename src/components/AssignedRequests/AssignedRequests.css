@@ -1,0 +1,19 @@
+#requests-info-and-button-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#request-delivered-button {
+    width: 110px;
+    height: 30px;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-right: 10px;
+    margin-left: 10px;
+}

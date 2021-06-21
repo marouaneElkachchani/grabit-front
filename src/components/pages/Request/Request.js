@@ -11,6 +11,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import query from '../../../queries/fetchRequest'
 import queryFetchRequests from '../../../queries/fetchRequests'
+import queryFetchOnHoldRequests from '../../../queries/fetchOnHoldRequests'
 
 const style = {
     width: '27.38%',
@@ -36,6 +37,24 @@ class Request extends React.Component {
                 </div>
                 )
         })
+    }
+
+    componentDidMount() {
+        
+        //Init Google Map
+        if ( document.getElementById("map-for-driver") )
+            {
+                const map = new this.props.google.maps.Map(document.getElementById("map-for-driver"), {
+                    mapTypeControl: false,
+                    center: { lat: 33.9646, lng: -6.8479 },
+                    zoom: 13,
+                    style
+                })
+                const directionsRenderer =  new this.props.google.maps.DirectionsRenderer()
+                directionsRenderer.setMap(map)
+                this.route(directionsRenderer)
+            }
+        
     }
 
     componentDidUpdate() {
@@ -78,10 +97,10 @@ class Request extends React.Component {
             variables: {
                 id: this.props.data.request.id,
             },
-            refetchQueries:[{ query: queryFetchRequests}]
+            refetchQueries:[{ query: queryFetchRequests}, { query: queryFetchOnHoldRequests}]
         })
         .then( () => {
-           this.props.history.push(`/profile/${this.props.user.id}/requests`)
+           this.props.history.push(`/profile/${this.props.user.id}/assigned-requests`)
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
