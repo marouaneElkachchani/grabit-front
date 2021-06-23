@@ -42,7 +42,18 @@ class ProfileSettings extends React.Component {
         }
     }
 
+    showSpinner(option) {
+        document.getElementById(`${option}-submit-button-value`).hidden = true
+        document.getElementById(`${option}-submit-button-icon`).hidden = false
+    }
+
+    hideSpinner(option) {
+        document.getElementById(`${option}-submit-button-value`).hidden = false
+        document.getElementById(`${option}-submit-button-icon`).hidden = true
+    }
+
     uploadImage() {
+        this.showSpinner('upload')
         this.props.mutate({
             variables: {
                 picture: this.state.picture
@@ -50,14 +61,17 @@ class ProfileSettings extends React.Component {
         }).then( (result) => {
             this.setState({ picture: false,
                             pictureUrl: result.data.updateUser.pictureUrl,
-                            errors: [] })       
+                            errors: [] }) 
+            this.hideSpinner('upload')
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner('upload')
         })
     }
 
     removeImage() {
+        this.showSpinner('remove')
         this.props.mutate({
             variables: {
                 picture: ''
@@ -65,28 +79,34 @@ class ProfileSettings extends React.Component {
         }).then( (result) => {
             this.setState({ picture: false,
                             pictureUrl: '',
-                            errors: [] })       
+                            errors: [] })
+            this.hideSpinner('remove')
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner('remove')
         })
     }
 
     onSubmit(event) {
+        this.showSpinner('settings')
         event.preventDefault()
         if(this.state.name === "") {
             const errors = ["Enter name"]
             this.setState({ errors })
+            this.hideSpinner('settings')
             return null
         }
         if(this.state.email === "") {
             const errors = ["Enter email"]
             this.setState({ errors })
+            this.hideSpinner('settings')
             return null
         }
         if(this.state.phone === "") {
             const errors = ["Enter phone"]
             this.setState({ errors })
+            this.hideSpinner('settings')
             return null
         }
         this.props.mutate({
@@ -98,6 +118,7 @@ class ProfileSettings extends React.Component {
             }
         }).then( () => {
             this.setState({ errors: [] })
+            this.hideSpinner('settings')
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => {
                 if(err.code === 3010){
@@ -106,6 +127,7 @@ class ProfileSettings extends React.Component {
                 return err.message
             })
             this.setState({ errors })
+            this.hideSpinner('settings')
         })
     }
 
@@ -116,7 +138,10 @@ class ProfileSettings extends React.Component {
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Profile Settings</h3>
-                    <button id="logout" onClick={logout}>Logout</button>
+                    <button id="logout" onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                    </button>
                 </div>
                 <div className="main-right-form">
                     <div className="main-right-form-inputs">
@@ -156,7 +181,10 @@ class ProfileSettings extends React.Component {
                                     {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                             </div>
                             <br/>
-                            <button type="submit">Update</button>
+                            <button className="settings-submit-button" type="submit" onSubmit={this.onSubmit.bind(this)}>
+                                    <p id="settings-submit-button-value" hidden={false}>Update</p>
+                                    <div id="settings-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                            </button>
                         </form>    
                     </div>
                     <div className="main-right-form-image">
@@ -164,8 +192,14 @@ class ProfileSettings extends React.Component {
                         <label htmlFor="file" className="label-file">Choose file</label>
                         <input id="file" className="input-file" type="file" onChange={this.handlePictureSelected.bind(this)}></input>
                         <br/>
-                        <button id="upload" onClick={this.uploadImage}>Upload</button>
-                        <button id="remove" onClick={this.removeImage}>Remove</button>
+                        <button id="upload" onClick={this.uploadImage}>
+                            <p id="upload-submit-button-value" hidden={false}>Upload</p>
+                            <div id="upload-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                        </button>
+                        <button id="remove" onClick={this.removeImage}>
+                            <p id="remove-submit-button-value" hidden={false}>Remove</p>
+                            <div id="remove-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                        </button>
                     </div>
                 </div>
         </div>

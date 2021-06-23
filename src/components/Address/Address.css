@@ -5,3 +5,19 @@
     font-size: 12px;
     font-weight: 500;
 }
+
+#address-button {
+    width: 289px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-top: 17px;
+}

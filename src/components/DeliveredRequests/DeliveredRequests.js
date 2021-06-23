@@ -37,12 +37,13 @@ class DeliveredRequests extends React.Component {
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Delivered Requests</h3>
-                    <button id="logout" onClick={logout}>Logout</button>
+                    <button id="logout" onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                    </button>
                 </div>
                 <div className="main-right-form">
-                    <ul>
-                        { this.renderDeliveredRequests() }
-                    </ul>
+                    <ul>{this.renderDeliveredRequests()}</ul>
                 </div>
             </div>
         )

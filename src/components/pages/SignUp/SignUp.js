@@ -21,28 +21,43 @@ class SignUp extends React.Component {
         }
     }
 
+    showSpinner() {
+        document.getElementById('sign-up-submit-button-value').hidden = true
+        document.getElementById('sign-up-submit-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('sign-up-submit-button-value').hidden = false
+        document.getElementById('sign-up-submit-button-icon').hidden = true
+    }
+
     onSubmit(event) {
+        this.showSpinner()
         const role = this.props.match.params.role.toUpperCase()
         event.preventDefault()
         window.localStorage.removeItem('token')
         if(this.state.name === "") {
             const errors = ["Enter name"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.email === "") {
             const errors = ["Enter email"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.password === "") {
             const errors = ["Enter password"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.phone === "") {
             const errors = ["Enter phone"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         this.props.mutate({
@@ -63,6 +78,7 @@ class SignUp extends React.Component {
                 phone: "",
                 pictureUrl: ""
             })
+            this.hideSpinner()
         }).then( () => {
             document.location.reload()
         }).catch( res => {
@@ -73,6 +89,7 @@ class SignUp extends React.Component {
                 return err.message
             })
             this.setState({ errors })
+            this.hideSpinner()
         })
     }
 
@@ -141,7 +158,12 @@ class SignUp extends React.Component {
                                     <div id="errors">
                                         {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                                     </div>
-                                    <input className="sign-up-submit-button" type="submit" value="Sign up"/>
+
+                                    <button className="sign-up-submit-button" onSubmit={this.onSubmit.bind(this)}>
+                                        <p id="sign-up-submit-button-value" hidden={false}>Sign up</p>
+                                        <div id="sign-up-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                                    </button>
+
                                 </form>
                             </div>
                         </div>

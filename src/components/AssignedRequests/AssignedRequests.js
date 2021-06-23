@@ -11,6 +11,16 @@ class AssignedRequests extends React.Component {
         super(props)
     }
 
+    showSpinner() {
+        document.getElementById('request-delivered-button-value').hidden = true
+        document.getElementById('request-delivered-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('request-delivered-button-value').hidden = false
+        document.getElementById('request-delivered-button-icon').hidden = true
+    }
+
     renderAssignedRequests() {
         return this.props.data.myRequests.map( ({ id, description, status }) => {
             if( status === 'ASSIGNED') {
@@ -19,7 +29,8 @@ class AssignedRequests extends React.Component {
                         <li id="requests-info-and-button-block">
                             { description } ----------- { status }
                             <button id="request-delivered-button" onClick={ e => { e.preventDefault(); this.deliver(id) }}>
-                                Delivered!
+                                    <p id="request-delivered-button-value" hidden={false}>Delivered!</p>
+                                    <div id="request-delivered-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
                             </button>
                         </li>
                         <br/>
@@ -32,6 +43,7 @@ class AssignedRequests extends React.Component {
     }
 
     deliver(id) {
+        this.showSpinner()
         this.props.mutate({
             variables: {
                 id
@@ -43,6 +55,7 @@ class AssignedRequests extends React.Component {
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner()
         })
     }
 
@@ -56,7 +69,10 @@ class AssignedRequests extends React.Component {
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Assigned Requests</h3>
-                    <button id="logout" onClick={logout}>Logout</button>
+                    <button id="logout" onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                    </button>
                 </div>
                 <div className="main-right-form">
                     <ul>

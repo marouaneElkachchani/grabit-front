@@ -144,14 +144,19 @@ textarea {
 }
 
 .request .request-m .request-main .request-main-right .input-address-departure .input-address-departure-value {
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 22px;
+    color: #222A30;
+    font-weight: 500;
     margin-left: 25px;
     margin-top: -25px;
 }
 
 .request .request-m .request-main .request-main-right .input-ovals-address {
     font-family: Helvetica;
-    font-size: 15px;
-    line-height: 29px;
+    font-size: 14px;
+    line-height: 22px;
     color: #222A30;
     font-weight: 500;
     letter-spacing: 1.5px;
@@ -163,6 +168,11 @@ textarea {
 }
 
 .request .request-m .request-main .request-main-right .input-delivery-address .input-delivery-address-value {
+    font-family: Helvetica;
+    font-size: 15px;
+    line-height: 29px;
+    color: #222A30;
+    font-weight: 500;
     margin-left: 25px;
     margin-top: -22px;
 }
@@ -223,6 +233,9 @@ textarea {
 #request-submit-button {
     width: 350px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background: #F71117;
     border-radius: 4px;
     color: #FFFFFF;

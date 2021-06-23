@@ -26,6 +26,7 @@ class Request extends React.Component {
             travelMode: this.props.google.maps.TravelMode.DRIVING
         }
         this.renderItems = this.renderItems.bind(this)
+        this.initGoogleMap = this.initGoogleMap.bind(this)
     }
 
     renderItems(items) {
@@ -39,26 +40,7 @@ class Request extends React.Component {
         })
     }
 
-    componentDidMount() {
-        
-        //Init Google Map
-        if ( document.getElementById("map-for-driver") )
-            {
-                const map = new this.props.google.maps.Map(document.getElementById("map-for-driver"), {
-                    mapTypeControl: false,
-                    center: { lat: 33.9646, lng: -6.8479 },
-                    zoom: 13,
-                    style
-                })
-                const directionsRenderer =  new this.props.google.maps.DirectionsRenderer()
-                directionsRenderer.setMap(map)
-                this.route(directionsRenderer)
-            }
-        
-    }
-
-    componentDidUpdate() {
-        //Init Google Map
+    initGoogleMap() {
         const map = new this.props.google.maps.Map(document.getElementById("map-for-driver"), {
             mapTypeControl: false,
             center: { lat: 33.9646, lng: -6.8479 },
@@ -68,6 +50,16 @@ class Request extends React.Component {
         const directionsRenderer =  new this.props.google.maps.DirectionsRenderer()
         directionsRenderer.setMap(map)
         this.route(directionsRenderer)
+    }
+
+    componentDidMount() {
+        //Init Google Map
+        if (document.getElementById("map-for-driver"))
+            { this.initGoogleMap() }
+    }
+
+    componentDidUpdate() {
+        this.initGoogleMap()
     }
 
     route(directionsRenderer) {
@@ -91,7 +83,18 @@ class Request extends React.Component {
         )
     }
 
+    showSpinner() {
+        document.getElementById('request-submit-button-value').hidden = true
+        document.getElementById('request-submit-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('request-submit-button-value').hidden = false
+        document.getElementById('request-submit-button-icon').hidden = true
+    }
+
     onSubmit(event) {
+        this.showSpinner()
         event.preventDefault()
         this.props.mutate({
             variables: {
@@ -100,10 +103,12 @@ class Request extends React.Component {
             refetchQueries:[{ query: queryFetchRequests}, { query: queryFetchOnHoldRequests}]
         })
         .then( () => {
+           this.hideSpinner() 
            this.props.history.push(`/profile/${this.props.user.id}/assigned-requests`)
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner()
         })
     }
 
@@ -185,7 +190,10 @@ class Request extends React.Component {
                                         {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                                     </div>
                                 </div>
-                                <input id="request-submit-button" type="submit" value="Go!"/>
+                                <button id="request-submit-button" type="submit" onSubmit={this.onSubmit.bind(this)}>
+                                    <p id="request-submit-button-value" hidden={false}>Go!</p>
+                                    <div id="request-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                                </button>
                             </form>
                         </div>
                         <Footer/>

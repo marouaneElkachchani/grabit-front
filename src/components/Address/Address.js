@@ -21,11 +21,23 @@ class Address extends React.Component {
         }
     }
 
+    showSpinner() {
+        document.getElementById('address-submit-button-value').hidden = true
+        document.getElementById('address-submit-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('address-submit-button-value').hidden = false
+        document.getElementById('address-submit-button-icon').hidden = true
+    }
+
     onSubmit(event) {
+        this.showSpinner()
         event.preventDefault()
         if(this.state.address === "") {
             const errors = ["Enter address"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         this.props.mutate({
@@ -34,21 +46,25 @@ class Address extends React.Component {
             }
         }).then( () => {
             this.setState({ errors: [] })
+            this.hideSpinner()
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner()
         })
     }
 
     render() {
         const address = this.props.address
         const logout = this.props.logout
-
         return (
             <div className="main-right">
                 <div className="main-right-top">
                     <h3>Address</h3>
-                    <button id="logout" onClick={logout}>Logout</button>
+                    <button id="logout" onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                    </button>
                 </div>
                 <div id="address-form" className="main-right-form">
                     <div className="main-right-form-inputs">
@@ -66,12 +82,15 @@ class Address extends React.Component {
                                         {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                             </div>
                             <br/>
-                            <button id="address-button" type="submit">Update</button>
+                            <button id="address-button" type="submit" onSubmit={this.onSubmit.bind(this)}>
+                                    <p id="address-submit-button-value" hidden={false}>Update</p>
+                                    <div id="address-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 

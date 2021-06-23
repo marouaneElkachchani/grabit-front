@@ -1,4 +1,3 @@
-
 .block-1 {
     display: flex;
     flex-direction: column;
@@ -18,9 +17,16 @@
     margin-top: 60px;
 }
 
-.block-1 .block-1-top button {
+.block-1 .block-1-top a {
+    text-decoration: none;
+}
+
+.block-1 .block-1-top a button {
     height: 40px;
     width: 160px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     cursor: pointer;
     font-family: Helvetica;
     font-size: 14px;

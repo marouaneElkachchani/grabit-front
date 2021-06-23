@@ -83,6 +83,22 @@ input {
     margin-top: 17px;
 }
 
+.profile-main .main-right .main-right-form .main-right-form-inputs .settings-submit-button {
+    width: 289px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #F71117;
+    border-radius: 4px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid #F71117;
+    margin-top: 17px;
+}
+
 .profile-main .main-right .main-right-form .main-right-form-image {
     margin-bottom: 80px;
 }
@@ -98,6 +114,9 @@ input {
 #remove {
     height: 28px;
     width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background: #849FB1;
     border-radius: 2px;
     color: #FFFFFF;
@@ -105,13 +124,16 @@ input {
     cursor: pointer;
     font-weight:700;
     border: 1px solid #849FB1;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin-left: 130px;
+    margin-top: -28px;
 }
 
 #upload {
     height: 28px;
     width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background: #333C45;
     border-radius: 2px;
     color: #FFFFFF;
@@ -126,6 +148,9 @@ input {
 #logout {
     height: 28px;
     width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     background: #333C45;
     border-radius: 2px;
     color: #FFFFFF;

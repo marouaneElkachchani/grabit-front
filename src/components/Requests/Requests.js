@@ -33,12 +33,13 @@ class Requests extends React.Component {
             <div className="main-right" >
                 <div className="main-right-top">
                     <h3>Requests</h3>
-                    <button id="logout" onClick={logout}>Logout</button>
+                    <button id="logout" onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                    </button>
                 </div>
                 <div className="main-right-form">
-                    <ul>
-                        { this.renderRequests() }
-                    </ul>
+                    <ul>{this.renderRequests()}</ul>
                 </div>
             </div>
         )

@@ -90,7 +90,10 @@ class LandingPage extends React.Component {
                   <button>Sign in</button>
                 </Link>
                 <Link to="" onClick={logout} hidden={!this.userIsSignedIn()}>
-                  <button>Logout</button>
+                  <button onClick={logout}>
+                        <p id="logout-value" hidden={false}>Logout</p>
+                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                  </button>
                 </Link>
               </div>
               <div className="block-1-middle">

@@ -3,7 +3,6 @@ import './SignIn.css'
 import { Link } from 'react-router-dom'
 import TopBannerV1 from '../../TopBanner-v1/TopBanner-v1'
 import facebookLogo from './assets/facebook-logo.png'
-
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
@@ -18,17 +17,30 @@ class SignIn extends React.Component {
         }
     }
 
+    showSpinner() {
+        document.getElementById('sign-in-submit-button-value').hidden = true
+        document.getElementById('sign-in-submit-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('sign-in-submit-button-value').hidden = false
+        document.getElementById('sign-in-submit-button-icon').hidden = true
+    }
+
     onSubmit(event) {
         event.preventDefault()
         window.localStorage.removeItem('token')
+        this.showSpinner()
         if(this.state.email === "") {
             const errors = ["Enter email"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.password === "") {
             const errors = ["Enter password"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         this.props.mutate({
@@ -42,9 +54,11 @@ class SignIn extends React.Component {
                 email: "",
                 password: ""
             })
+            this.hideSpinner()
         }).then( () => {
             document.location.reload()
         }).catch( res => {
+            this.hideSpinner()
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
         })
@@ -89,7 +103,10 @@ class SignIn extends React.Component {
                                 <div id="errors">
                                     {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                                 </div>
-                                <input className="sign-in-submit-button" type="submit" value="Sign in"/>
+                                <button className="sign-in-submit-button" onSubmit={this.onSubmit.bind(this)}>
+                                    <p id="sign-in-submit-button-value" hidden={false}>Sign in</p>
+                                    <div id="sign-in-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                                </button>
                             </form>
                         </div>
                     </div>

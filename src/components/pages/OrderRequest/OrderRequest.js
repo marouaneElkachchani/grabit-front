@@ -135,51 +135,71 @@ class OrderRequest extends React.Component {
         })
     }
 
+    showSpinner() {
+        document.getElementById('order-request-submit-button-value').hidden = true
+        document.getElementById('order-request-submit-button-icon').hidden = false
+    }
+
+    hideSpinner() {
+        document.getElementById('order-request-submit-button-value').hidden = false
+        document.getElementById('order-request-submit-button-icon').hidden = true
+    }
+
     onSubmit(event) {
+        this.showSpinner()
         event.preventDefault()
         if(this.state.description === "") {
             const errors = ["Enter Description"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.items.length === 0) {
             const errors = ["Enter Items"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.date === '') {
             const errors = ["Enter Date"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.schedule === '') {
             const errors = ["Enter Schedule"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.costRange.from === 0 || this.state.costRange.to === 0) {
             const errors = ["Enter Cost Range"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.addressDeparture === '') {
             const errors = ["Enter Address Departure"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.deliveryAddress === '') {
             const errors = ["Enter Delivery Address"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.originPlaceId === '') {
             const errors = ["Origin place doesn't show on map"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         if(this.state.destinationPlaceId === '') {
             const errors = ["Destination place doesn't show on map"]
             this.setState({ errors })
+            this.hideSpinner()
             return null
         }
         this.props.mutate({
@@ -210,11 +230,13 @@ class OrderRequest extends React.Component {
                 errors: []
             })
         }).then( () => {
-           const id = this.props.user.id 
+           this.hideSpinner()
+           const id = this.props.user.id
            this.props.history.push(`/profile/${id}/requests`)
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
+            this.hideSpinner()
         })
     }
 
@@ -323,7 +345,10 @@ class OrderRequest extends React.Component {
                                         {this.state.errors.map( error => <div key={ error }>{ error }</div > )}
                                     </div>
                                 </div>
-                                <input id="order-request-submit-button" type="submit" value="Request"/>
+                                <button id="order-request-submit-button" type="submit" onSubmit={this.onSubmit.bind(this)}>
+                                    <p id="order-request-submit-button-value" hidden={false}>Request</p>
+                                    <div id="order-request-submit-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                                </button>
                             </form>
                         </div>
                         <Footer/>

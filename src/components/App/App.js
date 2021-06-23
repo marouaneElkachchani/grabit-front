@@ -18,7 +18,13 @@ class App extends React.Component {
     this.logout = this.logout.bind(this)
   }
 
+  showSpinner() {
+    document.getElementById('logout-value').hidden = true
+    document.getElementById('logout-icon').hidden = false
+  }
+
   logout() {
+    this.showSpinner()
     window.localStorage.removeItem('token')
     document.location.reload()
   }
