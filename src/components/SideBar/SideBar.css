@@ -84,6 +84,12 @@
     margin-left: 20px;
 }
 
+#location-dark {
+    height: 21px;
+    width: 22px;
+    margin-left: 15px;
+}
+
 #address-dark, #address-white {
     height: 19px;
     width: 21px;

@@ -9,6 +9,7 @@ import requestsWhite from './assets/requests-white.png'
 import addressDark from './assets/address-dark.png'
 import addressWhite from './assets/address-white.png'
 import ovalAsd from './assets/oval-asd.png'
+import locationIcon from './assets/location-icon.png'
 
 const SideBar = props => {
     const user = props.user
@@ -45,7 +46,7 @@ const SideBar = props => {
                     </NavLink>
                     <NavLink to={`${url}/delivered-requests`} activeClassName="menu-option-clicked">
                         <li>
-                            <img id="requests-dark" src={ovalAsd} alt="Grabit"/>
+                            <img id="location-dark" src={locationIcon} alt="Grabit"/>
                             <p>Delivered Requests</p>
                         </li>
                     </NavLink>
