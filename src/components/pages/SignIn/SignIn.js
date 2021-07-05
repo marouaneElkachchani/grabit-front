@@ -60,6 +60,9 @@ class SignIn extends React.Component {
         }).catch( res => {
             this.hideSpinner()
             const errors = res.graphQLErrors.map( err => err.message )
+            // if jwt expired error:     
+            // window.localStorage.removeItem('token')
+            // document.location.reload()
             this.setState({ errors })
         })
     }

@@ -1,0 +1,15 @@
+#rendered-delivered-requests {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#status-delivered {
+    background-color: forestgreen;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+#description-delivered {
+    margin-right: 10px;
+}

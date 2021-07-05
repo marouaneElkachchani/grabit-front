@@ -55,10 +55,21 @@
     margin-top: 40px;
 }
 
-.on-hold .on-hold-requests-m .on-hold-requests-main .render-on-hold-requests .on-hold-requests-info-and-button-block {
+.on-hold .on-hold-requests-m .on-hold-requests-main .render-on-hold-requests .rendered-on-hold-requests {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#description-on-hold {
+    margin-right: 10px;
+}
+
+#status-on-hold {
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    margin-left: 10px;
 }
 
 .on-hold .footer{

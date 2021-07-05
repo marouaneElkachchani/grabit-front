@@ -88,6 +88,9 @@ class SignUp extends React.Component {
                 }
                 return err.message
             })
+            // if jwt expired error:     
+            // window.localStorage.removeItem('token')
+            // document.location.reload()
             this.setState({ errors })
             this.hideSpinner()
         })

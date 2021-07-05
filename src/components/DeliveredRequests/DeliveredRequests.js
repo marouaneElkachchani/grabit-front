@@ -15,8 +15,10 @@ class DeliveredRequests extends React.Component {
             if( status === 'DELIVERED') {
                 return (
                     <div key={ id }>
-                        <li>
-                            { description } ----------- { status }
+                        <li id="rendered-delivered-requests">
+                            <span id="description-delivered">{ description }</span>
+                            --------------
+                            <span id="status-delivered">{ status }</span>
                         </li>
                         <br/>
                     </div>

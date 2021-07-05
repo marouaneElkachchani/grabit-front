@@ -26,8 +26,10 @@ class AssignedRequests extends React.Component {
             if( status === 'ASSIGNED') {
                 return (
                     <div key={ id }>
-                        <li id="requests-info-and-button-block">
-                            { description } ----------- { status }
+                        <li id="rendered-assigned-requests">
+                            <span id="description-assigned">{ description }</span>
+                            --------------
+                            <span id="status-assigned">{ status }</span>
                             <button id="request-delivered-button" onClick={ e => { e.preventDefault(); this.deliver(id) }}>
                                     <p id="request-delivered-button-value" hidden={false}>Delivered!</p>
                                     <div id="request-delivered-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>

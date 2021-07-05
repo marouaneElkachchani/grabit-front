@@ -1,7 +1,17 @@
-#requests-info-and-button-block {
+#rendered-assigned-requests {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#description-assigned {
+    margin-right: 10px;
+}
+
+#status-assigned {
+    background-color:orange;
+    border-radius: 4px;
+    margin-left: 10px;
 }
 
 #request-delivered-button {
@@ -18,5 +28,5 @@
     font-weight: bold;
     border: 3px solid #F71117;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 100px;
 }
