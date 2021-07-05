@@ -10,12 +10,24 @@ class Requests extends React.Component {
         super(props)
     }
 
+    renderStatus(status) {
+        if(status === 'DELIVERED') {
+            return <span id="customer-request-status" style={{backgroundColor: 'forestgreen'}} >{ status }</span>
+        } else if(status === 'ASSIGNED') {
+            return <span id="customer-request-status" style={{backgroundColor: 'orange'}}>{ status }</span>
+        } else if(status === 'ONHOLD') {
+            return <span id="customer-request-status" style={{backgroundColor: 'red'}}>{ status }</span>
+        } 
+    }
+
     renderRequests() {
         return this.props.data.myRequests.map( ({ id, description, status }) => {
             return (    
                         <div key={ id }>
-                            <li>
-                                { description } ----------- { status }
+                            <li id="rendered-customer-requests">
+                                <span id="customer-request-description">{ description }</span>
+                                ----------- 
+                                {this.renderStatus(status)}
                             </li>
                             <br/>
                         </div>

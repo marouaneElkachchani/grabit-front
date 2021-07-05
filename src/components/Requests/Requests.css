@@ -1,0 +1,14 @@
+#rendered-customer-requests {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#customer-request-description {
+    margin-right: 10px;
+}
+
+#customer-request-status {
+    border-radius: 4px;
+    margin-left: 10px;
+}
