@@ -11,14 +11,14 @@ class AssignedRequests extends React.Component {
         super(props)
     }
 
-    showSpinner() {
-        document.getElementById('request-delivered-button-value').hidden = true
-        document.getElementById('request-delivered-button-icon').hidden = false
+    showSpinner(id) {
+        document.getElementById(`request-delivered-button-value-${ id }`).hidden = true
+        document.getElementById(`request-delivered-button-icon-${ id }`).hidden = false
     }
 
-    hideSpinner() {
-        document.getElementById('request-delivered-button-value').hidden = false
-        document.getElementById('request-delivered-button-icon').hidden = true
+    hideSpinner(id) {
+        document.getElementById(`request-delivered-button-value-${ id }`).hidden = false
+        document.getElementById(`request-delivered-button-icon-${ id }`).hidden = true
     }
 
     renderAssignedRequests() {
@@ -31,8 +31,8 @@ class AssignedRequests extends React.Component {
                             --------------
                             <span id="status-assigned">{ status }</span>
                             <button id="request-delivered-button" onClick={ e => { e.preventDefault(); this.deliver(id) }}>
-                                    <p id="request-delivered-button-value" hidden={false}>Delivered!</p>
-                                    <div id="request-delivered-button-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                                    <p id={`request-delivered-button-value-${ id }`} hidden={false}>Delivered!</p>
+                                    <div id={`request-delivered-button-icon-${ id }`} hidden={true}><i className="fa fa-spinner fa-spin"></i></div>   
                             </button>
                         </li>
                         <br/>
@@ -45,7 +45,7 @@ class AssignedRequests extends React.Component {
     }
 
     deliver(id) {
-        this.showSpinner()
+        this.showSpinner(id)
         this.props.mutate({
             variables: {
                 id
@@ -57,7 +57,7 @@ class AssignedRequests extends React.Component {
         }).catch( res => {
             const errors = res.graphQLErrors.map( err => err.message )
             this.setState({ errors })
-            this.hideSpinner()
+            this.hideSpinner(id)
         })
     }
 
