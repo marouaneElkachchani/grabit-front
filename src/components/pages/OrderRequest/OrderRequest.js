@@ -214,7 +214,9 @@ class OrderRequest extends React.Component {
                 originPlaceId: this.state.originPlaceId,
                 destinationPlaceId: this.state.destinationPlaceId
             },
-            refetchQueries:[{query}]
+            refetchQueries:[{query, variables: { first: 5,
+                                                 skip: 0,
+                                                 orderBy: 'createdAt_DESC' }}]
         }).then( () => {
             this.setState({
                 description: "",

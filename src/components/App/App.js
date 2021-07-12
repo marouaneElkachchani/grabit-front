@@ -15,7 +15,72 @@ class App extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      paginationOrderBy: 'createdAt_DESC',
+      customerRequestsPaginationFirst: 5,
+      customerRequestsPaginationSkip: 0,
+      driverDeliveredRequestsPaginationFirst: 5,
+      driverDeliveredRequestsPaginationSkip: 0,
+      driverAssignedRequestsPaginationFirst: 5,
+      driverAssignedRequestsPaginationSkip: 0,
+      onHoldRequestsPaginationFirst: 5,
+      onHoldRequestsPaginationSkip: 0
+    }
     this.logout = this.logout.bind(this)
+    this.paginationPrevious = this.paginationPrevious.bind(this)
+    this.paginationNext = this.paginationNext.bind(this)
+  }
+
+  paginationPrevious(requests) {
+    if(requests === 'customerRequests') {
+      if(this.state.customerRequestsPaginationSkip === 0) {
+        return
+      }
+      this.setState( (prevState) => ({
+        customerRequestsPaginationSkip: prevState.customerRequestsPaginationSkip - 5
+      }) )
+    }else if (requests === 'driverDeliveredRequests') {
+      if(this.state.driverDeliveredRequestsPaginationSkip === 0) {
+        return
+      }
+      this.setState( (prevState) => ({
+        driverDeliveredRequestsPaginationSkip: prevState.driverDeliveredRequestsPaginationSkip - 5
+      }) )
+    } else if (requests === 'driverAssignedRequests') {
+      if(this.state.driverAssignedRequestsPaginationSkip === 0) {
+        return
+      }
+      this.setState( (prevState) => ({
+        driverAssignedRequestsPaginationSkip: prevState.driverAssignedRequestsPaginationSkip - 5
+      }) )
+    } else if(requests === 'onHoldRequests') {
+      if(this.state.onHoldRequestsPaginationSkip === 0) {
+        return
+      }
+      this.setState( (prevState) => ({
+        onHoldRequestsPaginationSkip: prevState.onHoldRequestsPaginationSkip - 5
+      }) )
+    }
+  }
+
+  paginationNext(requests) {
+    if(requests === 'customerRequests') {
+      this.setState( (prevState) => ({
+        customerRequestsPaginationSkip: prevState.customerRequestsPaginationSkip + 5
+      }) )
+    } else if (requests === 'driverDeliveredRequests') {
+      this.setState( (prevState) => ({
+        driverDeliveredRequestsPaginationSkip: prevState.driverDeliveredRequestsPaginationSkip + 5
+      }) )
+    } else if (requests === 'driverAssignedRequests') {
+      this.setState( (prevState) => ({
+        driverAssignedRequestsPaginationSkip: prevState.driverAssignedRequestsPaginationSkip + 5
+      }) )
+    } else if( requests === 'onHoldRequests') {
+      this.setState( (prevState) => ({
+        onHoldRequestsPaginationSkip: prevState.onHoldRequestsPaginationSkip + 5
+      }) )
+    }
   }
 
   showSpinner() {
@@ -37,13 +102,32 @@ class App extends React.Component {
     } else if (this.props.data.me) {
       const user = this.props.data.me
       const logout = this.logout
+      const paginationPrevious = this.paginationPrevious
+      const paginationNext = this.paginationNext
+      const paginationOrderBy = this.state.paginationOrderBy
+      const customerRequestsPaginationFirst = this.state.customerRequestsPaginationFirst
+      const customerRequestsPaginationSkip = this.state.customerRequestsPaginationSkip
+      const driverDeliveredRequestsPaginationFirst = this.state.driverDeliveredRequestsPaginationFirst
+      const driverDeliveredRequestsPaginationSkip = this.state.driverDeliveredRequestsPaginationSkip
+      const driverAssignedRequestsPaginationFirst = this.state.driverAssignedRequestsPaginationFirst
+      const driverAssignedRequestsPaginationSkip = this.state.driverAssignedRequestsPaginationSkip
+
       return (
         <Switch>
             <Route exact path="/" render={props => {
                 return <LandingPage {...props} id={user.id} logout={logout}/>
             }}/>
             <Route path="/profile/:userId" render={props => {
-                return <ProfileV1 {...props} user={user} logout={logout}/>
+                return <ProfileV1 {...props} user={user} logout={logout}
+                                             paginationOrderBy={paginationOrderBy}
+                                             paginationPrevious={paginationPrevious}
+                                             paginationNext={paginationNext}
+                                             customerRequestsPaginationFirst={customerRequestsPaginationFirst}
+                                             customerRequestsPaginationSkip={customerRequestsPaginationSkip}
+                                             driverDeliveredRequestsPaginationFirst={driverDeliveredRequestsPaginationFirst}
+                                             driverDeliveredRequestsPaginationSkip={driverDeliveredRequestsPaginationSkip}
+                                             driverAssignedRequestsPaginationFirst={driverAssignedRequestsPaginationFirst}
+                                             driverAssignedRequestsPaginationSkip={driverAssignedRequestsPaginationSkip}/>
             }}/>
             <Route path="/order-request/new" render={props => {
                 return <OrderRequest {...props} user={user}/>
@@ -74,7 +158,6 @@ class App extends React.Component {
       )
     }
   }
-
 }
 
 export default graphql(query)(App)

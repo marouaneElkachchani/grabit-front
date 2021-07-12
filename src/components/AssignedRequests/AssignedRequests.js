@@ -2,7 +2,9 @@ import React from 'react'
 import './AssignedRequests.css'
 import { Link } from 'react-router-dom'
 import { graphql } from 'react-apollo'
-import query from '../../queries/fetchRequests'
+import query from '../../queries/fetchAssignedRequests'
+import queryFetchDeliveredRequests from '../../queries/fetchDeliveredRequests'
+import queryFetchAssignedRequests from '../../queries/fetchAssignedRequests'
 import gql from 'graphql-tag'
 
 class AssignedRequests extends React.Component {
@@ -22,8 +24,7 @@ class AssignedRequests extends React.Component {
     }
 
     renderAssignedRequests() {
-        return this.props.data.myRequests.map( ({ id, description, status }) => {
-            if( status === 'ASSIGNED') {
+        return this.props.data.myAssignedRequests.map( ({ id, description, status }) => {
                 return (
                     <div key={ id }>
                         <li id="rendered-assigned-requests">
@@ -38,10 +39,14 @@ class AssignedRequests extends React.Component {
                         <br/>
                     </div>
                 )
-            } else {
-                return
-            }
         })
+    }
+
+    componentDidUpdate() {
+        if(this.props.data.myAssignedRequests.length === 0) {
+            this.paginationPrevious()
+            return
+        }
     }
 
     deliver(id) {
@@ -50,7 +55,12 @@ class AssignedRequests extends React.Component {
             variables: {
                 id
             },
-            refetchQueries:[{ query }]
+            refetchQueries:[{ query: queryFetchDeliveredRequests, variables: { first: 5,
+                                                                               skip: 0,
+                                                                               orderBy: 'createdAt_DESC' } },
+                            { query: queryFetchAssignedRequests, variables: { first: 5,
+                                                                              skip: 0,
+                                                                              orderBy: 'createdAt_DESC'} }]
         })
         .then( () => {
            this.props.history.push(`/profile/${this.props.user.id}/delivered-requests`)
@@ -61,28 +71,59 @@ class AssignedRequests extends React.Component {
         })
     }
 
+    paginationPrevious() {
+        this.props.paginationPrevious('driverAssignedRequests')
+    }
+    
+    paginationNext() {
+        if(this.props.data.myAssignedRequests.length !== 5) {
+            return
+        }
+        this.props.paginationNext('driverAssignedRequests')
+    }
+
     render() {
         const logout = this.props.logout
-        if( this.props.data.loading )
-            {
-                return <div>Loading...</div>
-            }
-        return (
-            <div className="main-right" >
-                <div className="main-right-top">
-                    <h3>Assigned Requests</h3>
-                    <button id="logout" onClick={logout}>
-                        <p id="logout-value" hidden={false}>Logout</p>
-                        <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
-                    </button>
-                </div>
-                <div className="main-right-form">
-                    <ul>
-                        { this.renderAssignedRequests() }
-                    </ul>
-                </div>
+        const mainRightTop = (
+            <div className="main-right-top">
+                <h3>Assigned Requests</h3>
+                <button id="logout" onClick={logout}>
+                    <p id="logout-value" hidden={false}>Logout</p>
+                    <div id="logout-icon" hidden={true}><i className="fa fa-spinner fa-spin"></i></div>
+                </button>
             </div>
         )
+        const previousButton = (
+            <button className="customer-requests-pagination-button" onClick={ e => { e.preventDefault(); this.paginationPrevious() }}>
+                <p id="customer-requests-pagination-previous-value" hidden={false}>Previous</p>
+            </button>
+        ) 
+        const nextButton = (
+                <button className="customer-requests-pagination-button" onClick={ e => { e.preventDefault(); this.paginationNext() }}>
+                    <p id="customer-requests-pagination-next-value" hidden={false}>Next</p>
+                </button>
+        )
+        if( this.props.data.loading ) {
+                return (
+                    <div className="main-right">
+                        {mainRightTop}
+                        <div className="main-right-form">
+                            <div>Loading...</div>
+                        </div>
+                        <div className="pagination-buttons">{previousButton} {nextButton}</div>
+                    </div>
+                )
+        } else {
+            return (
+                <div className="main-right">
+                    {mainRightTop}
+                    <div className="main-right-form">
+                        <ul>{this.renderAssignedRequests()}</ul>
+                    </div>
+                    <div className="pagination-buttons">{previousButton} {nextButton}</div>
+                </div>
+            )
+        }
     }
 }
 
@@ -113,6 +154,11 @@ const mutation = gql`
 `
 
 export default 
-    graphql(mutation) ( 
-        graphql(query)(AssignedRequests) 
+    graphql(mutation) (
+        graphql(query, { options: (props) => {
+            return { variables: { first: props.driverAssignedRequestsPaginationFirst,
+                                  skip: props.driverAssignedRequestsPaginationSkip,
+                                  orderBy: props.paginationOrderBy } }
+            }
+        } )(AssignedRequests)
     )

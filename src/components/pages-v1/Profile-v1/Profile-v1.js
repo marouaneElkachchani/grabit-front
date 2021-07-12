@@ -21,6 +21,15 @@ class ProfileV1 extends React.Component {
         const url = this.props.match.url
         const user = this.props.user
         const logout = this.props.logout
+        const paginationOrderBy = this.props.paginationOrderBy
+        const paginationPrevious = this.props.paginationPrevious
+        const paginationNext = this.props.paginationNext
+        const customerRequestsPaginationFirst = this.props.customerRequestsPaginationFirst
+        const customerRequestsPaginationSkip = this.props.customerRequestsPaginationSkip
+        const driverDeliveredRequestsPaginationFirst = this.props.driverDeliveredRequestsPaginationFirst
+        const driverDeliveredRequestsPaginationSkip = this.props.driverDeliveredRequestsPaginationSkip
+        const driverAssignedRequestsPaginationFirst = this.props.driverAssignedRequestsPaginationFirst
+        const driverAssignedRequestsPaginationSkip = this.props.driverAssignedRequestsPaginationSkip
         return (
             <div className="profile">
                 <TopBannerV1 isProfile={isProfile} user={user}/>
@@ -31,13 +40,28 @@ class ProfileV1 extends React.Component {
                             return <ProfileSettings {...props} user={user} logout={logout}/>        
                         }}/>
                         <Route path={`${url}/requests`} render={ props => {
-                            return <Requests {...props} user={user} logout={logout}/>
+                            return <Requests {...props} user={user} logout={logout}
+                                                        paginationOrderBy={paginationOrderBy}
+                                                        customerRequestsPaginationFirst={customerRequestsPaginationFirst}
+                                                        customerRequestsPaginationSkip={customerRequestsPaginationSkip}
+                                                        paginationPrevious={paginationPrevious}
+                                                        paginationNext={paginationNext}/>
                         }}/>
                         <Route path={`${url}/assigned-requests`} render={ props => {
-                            return <AssignedRequests {...props} user={user} logout={logout}/>
+                            return <AssignedRequests {...props} user={user} logout={logout}
+                                                                paginationOrderBy={paginationOrderBy}
+                                                                driverAssignedRequestsPaginationFirst={driverAssignedRequestsPaginationFirst}
+                                                                driverAssignedRequestsPaginationSkip={driverAssignedRequestsPaginationSkip}
+                                                                paginationPrevious={paginationPrevious}
+                                                                paginationNext={paginationNext}/>
                         }}/>
                         <Route path={`${url}/delivered-requests`} render={ props => {
-                            return <DeliveredRequests {...props} user={user} logout={logout}/>
+                            return <DeliveredRequests {...props} user={user} logout={logout}
+                                                                 paginationOrderBy={paginationOrderBy}
+                                                                 driverDeliveredRequestsPaginationFirst={driverDeliveredRequestsPaginationFirst}
+                                                                 driverDeliveredRequestsPaginationSkip={driverDeliveredRequestsPaginationSkip}
+                                                                 paginationPrevious={paginationPrevious}
+                                                                 paginationNext={paginationNext}/>
                         }}/>
                         <Route path={`${url}/address`} render={ props => {
                             return <Address {...props} address={user.address} logout={logout}/>
@@ -49,7 +73,6 @@ class ProfileV1 extends React.Component {
             </div>
         )
     }
-
 }
 
 export default ProfileV1

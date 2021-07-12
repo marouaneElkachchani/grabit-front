@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-    query OnHoldRequests($skip: Int, $first: Int, $orderBy: RequestOrderByInput) {
-        onHoldRequests(skip: $skip, first: $first, orderBy: $orderBy) {
+    query MyDeliveredRequests( $skip: Int, $first: Int, $orderBy: RequestOrderByInput) {
+        myDeliveredRequests(skip: $skip, first: $first, orderBy: $orderBy) {
                     id
                     description
                     items {

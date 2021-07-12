@@ -10,7 +10,7 @@ import ovalAsd from './assets/oval-asd.png'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import query from '../../../queries/fetchRequest'
-import queryFetchRequests from '../../../queries/fetchRequests'
+import queryFetchAssignedRequests from '../../../queries/fetchAssignedRequests'
 import queryFetchOnHoldRequests from '../../../queries/fetchOnHoldRequests'
 
 const style = {
@@ -100,7 +100,10 @@ class Request extends React.Component {
             variables: {
                 id: this.props.data.request.id,
             },
-            refetchQueries:[{ query: queryFetchRequests}, { query: queryFetchOnHoldRequests}]
+            refetchQueries:[{ query: queryFetchAssignedRequests, variables: { first: 5,
+                                                                              skip: 0,
+                                                                              orderBy: 'createdAt_DESC' } },
+                            { query: queryFetchOnHoldRequests}]
         })
         .then( () => {
            this.hideSpinner() 
